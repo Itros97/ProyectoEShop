@@ -17,6 +17,11 @@ import Usuario.Usuario;
 
 public class VentanaInicioSesion extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	JLabel lemail;
 	JTextField temail;
 	JLabel lpassword;

@@ -116,11 +116,8 @@ public class VentanaPrincipal extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> branch 'master' of https://github.com/Itros97/EShopProyect.git
+
 	public static void main(String[] args) {
 		
 		SwingUtilities.invokeLater(new Runnable() {
@@ -132,10 +129,6 @@ public class VentanaPrincipal extends JFrame {
 		});
 
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> branch 'master' of https://github.com/Itros97/EShopProyect.git
 }
 

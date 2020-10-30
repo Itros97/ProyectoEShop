@@ -21,6 +21,11 @@ import Usuario.Usuario;
 
 public class VentanaRegistro extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	JLabel lnickname;
 	JTextField tnickname;
 	JLabel lemail;
@@ -77,9 +82,9 @@ public class VentanaRegistro extends JFrame {
 				if(coincide == false) {
 				nuevoUsuario.setNickname(tnickname.getText());;
 				nuevoUsuario.setFechaNacimiento((Date) spinFecha.getValue());
-				nuevoUsuario.setCalle(tdireccion.getText());
+			//	nuevoUsuario.setcalle(tdireccion.getText());
 				nuevoUsuario.setCorreoElectronico(temail.getText());
-				nuevoUsuario.setpassword(ppassword.getText());
+				nuevoUsuario.setPassword(ppassword.getText());
 				
 				if (usuario == null) {
 					tienda.getClientes().add(nuevoUsuario);

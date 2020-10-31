@@ -6,6 +6,7 @@ public class Producto implements Serializable{
 	protected double precio;
 	protected int stock;
 	protected String descripcion;
+	protected String imagen;
 	
 	public Producto(double precio, int stock, String descripcion) {
 		super();

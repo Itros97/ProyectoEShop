@@ -8,19 +8,20 @@ public class Producto implements Serializable{
 	protected String descripcion;
 	protected String imagen;
 	
-	public Producto(double precio, int stock, String descripcion) {
+	public Producto(double precio, int stock, String descripcion, String imagen) {
 		super();
 		this.precio = precio;
 		this.stock = stock;
 		this.descripcion = descripcion;
+		this.imagen = imagen;
 	}
 	
 	public Producto() {
 		super();
 		this.precio = 0.0;
-
 		this.stock = 0;
 		this.descripcion = "";
+		this.imagen = "";
 	}
 	
 	public Producto(Producto p) {
@@ -28,6 +29,15 @@ public class Producto implements Serializable{
 		this.precio = p.precio;
 		this.stock = p.stock;
 		this.descripcion = p.descripcion;
+		this.imagen = p.imagen;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	public double getPrecio() {

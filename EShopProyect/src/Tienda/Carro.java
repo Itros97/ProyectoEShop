@@ -15,7 +15,7 @@ public class Carro implements Serializable{
 	private int cantidad;
 	private ArrayList<Producto> producto;
 	
-	public Carro(double precioTotal, int cantidad, ArrayList<Producto> ropa) {
+	public Carro(double precioTotal, int cantidad, ArrayList<Producto> producto) {
 		super();
 		this.precioTotal = precioTotal;
 		this.cantidad = cantidad;
@@ -45,11 +45,11 @@ public class Carro implements Serializable{
 		this.cantidad = cantidad;
 	}
 
-	public ArrayList<Producto> getRopa() {
+	public ArrayList<Producto> getProducto() {
 		return producto;
 	}
 
-	public void setRopa(ArrayList<Producto> producto) {
+	public void setProducto(ArrayList<Producto> producto) {
 		this.producto = producto;
 	}
 

@@ -102,7 +102,7 @@ public class VentanaTienda extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Producto producto = listaCarro.getSelectedValue();
-				tienda.getCarro().getRopa().remove(producto);
+				tienda.getCarro().getProducto().remove(producto);
 				modeloCarro.removeElement(producto);
 			}
 		});

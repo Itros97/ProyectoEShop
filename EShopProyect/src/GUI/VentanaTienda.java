@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.PrintWriter;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -12,19 +11,18 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Producto.Deporte;
+import Producto.Maquillaje;
+import Producto.Ordenador;
 import Producto.Producto;
+import Producto.Ropa;
 import Tienda.Tienda;
-import Usuario.Usuario;
 
 public class VentanaTienda extends JFrame{
-	String nombreFichero = "TIENDA.DAT";
-	double total = 0.0;
-	int cantidad = 1;
+
 	JMenuBar barra;
 	JMenu cliente;
 	
@@ -76,7 +74,46 @@ public class VentanaTienda extends JFrame{
 		panelSumar =  new JPanel();
 		sumarAlCarrito = new JButton("Anyadir al carrito");
 		
-		
+sumarAlCarrito.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Producto producto = listaProducto.getSelectedValue();
+				
+				if(producto instanceof Ropa) {
+					Ropa nueva;
+					Ropa ropa = (Ropa) listaProducto.getSelectedValue();
+					nueva = new Ropa(ropa);
+					
+					modeloCarro.addElement(nueva);	
+					tienda.getCarro().getProducto().add(nueva);
+					
+				} else if (producto instanceof Deporte) {
+					Deporte nueva;
+					Deporte deporte = (Deporte) listaProducto.getSelectedValue();
+					nueva = new Deporte(deporte);
+					
+					modeloCarro.addElement(nueva);	
+					tienda.getCarro().getProducto().add(nueva);	
+					
+				} else if (producto instanceof Ordenador) {
+					Ordenador nueva;
+					Ordenador ordenador = (Ordenador) listaProducto.getSelectedValue();
+					nueva = new Ordenador(ordenador);
+					
+					modeloCarro.addElement(nueva);	
+					tienda.getCarro().getProducto().add(nueva);	
+				} else {
+					//Maquillaje nueva;
+					Maquillaje maquillaje = (Maquillaje) listaProducto.getSelectedValue();
+					//nueva = new Deporte(maquillaje);
+					
+					//modeloCarro.addElement(nueva);	
+					//tienda.getCarro().getProducto().add(nueva);	
+				} 
+					
+			}
+		});
 		
 		panelSumar.add(sumarAlCarrito);
 		arriba.add(scrollProducto);

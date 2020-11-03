@@ -104,12 +104,12 @@ sumarAlCarrito.addActionListener(new ActionListener() {
 					modeloCarro.addElement(nueva);	
 					tienda.getCarro().getProducto().add(nueva);	
 				} else {
-					//Maquillaje nueva;
+					Maquillaje nueva;
 					Maquillaje maquillaje = (Maquillaje) listaProducto.getSelectedValue();
-					//nueva = new Deporte(maquillaje);
+					nueva = new Maquillaje(maquillaje);
 					
-					//modeloCarro.addElement(nueva);	
-					//tienda.getCarro().getProducto().add(nueva);	
+					modeloCarro.addElement(nueva);	
+					tienda.getCarro().getProducto().add(nueva);	
 				} 
 					
 			}

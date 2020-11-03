@@ -1,24 +1,24 @@
 package Producto;
 
-public class Deporte extends Producto{
+public class Balon extends Producto{
 	
 	protected String categoriaDeporte;
 	protected String material;
 	
-	public Deporte(double precio, int stock, String descripcion, String imagen, String marca, String categoriaDeporte,
+	public Balon(double precio, int stock, String descripcion, String imagen, String marca, String categoriaDeporte,
 			String material) {
 		super(precio, stock, descripcion, imagen, marca);
 		this.categoriaDeporte = categoriaDeporte;
 		this.material = material;
 	}
 	
-	public Deporte() {
+	public Balon() {
 		super();
 		this.categoriaDeporte = "";
 		this.material = "";
 	}
 	
-	public Deporte(Deporte d) {
+	public Balon(Balon d) {
 		super(d.precio, d.stock, d.descripcion, d.imagen, d.marca);
 		this.categoriaDeporte = d.categoriaDeporte;
 		this.material = d.material;

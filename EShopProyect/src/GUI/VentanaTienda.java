@@ -14,11 +14,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import Producto.Deporte;
-import Producto.Maquillaje;
+import Producto.Balon;
+import Producto.PintaLabios;
 import Producto.Ordenador;
 import Producto.Producto;
-import Producto.Ropa;
+import Producto.Camiseta;
 import Tienda.Tienda;
 
 public class VentanaTienda extends JFrame{
@@ -80,18 +80,18 @@ sumarAlCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Producto producto = listaProducto.getSelectedValue();
 				
-				if(producto instanceof Ropa) {
-					Ropa nueva;
-					Ropa ropa = (Ropa) listaProducto.getSelectedValue();
-					nueva = new Ropa(ropa);
+				if(producto instanceof Camiseta) {
+					Camiseta nueva;
+					Camiseta camiseta = (Camiseta) listaProducto.getSelectedValue();
+					nueva = new Camiseta(camiseta);
 					
 					modeloCarro.addElement(nueva);	
 					tienda.getCarro().getProducto().add(nueva);
 					
-				} else if (producto instanceof Deporte) {
-					Deporte nueva;
-					Deporte deporte = (Deporte) listaProducto.getSelectedValue();
-					nueva = new Deporte(deporte);
+				} else if (producto instanceof Balon) {
+					Balon nueva;
+					Balon balon = (Balon) listaProducto.getSelectedValue();
+					nueva = new Balon(balon);
 					
 					modeloCarro.addElement(nueva);	
 					tienda.getCarro().getProducto().add(nueva);	
@@ -104,9 +104,9 @@ sumarAlCarrito.addActionListener(new ActionListener() {
 					modeloCarro.addElement(nueva);	
 					tienda.getCarro().getProducto().add(nueva);	
 				} else {
-					Maquillaje nueva;
-					Maquillaje maquillaje = (Maquillaje) listaProducto.getSelectedValue();
-					nueva = new Maquillaje(maquillaje);
+					PintaLabios nueva;
+					PintaLabios pintalabios = (PintaLabios) listaProducto.getSelectedValue();
+					nueva = new PintaLabios(pintalabios);
 					
 					modeloCarro.addElement(nueva);	
 					tienda.getCarro().getProducto().add(nueva);	

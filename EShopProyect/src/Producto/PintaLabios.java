@@ -1,11 +1,11 @@
 package Producto;
 
-public class Maquillaje extends Producto {
+public class PintaLabios extends Producto {
 	protected String tipoMaquillaje;
 	protected String color;
 	protected double cantidad;
 	
-	public Maquillaje(double precio, int stock, String descripcion, String imagen, String marca, String tipoMaquillaje,
+	public PintaLabios(double precio, int stock, String descripcion, String imagen, String marca, String tipoMaquillaje,
 			String color, double cantidad) {
 		super(precio, stock, descripcion, imagen, marca);
 		this.tipoMaquillaje = tipoMaquillaje;
@@ -13,14 +13,14 @@ public class Maquillaje extends Producto {
 		this.cantidad = cantidad;
 	}
 	
-	public Maquillaje() {
+	public PintaLabios() {
 		super();
 		this.tipoMaquillaje = "";
 		this.color = "";
 		this.cantidad = 0.0;
 	}
 	
-	public Maquillaje(Maquillaje m) {
+	public PintaLabios(PintaLabios m) {
 		super(m.precio, m.stock, m.descripcion, m.imagen, m.marca);
 		this.tipoMaquillaje = m.tipoMaquillaje;
 		this.color = m.color;

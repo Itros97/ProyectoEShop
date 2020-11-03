@@ -7,13 +7,15 @@ public class Producto implements Serializable{
 	protected int stock;
 	protected String descripcion;
 	protected String imagen;
+	protected String marca;
 	
-	public Producto(double precio, int stock, String descripcion, String imagen) {
+	public Producto(double precio, int stock, String descripcion, String imagen, String marca) {
 		super();
 		this.precio = precio;
 		this.stock = stock;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
+		this.marca = marca;
 	}
 	
 	public Producto() {
@@ -22,6 +24,7 @@ public class Producto implements Serializable{
 		this.stock = 0;
 		this.descripcion = "";
 		this.imagen = "";
+		this.marca = "";
 	}
 	
 	public Producto(Producto p) {
@@ -30,6 +33,15 @@ public class Producto implements Serializable{
 		this.stock = p.stock;
 		this.descripcion = p.descripcion;
 		this.imagen = p.imagen;
+		this.marca = p.marca;
+	}
+	
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 
 	public String getImagen() {
@@ -66,11 +78,9 @@ public class Producto implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Ropa [precio=" + precio + ", stock=" + stock
-				+ ", descripcion=" + descripcion + "]";
+		return "Producto [precio=" + precio + ", stock=" + stock + ", descripcion=" + descripcion + ", imagen=" + imagen
+				+ ", marca=" + marca + "]";
 	}
-
-
 	
 }
 

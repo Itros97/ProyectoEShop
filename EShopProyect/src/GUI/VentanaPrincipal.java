@@ -33,7 +33,6 @@ public class VentanaPrincipal extends JFrame {
 	
 	public VentanaPrincipal() {
 		tienda = new Tienda();
-		//tienda.leerDatos(nombreFichero);
 		
 		ventana = this;
 		

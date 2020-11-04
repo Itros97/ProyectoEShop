@@ -1,7 +1,9 @@
 package Usuario;
 
 import java.util.Date;
-
+/*
+En la clase Usuario meteremos los datos de cada usuario.
+*/
 public class Usuario {
 
 	private String nickname;
@@ -10,7 +12,7 @@ public class Usuario {
 	private Date fechaNacimiento;
 	private String calle;
 	private String tarjeta_credito;
-	private boolean tipo_cuenta;
+	private boolean tipo_cuenta; //tipo_cuenta => Si el usuario es administrador o no.
 
 	public Usuario(String nickname, String password, String correoElectronico, Date fechaNacimiento, String calle,
 			String tarjeta_credito, boolean tipo_cuenta) {

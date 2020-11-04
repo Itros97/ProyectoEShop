@@ -1,25 +1,29 @@
 package Producto;
 
-public class Balon extends Producto{
-	
+/*
+Tipo de producto balones.
+*/
+
+public class Balon extends Producto {
+
 	protected String categoriaDeporte;
 	protected String material;
-	
-	public Balon(double precio, int stock, String descripcion, String imagen, String marca, String categoriaDeporte,
-			String material) {
-		super(precio, stock, descripcion, imagen, marca);
+
+	public Balon(double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria,
+			String categoriaDeporte, String material) {
+		super(precio, stock, descripcion, imagen, marca, categoria);
 		this.categoriaDeporte = categoriaDeporte;
 		this.material = material;
 	}
-	
+
 	public Balon() {
 		super();
 		this.categoriaDeporte = "";
 		this.material = "";
 	}
-	
+
 	public Balon(Balon d) {
-		super(d.precio, d.stock, d.descripcion, d.imagen, d.marca);
+		super(d.precio, d.stock, d.descripcion, d.imagen, d.marca, d.categoria);
 		this.categoriaDeporte = d.categoriaDeporte;
 		this.material = d.material;
 	}
@@ -44,6 +48,6 @@ public class Balon extends Producto{
 	public String toString() {
 		return "Deporte [categoriaDeporte=" + categoriaDeporte + ", material=" + material + ", precio=" + precio
 				+ ", stock=" + stock + ", descripcion=" + descripcion + ", imagen=" + imagen + ", marca=" + marca + "]";
-	}	
+	}
 
 }

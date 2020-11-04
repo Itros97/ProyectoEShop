@@ -1,27 +1,31 @@
 package Producto;
 
+/*
+Tipo de productos pinta labios.
+*/
+
 public class PintaLabios extends Producto {
 	protected String tipoMaquillaje;
 	protected String color;
 	protected double cantidad;
-	
-	public PintaLabios(double precio, int stock, String descripcion, String imagen, String marca, String tipoMaquillaje,
-			String color, double cantidad) {
-		super(precio, stock, descripcion, imagen, marca);
+
+	public PintaLabios(double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria,
+			String tipoMaquillaje, String color, double cantidad) {
+		super(precio, stock, descripcion, imagen, marca, categoria);
 		this.tipoMaquillaje = tipoMaquillaje;
 		this.color = color;
 		this.cantidad = cantidad;
 	}
-	
+
 	public PintaLabios() {
 		super();
 		this.tipoMaquillaje = "";
 		this.color = "";
 		this.cantidad = 0.0;
 	}
-	
+
 	public PintaLabios(PintaLabios m) {
-		super(m.precio, m.stock, m.descripcion, m.imagen, m.marca);
+		super(m.precio, m.stock, m.descripcion, m.imagen, m.marca, m.categoria);
 		this.tipoMaquillaje = m.tipoMaquillaje;
 		this.color = m.color;
 		this.cantidad = m.cantidad;
@@ -57,6 +61,5 @@ public class PintaLabios extends Producto {
 				+ ", precio=" + precio + ", stock=" + stock + ", descripcion=" + descripcion + ", imagen=" + imagen
 				+ ", marca=" + marca + "]";
 	}
-	
-	
+
 }

@@ -2,22 +2,31 @@ package Producto;
 
 import java.io.Serializable;
 
-public class Producto implements Serializable{
+/*
+La clase producto sera la clase padre, de la cual heredaran los diferentes tipos de productos.
+En esta clase encontraremos un atributo llamado Categoria que sirve para luego poder ondenar
+los diferente productos en categorias.
+*/
+
+public class Producto implements Serializable {
 	protected double precio;
 	protected int stock;
 	protected String descripcion;
 	protected String imagen;
 	protected String marca;
-	
-	public Producto(double precio, int stock, String descripcion, String imagen, String marca) {
+	protected Categoria categoria;
+
+	public Producto(double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria) {
 		super();
 		this.precio = precio;
 		this.stock = stock;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
 		this.marca = marca;
+		this.categoria = categoria;
+
 	}
-	
+
 	public Producto() {
 		super();
 		this.precio = 0.0;
@@ -25,8 +34,9 @@ public class Producto implements Serializable{
 		this.descripcion = "";
 		this.imagen = "";
 		this.marca = "";
+		this.categoria = Categoria.CUALQUIERA;
 	}
-	
+
 	public Producto(Producto p) {
 		super();
 		this.precio = p.precio;
@@ -34,8 +44,9 @@ public class Producto implements Serializable{
 		this.descripcion = p.descripcion;
 		this.imagen = p.imagen;
 		this.marca = p.marca;
+		this.categoria = p.categoria;
 	}
-	
+
 	public String getMarca() {
 		return marca;
 	}
@@ -81,7 +92,5 @@ public class Producto implements Serializable{
 		return "Producto [precio=" + precio + ", stock=" + stock + ", descripcion=" + descripcion + ", imagen=" + imagen
 				+ ", marca=" + marca + "]";
 	}
-	
+
 }
-
-

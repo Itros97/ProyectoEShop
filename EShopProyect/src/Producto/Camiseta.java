@@ -1,24 +1,28 @@
 package Producto;
 
-public class Camiseta extends Producto{
+/*
+Tipo de producto camisetas.
+*/
+
+public class Camiseta extends Producto {
 	protected double talla;
 	protected String material;
-	
-	public Camiseta(double precio, int stock, String descripcion, String imagen, String marca, int talla,
-			String material) {
-		super(precio, stock, descripcion, imagen, marca);
+
+	public Camiseta(double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria,
+			double talla, String material) {
+		super(precio, stock, descripcion, imagen, marca, categoria);
 		this.talla = talla;
 		this.material = material;
 	}
-	
+
 	public Camiseta() {
 		super();
 		this.talla = 0.0;
 		this.material = "";
 	}
-	
+
 	public Camiseta(Camiseta r) {
-		super(r.precio, r.stock, r.descripcion, r.imagen, r.marca);
+		super(r.precio, r.stock, r.descripcion, r.imagen, r.marca, r.categoria);
 		this.talla = r.talla;
 		this.material = r.material;
 	}
@@ -41,8 +45,8 @@ public class Camiseta extends Producto{
 
 	@Override
 	public String toString() {
-		return "Ropa [talla=" + talla +  ", material=" + material + ", precio=" + precio
-				+ ", stock=" + stock + ", descripcion=" + descripcion + ", imagen=" + imagen + ", marca=" + marca + "]";
+		return "Ropa [talla=" + talla + ", material=" + material + ", precio=" + precio + ", stock=" + stock
+				+ ", descripcion=" + descripcion + ", imagen=" + imagen + ", marca=" + marca + "]";
 	}
-	
+
 }

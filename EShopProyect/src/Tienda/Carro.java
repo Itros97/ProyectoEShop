@@ -1,27 +1,32 @@
 package Tienda;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 
 import Producto.Producto;
 
-public class Carro implements Serializable{
-	/**
-	 * 
-	 */
+/*
+En esta clase se iran añadiendo los productos que quiera comprar el usuario, se contara
+la cantidad de productos que quiere comprar y se sumara el precio total de todos los 
+productos.
+*/
+
+public class Carro implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private double precioTotal;
 	private int cantidad;
 	private ArrayList<Producto> producto;
-	
+
 	public Carro(double precioTotal, int cantidad, ArrayList<Producto> producto) {
 		super();
 		this.precioTotal = precioTotal;
 		this.cantidad = cantidad;
 		this.producto = new ArrayList<Producto>(producto);
 	}
-	
+
 	public Carro() {
 		super();
 		this.precioTotal = 0.0;
@@ -57,8 +62,5 @@ public class Carro implements Serializable{
 	public String toString() {
 		return "Carro [precioTotal=" + precioTotal + ", cantidad=" + cantidad + ", producto=" + producto + "]";
 	}
-	
-	
+
 }
-
-

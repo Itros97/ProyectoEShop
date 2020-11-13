@@ -103,7 +103,7 @@ public class LLamadasBD
 	            //preparedStatement.setString(2	, encriptMD5);
 	            preparedStatement.setString(3, nuevoUsuario.getCorreoElectronico());
 	            preparedStatement.setString(4, nuevoUsuario.getCalle());
-	            preparedStatement.setInt(5, nuevoUsuario.getTarjeta_credito());
+	            preparedStatement.setString(5, nuevoUsuario.getTarjeta_credito());
 	           
 	            preparedStatement.execute();
 

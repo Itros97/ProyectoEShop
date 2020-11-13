@@ -82,20 +82,26 @@ public class VentanaRegistro extends JFrame {
 				if(coincide == false) {
 				nuevoUsuario.setNickname(tnickname.getText());;
 				nuevoUsuario.setFechaNacimiento((Date) spinFecha.getValue());
-			//	nuevoUsuario.setcalle(tdireccion.getText());
+			    nuevoUsuario.setCalle(tcalle.getText());
 				nuevoUsuario.setCorreoElectronico(temail.getText());
 				nuevoUsuario.setPassword(ppassword.getText());
+				nuevoUsuario.setTarjeta_credito(ttarjeta.getText());
+				if(cbtipo.isSelected() == true) {
+					nuevoUsuario.setTipo_cuenta(true);
+				} else {
+					nuevoUsuario.setTipo_cuenta(false);
+				}
+				
 				
 				if (usuario == null) {
 					tienda.getClientes().add(nuevoUsuario);
 				}
 
 				System.out.println(nuevoUsuario);
-				//tienda.guardarDatos(nombreFichero);
 				
 				dispose();
-				//principal.binicio.setEnabled(true);
-				//principal.bregistro.setEnabled(true);
+				principal.binicio.setEnabled(true);
+				principal.bregistro.setEnabled(true);
 				
 				} 
 				
@@ -113,8 +119,8 @@ public class VentanaRegistro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				//principal.binicio.setEnabled(true);
-				//principal.bregistro.setEnabled(true);
+				principal.binicio.setEnabled(true);
+				principal.bregistro.setEnabled(true);
 			}
 		});
 

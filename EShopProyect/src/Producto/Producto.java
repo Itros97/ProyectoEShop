@@ -3,6 +3,7 @@ package Producto;
 import java.io.Serializable;
 
 public class Producto implements Serializable{
+	protected String nombre;
 	protected double precio;
 	protected int stock;
 	protected TipoDeProducto ProductoTipo;
@@ -10,8 +11,9 @@ public class Producto implements Serializable{
 	protected String imagen;
 	protected String marca;
 	
-	public Producto(double precio, int stock, String descripcion, String imagen, String marca) {
+	public Producto(String nombre, double precio, int stock, String descripcion, String imagen, String marca) {
 		super();
+		this.nombre = nombre;
 		this.precio = precio;
 		this.stock = stock;
 		this.descripcion = descripcion;
@@ -19,8 +21,9 @@ public class Producto implements Serializable{
 		this.marca = marca;
 	}
 	//Constructor con enumeracion
-	public Producto(double precio, int stock, TipoDeProducto ProductoTipo, String descripcion, String imagen, String marca) {
+	public Producto(String nombre, double precio, int stock, TipoDeProducto ProductoTipo, String descripcion, String imagen, String marca) {
 		super();
+		this.nombre = nombre;
 		this.precio = precio;
 		this.stock = stock;
 		this.ProductoTipo = ProductoTipo;

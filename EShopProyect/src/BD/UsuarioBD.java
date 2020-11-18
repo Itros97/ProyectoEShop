@@ -3,10 +3,10 @@ package BD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class Usuario {
+public class UsuarioBD {
 
 	//CREAR
-	 private void CrearBasesDeDatos(Connection con) {
+	 protected static void CrearTablaUsuario(Connection con) {
 			// TODO Auto-generated method stub
 		    PreparedStatement preparedStatement = null;
 		    

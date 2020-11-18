@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 
 import Usuario.Usuario;
 
-public class LLamadasBD 
+public class LLamadasBD
 {
 	//Llamadas de la base de datos y todos sus metodos
 	//REINICIO DE LA BD PARA EVITAR PROBLEMAS
@@ -41,28 +41,8 @@ public class LLamadasBD
 	    }
 	 //CREACION DE LA BASE DE DATOS
 	 private void CrearBasesDeDatos(Connection con) {
-			// TODO Auto-generated method stub
-		    PreparedStatement preparedStatement = null;
-		    
-		    //TABLA USUARIO
-		    String createUsuario = "CREATE TABLE USUARIO(" +
-		    		"NICKNAME VARCHAR(50) PRIMARY KEY NOT NULL," +
-		    		"PASSWORD VARCHAR(50) NOT NULL," +
-		    		"EMAIL VARCHAR(50) NOT NULL," +
-		    		"CALLE VARCHAR(250)," +
-		    		"TARJETA_CREDITO INT," +
-		    		"TIPO_CUENTA BOOLEAN);";
-		    try {
-		    	
-		    preparedStatement = con.prepareStatement(createUsuario);
-	        preparedStatement.executeUpdate();
-
-	        System.out.println("Tabla USUARIOS creada correctamente.");
-				
-			} catch (Exception e) {
-				System.err.println("Error al crear la tabla" +e+ "");
-			}
-		    
+		 UsuarioBD.CrearTablaUsuario(con);
+		 ProductoBD.CrearTablaProducto(con);
 		}
 
 	 //ELIMINACION DE LA BASE DE DATOS

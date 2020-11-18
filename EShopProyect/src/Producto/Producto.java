@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Producto implements Serializable{
 	protected double precio;
 	protected int stock;
+	protected TipoDeProducto ProductoTipo;
 	protected String descripcion;
 	protected String imagen;
 	protected String marca;
@@ -13,6 +14,16 @@ public class Producto implements Serializable{
 		super();
 		this.precio = precio;
 		this.stock = stock;
+		this.descripcion = descripcion;
+		this.imagen = imagen;
+		this.marca = marca;
+	}
+	//Constructor con enumeracion
+	public Producto(double precio, int stock, TipoDeProducto ProductoTipo, String descripcion, String imagen, String marca) {
+		super();
+		this.precio = precio;
+		this.stock = stock;
+		this.ProductoTipo = ProductoTipo;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
 		this.marca = marca;

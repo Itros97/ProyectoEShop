@@ -15,7 +15,7 @@ public class LLamadasBD
         if (codSeguridad.equals("Admin")) {
             //EJECUTAR EL REINICIO DE TODOS LOS DATOS
             Connection con = Conexion();
-         //   BorrarBasesDeDatos(con);
+            BorrarBasesDeDatos(con);
             CrearBasesDeDatos(con);
             //   InsertarBasesDeDatos(con);
 
@@ -30,8 +30,8 @@ public class LLamadasBD
 
 	        try {
 	            Class.forName("com.mysql.jdbc.Driver");
-	            //Conexion con la BD de XAMPP
-	            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiendaonline", "root", "");
+	            //Conexion con la BD de XAMPP(EN MI CASO USO EL PUERTO 3307 EN VEZ DEL 3306 YA QUE NO ME EJA ACCEDER A ESTE PRIMERO)
+	            con = DriverManager.getConnection("jdbc:mysql://localhost:3307/tiendaonline", "root", "");
 
 	        } catch (Exception e) {
 	            System.err.println("No se ha podido conectar a la base de datos de la tienda\n" + e.getMessage());
@@ -47,21 +47,9 @@ public class LLamadasBD
 
 	 //ELIMINACION DE LA BASE DE DATOS
 	 private void BorrarBasesDeDatos(Connection con) {
-			// TODO Auto-generated method stub
-		 PreparedStatement preparedStatement = null;
-		 
-		 String borrarUsuarios = "DROP TABLE IF EXISTS USUARIOS";
-		 try {
-			 //DEBE EFECTUARSE AL REVES DE COMO SE CREAN PARA EVITAR PROBLEMAS DE RELACION
-			 preparedStatement = con.prepareStatement(borrarUsuarios);
-	         preparedStatement.executeUpdate();
-
-	         System.out.println("Tabla USUARIOS eliminada correctamente.");
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.err.println("Error al eliminarP la tabla" +e+ "");
-		}
-		}
+		 UsuarioBD.EliminarTablaUsuario(con);
+		 ProductoBD.EliminarTablaProducto(con);
+	 }
 	 
 	   //INSERT USUARIOS
 	    public void InsertarUsuario(Usuario nuevoUsuario) {

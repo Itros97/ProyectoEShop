@@ -30,7 +30,7 @@ public class UsuarioBD {
 			}
 }
 	 //ELIMINAR
-	 protected void EliminarTablaUsuario(Connection con) {
+	 protected static void EliminarTablaUsuario(Connection con) {
 		 
 	     PreparedStatement preparedStatement = null;
 		 

@@ -15,9 +15,9 @@ public class ProductoBD {
 		    		"NOMBRE VARCHAR(50) NOT NULL," +
 		    		"PRECIO DOUBLE NOT NULL," +
 		    		"STOCK INTEGER," +
-		    		"TIPODEPRODUCTO VARCHAR(20)" +
-		    		"DESCRIPCION VARCHAR(300)" +
-		    		"IMAGEN VARCHAR(225)" +
+		    		"TIPODEPRODUCTO VARCHAR(20)," +
+		    		"DESCRIPCION VARCHAR(300)," +
+		    		"IMAGEN VARCHAR(225)," +
 		    		"MARCA VARCHAR(20));";
 		    try {
 		    	
@@ -31,7 +31,7 @@ public class ProductoBD {
 			}
 }
 	 //ELIMINAR
-	 protected void EliminarTablaProducto(Connection con) {
+	 protected static void EliminarTablaProducto(Connection con) {
 		 
 	     PreparedStatement preparedStatement = null;
 		 

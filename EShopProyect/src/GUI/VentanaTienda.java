@@ -17,7 +17,7 @@ public class VentanaTienda extends JFrame {
 	protected JButton botonBuscar;
 	protected JButton botonComprar;
 	protected JButton botonEliminar;
-	protected JButton añadir;
+	protected JButton aÃ±adir;
 	protected JLabel cesta;
 	protected JCheckBox checkBox1;
 	protected JCheckBox checkBox2;
@@ -46,7 +46,7 @@ public class VentanaTienda extends JFrame {
 		botonBuscar = new JButton("Buscar");
 		botonComprar = new JButton("Comprar");
 		botonEliminar = new JButton("Eliminar");
-		añadir = new JButton("Añadir al carrito");
+		aÃ±adir = new JButton("AÃ±adir al carrito");
 		botonComprar.setSize(100, 100);
 		cesta = new JLabel("--------------------Cesta---------------------");
 		checkBox1 = new JCheckBox();
@@ -79,7 +79,7 @@ public class VentanaTienda extends JFrame {
 		panelCestaCenter.add(checkBox4);
 		panelCestaCenter.add(checkBox5);
 		panelCestaCenter.add(checkBox6);
-		panelS.add(añadir);
+		panelS.add(aÃ±adir);
 
 		add(panelNorth, BorderLayout.NORTH);
 		add(panelEast, BorderLayout.EAST);
@@ -105,30 +105,27 @@ public class VentanaTienda extends JFrame {
 			}
 		});
 		
-		añadir.addActionListener(new ActionListener() {
+		panelSumar =  new JPanel();
+		sumarAlCarrito = new JButton("Anyadir al carrito");
+		
+		sumarAlCarrito.addActionListener(new ActionListener() {
+			
+
+		aÃ±adir.addActionListener(new ActionListener() {
+
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Producto producto = listaProducto.getSelectedValue();
-<<<<<<< HEAD
+
 
 				if (producto instanceof Ropa) {
 					Ropa nueva;
 					Ropa ropa = (Ropa) listaProducto.getSelectedValue();
 					nueva = new Ropa(ropa);
-
-					modeloCarro.addElement(nueva);
-=======
-				
-				if(producto instanceof Camiseta) {
-					Camiseta nueva;
-					Camiseta camiseta = (Camiseta) listaProducto.getSelectedValue();
-					nueva = new Camiseta(camiseta);
 					
 					modeloCarro.addElement(nueva);	
->>>>>>> refs/remotes/origin/Mikel
 					tienda.getCarro().getProducto().add(nueva);
-<<<<<<< HEAD
 
 				} else if (producto instanceof Deporte) {
 					Deporte nueva;
@@ -138,17 +135,7 @@ public class VentanaTienda extends JFrame {
 					modeloCarro.addElement(nueva);
 					tienda.getCarro().getProducto().add(nueva);
 
-=======
-					
-				} else if (producto instanceof Balon) {
-					Balon nueva;
-					Balon balon = (Balon) listaProducto.getSelectedValue();
-					nueva = new Balon(balon);
-					
-					modeloCarro.addElement(nueva);	
-					tienda.getCarro().getProducto().add(nueva);	
-					
->>>>>>> refs/remotes/origin/Mikel
+
 				} else if (producto instanceof Ordenador) {
 					Ordenador nueva;
 					Ordenador ordenador = (Ordenador) listaProducto.getSelectedValue();
@@ -157,7 +144,7 @@ public class VentanaTienda extends JFrame {
 					modeloCarro.addElement(nueva);
 					tienda.getCarro().getProducto().add(nueva);
 				} else {
-<<<<<<< HEAD
+
 					Maquillaje nueva;
 					Maquillaje maquillaje = (Maquillaje) listaProducto.getSelectedValue();
 					nueva = new Maquillaje(maquillaje);
@@ -166,16 +153,6 @@ public class VentanaTienda extends JFrame {
 					tienda.getCarro().getProducto().add(nueva);
 				}
 
-=======
-					PintaLabios nueva;
-					PintaLabios pintalabios = (PintaLabios) listaProducto.getSelectedValue();
-					nueva = new PintaLabios(pintalabios);
-					
-					modeloCarro.addElement(nueva);	
-					tienda.getCarro().getProducto().add(nueva);	
-				} 
-					
->>>>>>> refs/remotes/origin/Mikel
 			}
 		});
 
@@ -196,6 +173,19 @@ public class VentanaTienda extends JFrame {
 				modeloCarro.removeElement(producto);
 			}
 		});
+		
+		panelCarrito.add(comprarProducto);
+		panelCarrito.add(eliminarDelCarrito);
+		
+		abajo.add(scrollCarro);
+		abajo.add(panelCarrito, BorderLayout.SOUTH);
+		
+		add(arriba);
+		add(abajo);
+		setJMenuBar(barra);
+		
+
+
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("TIENDA DE ROPA");

@@ -1,5 +1,6 @@
 package Usuario;
 
+import java.sql.Connection;
 import java.util.Date;
 /*
 En la clase Usuario meteremos los datos de cada usuario.
@@ -92,5 +93,6 @@ public class Usuario {
 	public void setTipo_cuenta(boolean tipo_cuenta) {
 		this.tipo_cuenta = tipo_cuenta;
 	}
+
 
 }

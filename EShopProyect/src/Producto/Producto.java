@@ -2,6 +2,10 @@ package Producto;
 
 import java.io.Serializable;
 
+<<<<<<< HEAD
+public class Producto implements Serializable{
+	protected String nombre;
+=======
 /*
 La clase producto sera la clase padre, de la cual heredaran los diferentes tipos de productos.
 En esta clase encontraremos un atributo llamado Categoria que sirve para luego poder ondenar
@@ -9,15 +13,23 @@ los diferente productos en categorias.
 */
 
 public class Producto implements Serializable {
+>>>>>>> refs/remotes/origin/Mikel
 	protected double precio;
 	protected int stock;
+	protected TipoDeProducto ProductoTipo;
 	protected String descripcion;
 	protected String imagen;
 	protected String marca;
+<<<<<<< HEAD
+	
+	public Producto(String nombre, double precio, int stock, String descripcion, String imagen, String marca) {
+=======
 	protected Categoria categoria;
 
 	public Producto(double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria) {
+>>>>>>> refs/remotes/origin/Mikel
 		super();
+		this.nombre = nombre;
 		this.precio = precio;
 		this.stock = stock;
 		this.descripcion = descripcion;
@@ -26,7 +38,22 @@ public class Producto implements Serializable {
 		this.categoria = categoria;
 
 	}
+<<<<<<< HEAD
+	//Constructor con enumeracion
+	public Producto(String nombre, double precio, int stock, TipoDeProducto ProductoTipo, String descripcion, String imagen, String marca) {
+		super();
+		this.nombre = nombre;
+		this.precio = precio;
+		this.stock = stock;
+		this.ProductoTipo = ProductoTipo;
+		this.descripcion = descripcion;
+		this.imagen = imagen;
+		this.marca = marca;
+	}
+	
+=======
 
+>>>>>>> refs/remotes/origin/Mikel
 	public Producto() {
 		super();
 		this.precio = 0.0;

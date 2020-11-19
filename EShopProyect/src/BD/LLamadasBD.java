@@ -1,4 +1,4 @@
-package BD;
+ package BD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 
 import Usuario.Usuario;
 
-public class LLamadasBD 
+public class LLamadasBD
 {
 	//Llamadas de la base de datos y todos sus metodos
 	//REINICIO DE LA BD PARA EVITAR PROBLEMAS
@@ -15,13 +15,15 @@ public class LLamadasBD
         if (codSeguridad.equals("Admin")) {
             //EJECUTAR EL REINICIO DE TODOS LOS DATOS
             Connection con = Conexion();
-         //   BorrarBasesDeDatos(con);
+            BorrarBasesDeDatos(con);
             CrearBasesDeDatos(con);
             //   InsertarBasesDeDatos(con);
 
         } else {
             System.out.println("El código no es el correcto");
+            
         }
+        
 	}
 	
 	//CODIGO PARA LA CONEXION CON LA BASE DE DATOS
@@ -30,8 +32,8 @@ public class LLamadasBD
 
 	        try {
 	            Class.forName("com.mysql.jdbc.Driver");
-	            //Conexion con la BD de XAMPP
-	            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiendaonline", "root", "");
+	            //Conexion con la BD de XAMPP(EN MI CASO USO EL PUERTO 3307 EN VEZ DEL 3306 YA QUE NO ME EJA ACCEDER A ESTE PRIMERO)
+	            con = DriverManager.getConnection("jdbc:mysql://localhost:3307/tiendaonline", "root", "");
 
 	        } catch (Exception e) {
 	            System.err.println("No se ha podido conectar a la base de datos de la tienda\n" + e.getMessage());
@@ -41,47 +43,15 @@ public class LLamadasBD
 	    }
 	 //CREACION DE LA BASE DE DATOS
 	 private void CrearBasesDeDatos(Connection con) {
-			// TODO Auto-generated method stub
-		    PreparedStatement preparedStatement = null;
-		    
-		    //TABLA USUARIO
-		    String createUsuario = "CREATE TABLE USUARIO(" +
-		    		"NICKNAME VARCHAR(50) PRIMARY KEY NOT NULL," +
-		    		"PASSWORD VARCHAR(50) NOT NULL," +
-		    		"EMAIL VARCHAR(50) NOT NULL," +
-		    		"CALLE VARCHAR(250)," +
-		    		"TARJETA_CREDITO INT," +
-		    		"TIPO_CUENTA BOOLEAN);";
-		    try {
-		    	
-		    preparedStatement = con.prepareStatement(createUsuario);
-	        preparedStatement.executeUpdate();
-
-	        System.out.println("Tabla USUARIOS creada correctamente.");
-				
-			} catch (Exception e) {
-				System.err.println("Error al crear la tabla" +e+ "");
-			}
-		    
+		 UsuarioBD.CrearTablaUsuario(con);
+		 ProductoBD.CrearTablaProducto(con);
 		}
 
 	 //ELIMINACION DE LA BASE DE DATOS
 	 private void BorrarBasesDeDatos(Connection con) {
-			// TODO Auto-generated method stub
-		 PreparedStatement preparedStatement = null;
-		 
-		 String borrarUsuarios = "DROP TABLE IF EXISTS USUARIOS";
-		 try {
-			 //DEBE EFECTUARSE AL REVES DE COMO SE CREAN PARA EVITAR PROBLEMAS DE RELACION
-			 preparedStatement = con.prepareStatement(borrarUsuarios);
-	         preparedStatement.executeUpdate();
-
-	         System.out.println("Tabla USUARIOS eliminada correctamente.");
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.err.println("Error al eliminarP la tabla" +e+ "");
-		}
-		}
+		 UsuarioBD.EliminarTablaUsuario(con);
+		 ProductoBD.EliminarTablaProducto(con);
+	 }
 	 
 	   //INSERT USUARIOS
 	    public void InsertarUsuario(Usuario nuevoUsuario) {

@@ -2,12 +2,13 @@ package Producto;
 
 public class Deporte extends Producto{
 	
-	protected String categoriaDeporte;
+	private static final TipoDeProducto ProductoTipo = null;
+	protected static String categoriaDeporte;
 	protected String material;
 	
 	public Deporte(double precio, int stock, String descripcion, String imagen, String marca, String categoriaDeporte,
 			String material) {
-		super(precio, stock, descripcion, imagen, marca);
+		super(material, precio, stock, ProductoTipo, descripcion, imagen, marca);
 		this.categoriaDeporte = categoriaDeporte;
 		this.material = material;
 	}
@@ -19,12 +20,12 @@ public class Deporte extends Producto{
 	}
 	
 	public Deporte(Deporte d) {
-		super(d.precio, d.stock, d.descripcion, d.imagen, d.marca);
+		super(getCategoriaDeporte(), d.precio, d.stock, null, d.descripcion, d.imagen, d.marca);
 		this.categoriaDeporte = d.categoriaDeporte;
 		this.material = d.material;
 	}
 
-	public String getCategoriaDeporte() {
+	public static String getCategoriaDeporte() {
 		return categoriaDeporte;
 	}
 

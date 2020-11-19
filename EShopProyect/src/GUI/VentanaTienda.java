@@ -46,7 +46,7 @@ public class VentanaTienda extends JFrame {
 		botonBuscar = new JButton("Buscar");
 		botonComprar = new JButton("Comprar");
 		botonEliminar = new JButton("Eliminar");
-		anadir = new JButton("Añadir al carrito");
+		anadir = new JButton("Sumar al carrito");
 		botonComprar.setSize(100, 100);
 		cesta = new JLabel("--------------------Cesta---------------------");
 		checkBox1 = new JCheckBox();
@@ -104,14 +104,8 @@ public class VentanaTienda extends JFrame {
 
 			}
 		});
-		
-		panelSumar =  new JPanel();
-		sumarAlCarrito = new JButton("Anyadir al carrito");
-		
-		sumarAlCarrito.addActionListener(new ActionListener() {
-			
 
-		añadir.addActionListener(new ActionListener() {
+		anadir.addActionListener(new ActionListener() {
 
 
 			@Override
@@ -119,18 +113,18 @@ public class VentanaTienda extends JFrame {
 				Producto producto = listaProducto.getSelectedValue();
 
 
-				if (producto instanceof Ropa) {
-					Ropa nueva;
-					Ropa ropa = (Ropa) listaProducto.getSelectedValue();
-					nueva = new Ropa(ropa);
+				if (producto instanceof Balon) {
+					Balon nueva;
+					Balon balon = (Balon) listaProducto.getSelectedValue();
+					nueva = new Balon(balon);
 					
 					modeloCarro.addElement(nueva);	
 					tienda.getCarro().getProducto().add(nueva);
 
-				} else if (producto instanceof Deporte) {
-					Deporte nueva;
-					Deporte deporte = (Deporte) listaProducto.getSelectedValue();
-					nueva = new Deporte(deporte);
+				} else if (producto instanceof Camiseta) {
+					Camiseta nueva;
+					Camiseta camiseta = (Camiseta) listaProducto.getSelectedValue();
+					nueva = new Camiseta(camiseta);
 
 					modeloCarro.addElement(nueva);
 					tienda.getCarro().getProducto().add(nueva);
@@ -145,9 +139,9 @@ public class VentanaTienda extends JFrame {
 					tienda.getCarro().getProducto().add(nueva);
 				} else {
 
-					Maquillaje nueva;
-					Maquillaje maquillaje = (Maquillaje) listaProducto.getSelectedValue();
-					nueva = new Maquillaje(maquillaje);
+					PintaLabios nueva;
+					PintaLabios pintaLabios = (PintaLabios) listaProducto.getSelectedValue();
+					nueva = new PintaLabios(pintaLabios);
 
 					modeloCarro.addElement(nueva);
 					tienda.getCarro().getProducto().add(nueva);
@@ -174,15 +168,7 @@ public class VentanaTienda extends JFrame {
 			}
 		});
 		
-		panelCarrito.add(comprarProducto);
-		panelCarrito.add(eliminarDelCarrito);
-		
-		abajo.add(scrollCarro);
-		abajo.add(panelCarrito, BorderLayout.SOUTH);
-		
-		add(arriba);
-		add(abajo);
-		setJMenuBar(barra);
+
 		
 
 

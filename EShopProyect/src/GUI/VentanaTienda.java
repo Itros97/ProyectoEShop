@@ -74,7 +74,7 @@ public class VentanaTienda extends JFrame{
 		panelSumar =  new JPanel();
 		sumarAlCarrito = new JButton("Anyadir al carrito");
 		
-sumarAlCarrito.addActionListener(new ActionListener() {
+		sumarAlCarrito.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -146,7 +146,6 @@ sumarAlCarrito.addActionListener(new ActionListener() {
 		
 		panelCarrito.add(comprarProducto);
 		panelCarrito.add(eliminarDelCarrito);
-		
 		
 		abajo.add(scrollCarro);
 		abajo.add(panelCarrito, BorderLayout.SOUTH);

@@ -1,22 +1,26 @@
 package Producto;
 
+/*
+Tipo de producto ordenadores.
+*/
+
 public class Ordenador extends Producto {
 	protected double pulgadas;
 	protected String resolucion;
 	protected int memoriaRam;
 	protected int almacenamiento;
 	protected String color;
-	
-	public Ordenador(double precio, int stock, String descripcion, String imagen, String marca, double pulgadas,
-			String resolucion, int memoriaRam, int almacenamiento, String color) {
-		super(precio, stock, descripcion, imagen, marca);
+
+	public Ordenador(double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria,
+			double pulgadas, String resolucion, int memoriaRam, int almacenamiento, String color) {
+		super(precio, stock, descripcion, imagen, marca, categoria);
 		this.pulgadas = pulgadas;
 		this.resolucion = resolucion;
 		this.memoriaRam = memoriaRam;
 		this.almacenamiento = almacenamiento;
 		this.color = color;
 	}
-	
+
 	public Ordenador() {
 		super();
 		this.pulgadas = 0.0;
@@ -25,9 +29,9 @@ public class Ordenador extends Producto {
 		this.almacenamiento = 0;
 		this.color = "";
 	}
-	
+
 	public Ordenador(Ordenador o) {
-		super(o.precio, o.stock, o.descripcion, o.imagen, o.marca);
+		super(o.precio, o.stock, o.descripcion, o.imagen, o.marca, o.categoria);
 		this.pulgadas = o.pulgadas;
 		this.resolucion = o.resolucion;
 		this.memoriaRam = o.memoriaRam;
@@ -81,7 +85,5 @@ public class Ordenador extends Producto {
 				+ ", almacenamiento=" + almacenamiento + ", color=" + color + ", precio=" + precio + ", stock=" + stock
 				+ ", descripcion=" + descripcion + ", imagen=" + imagen + ", marca=" + marca + "]";
 	}
-	
-	
-		
+
 }

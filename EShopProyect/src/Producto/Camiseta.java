@@ -8,9 +8,9 @@ public class Camiseta extends Producto {
 	protected double talla;
 	protected String material;
 
-	public Camiseta(double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria,
+	public Camiseta(String nombre, double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria,
 			double talla, String material) {
-		super(precio, stock, descripcion, imagen, marca, categoria);
+		super(nombre, precio, stock, descripcion, imagen, marca, categoria);
 		this.talla = talla;
 		this.material = material;
 	}
@@ -22,7 +22,7 @@ public class Camiseta extends Producto {
 	}
 
 	public Camiseta(Camiseta r) {
-		super(r.precio, r.stock, r.descripcion, r.imagen, r.marca, r.categoria);
+		super(r.nombre, r.precio, r.stock, r.descripcion, r.imagen, r.marca, r.categoria);
 		this.talla = r.talla;
 		this.material = r.material;
 	}

@@ -9,9 +9,9 @@ public class Balon extends Producto {
 	protected String categoriaDeporte;
 	protected String material;
 
-	public Balon(double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria,
+	public Balon(String nombre, double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria,
 			String categoriaDeporte, String material) {
-		super(precio, stock, descripcion, imagen, marca, categoria);
+		super(nombre, precio, stock, descripcion, imagen, marca, categoria);
 		this.categoriaDeporte = categoriaDeporte;
 		this.material = material;
 	}
@@ -23,7 +23,7 @@ public class Balon extends Producto {
 	}
 
 	public Balon(Balon d) {
-		super(d.precio, d.stock, d.descripcion, d.imagen, d.marca, d.categoria);
+		super(d.nombre, d.precio, d.stock, d.descripcion, d.imagen, d.marca, d.categoria);
 		this.categoriaDeporte = d.categoriaDeporte;
 		this.material = d.material;
 	}

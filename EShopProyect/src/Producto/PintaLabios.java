@@ -9,9 +9,10 @@ public class PintaLabios extends Producto {
 	protected String color;
 	protected double cantidad;
 
-	public PintaLabios(double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria,
-			String tipoMaquillaje, String color, double cantidad) {
-		super(precio, stock, descripcion, imagen, marca, categoria);
+
+	public PintaLabios(String nombre, double precio, int stock, String descripcion, String imagen, String marca,
+			Categoria categoria, String tipoMaquillaje, String color, double cantidad) {
+		super(nombre, precio, stock, descripcion, imagen, marca, categoria);
 		this.tipoMaquillaje = tipoMaquillaje;
 		this.color = color;
 		this.cantidad = cantidad;
@@ -25,7 +26,7 @@ public class PintaLabios extends Producto {
 	}
 
 	public PintaLabios(PintaLabios m) {
-		super(m.precio, m.stock, m.descripcion, m.imagen, m.marca, m.categoria);
+		super(m.nombre, m.precio, m.stock, m.descripcion, m.imagen, m.marca, m.categoria);
 		this.tipoMaquillaje = m.tipoMaquillaje;
 		this.color = m.color;
 		this.cantidad = m.cantidad;

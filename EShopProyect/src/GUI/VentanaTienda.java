@@ -17,7 +17,7 @@ public class VentanaTienda extends JFrame {
 	protected JButton botonBuscar;
 	protected JButton botonComprar;
 	protected JButton botonEliminar;
-	protected JButton añadir;
+	protected JButton anadir;
 	protected JLabel cesta;
 	protected JCheckBox checkBox1;
 	protected JCheckBox checkBox2;
@@ -46,7 +46,7 @@ public class VentanaTienda extends JFrame {
 		botonBuscar = new JButton("Buscar");
 		botonComprar = new JButton("Comprar");
 		botonEliminar = new JButton("Eliminar");
-		añadir = new JButton("Añadir al carrito");
+		anadir = new JButton("Añadir al carrito");
 		botonComprar.setSize(100, 100);
 		cesta = new JLabel("--------------------Cesta---------------------");
 		checkBox1 = new JCheckBox();
@@ -79,7 +79,7 @@ public class VentanaTienda extends JFrame {
 		panelCestaCenter.add(checkBox4);
 		panelCestaCenter.add(checkBox5);
 		panelCestaCenter.add(checkBox6);
-		panelS.add(añadir);
+		panelS.add(anadir);
 
 		add(panelNorth, BorderLayout.NORTH);
 		add(panelEast, BorderLayout.EAST);

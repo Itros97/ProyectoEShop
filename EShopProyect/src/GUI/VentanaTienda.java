@@ -110,25 +110,15 @@ public class VentanaTienda extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Producto producto = listaProducto.getSelectedValue();
-<<<<<<< HEAD
+
 
 				if (producto instanceof Ropa) {
 					Ropa nueva;
 					Ropa ropa = (Ropa) listaProducto.getSelectedValue();
 					nueva = new Ropa(ropa);
-
-					modeloCarro.addElement(nueva);
-=======
-				
-				if(producto instanceof Camiseta) {
-					Camiseta nueva;
-					Camiseta camiseta = (Camiseta) listaProducto.getSelectedValue();
-					nueva = new Camiseta(camiseta);
 					
 					modeloCarro.addElement(nueva);	
->>>>>>> refs/remotes/origin/Mikel
 					tienda.getCarro().getProducto().add(nueva);
-<<<<<<< HEAD
 
 				} else if (producto instanceof Deporte) {
 					Deporte nueva;
@@ -138,17 +128,7 @@ public class VentanaTienda extends JFrame {
 					modeloCarro.addElement(nueva);
 					tienda.getCarro().getProducto().add(nueva);
 
-=======
-					
-				} else if (producto instanceof Balon) {
-					Balon nueva;
-					Balon balon = (Balon) listaProducto.getSelectedValue();
-					nueva = new Balon(balon);
-					
-					modeloCarro.addElement(nueva);	
-					tienda.getCarro().getProducto().add(nueva);	
-					
->>>>>>> refs/remotes/origin/Mikel
+
 				} else if (producto instanceof Ordenador) {
 					Ordenador nueva;
 					Ordenador ordenador = (Ordenador) listaProducto.getSelectedValue();
@@ -157,7 +137,7 @@ public class VentanaTienda extends JFrame {
 					modeloCarro.addElement(nueva);
 					tienda.getCarro().getProducto().add(nueva);
 				} else {
-<<<<<<< HEAD
+
 					Maquillaje nueva;
 					Maquillaje maquillaje = (Maquillaje) listaProducto.getSelectedValue();
 					nueva = new Maquillaje(maquillaje);
@@ -166,16 +146,6 @@ public class VentanaTienda extends JFrame {
 					tienda.getCarro().getProducto().add(nueva);
 				}
 
-=======
-					PintaLabios nueva;
-					PintaLabios pintalabios = (PintaLabios) listaProducto.getSelectedValue();
-					nueva = new PintaLabios(pintalabios);
-					
-					modeloCarro.addElement(nueva);	
-					tienda.getCarro().getProducto().add(nueva);	
-				} 
-					
->>>>>>> refs/remotes/origin/Mikel
 			}
 		});
 

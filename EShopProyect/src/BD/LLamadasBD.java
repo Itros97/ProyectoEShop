@@ -32,7 +32,7 @@ public class LLamadasBD
 
 	        try {
 	            Class.forName("com.mysql.jdbc.Driver");
-	            //Conexion con la BD de XAMPP(EN MI CASO USO EL PUERTO 3307 EN VEZ DEL 3306 YA QUE NO ME EJA ACCEDER A ESTE PRIMERO)
+	            //Conexion con la BD de XAMPP(EN MI CASO USO EL PUERTO 3307 EN VEZ DEL 3306 YA QUE NO ME DEJA ACCEDER A ESTE PRIMERO)
 	            con = DriverManager.getConnection("jdbc:mysql://localhost:3307/tiendaonline", "root", "");
 
 	        } catch (Exception e) {

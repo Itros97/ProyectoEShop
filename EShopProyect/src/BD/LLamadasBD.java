@@ -27,7 +27,7 @@ public class LLamadasBD
 	}
 	
 	//CODIGO PARA LA CONEXION CON LA BASE DE DATOS
-	 private static Connection Conexion() {
+	 protected static Connection Conexion() {
 	        Connection con = null;
 
 	        try {
@@ -55,35 +55,11 @@ public class LLamadasBD
 	 
 	   //INSERT USUARIOS
 	    public void InsertarUsuario(Usuario nuevoUsuario) {
-	        PreparedStatement preparedStatement;
-	        Connection con = Conexion();
-
-	        try {
-
-	            String query = " INSERT INTO USUARIOS (NICKNAME,PASSWORD, EMAIL, CALLE, TARJETA_CREDITO, TIPO_CUENTA)"
-	                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-	            preparedStatement = con.prepareStatement(query);
-
-	            preparedStatement.setString(1, nuevoUsuario.getNickname());
-	            preparedStatement.setString(2, nuevoUsuario.getPassword());
-	            //Metodo por si queremos encriptar la contraseña
-	            //String password = nuevoUsuario.getPassword();
-	            //String encriptMD5 = DigestUtils.md5Hex(password);
-	            //preparedStatement.setString(2	, encriptMD5);
-	            preparedStatement.setString(3, nuevoUsuario.getCorreoElectronico());
-	            preparedStatement.setString(4, nuevoUsuario.getCalle());
-	            preparedStatement.setString(5, nuevoUsuario.getTarjeta_credito());
-	           
-	            preparedStatement.execute();
-
-	            System.out.println("Operación existosa");
-
-	        } catch (Exception e) {
-	            System.out.println("A ocurrido un ERROR");
-	            System.out.println(e);
-	        }
-
-	    }
+	      UsuarioBD.InsertarUsuarios(nuevoUsuario);
 	    
+}
+	      //MODIFICAR USUARIOS
+	      public void ModificarUsuario (Usuario usuario) {
+	    	  UsuarioBD.ModificarUsuario(usuario);
+	      }
 }

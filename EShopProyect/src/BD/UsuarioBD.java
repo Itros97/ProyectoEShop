@@ -56,7 +56,7 @@ public class UsuarioBD {
 		 PreparedStatement preparedStatement = null;
 		 Connection con = LLamadasBD.Conexion();
 	        try {
-	            String query = " INSERT INTO PERSONAJES (NICKNAME,PASSWORD,CORREOELECTRONICO,FECHADENACIMIENTO,CALLE,TARJETA_CREDITO,TIPO_CUEJNTA)"
+	            String query = " INSERT INTO USUARIO (NICKNAME,PASSWORD,CORREOELECTRONICO,FECHADENACIMIENTO,CALLE,TARJETA_CREDITO,TIPO_CUENTA)"
 	                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 	            preparedStatement = con.prepareStatement(query);
@@ -78,4 +78,28 @@ public class UsuarioBD {
 	            System.out.println(e);
 	        }
 	 }
+	//COMPROBAR LOGIN
+	 //LEER DATOS DE USUARIO CONCRETO(Solo posible si es admin su modificacion)
+	 //MODIFICAR USUARIO
+	    protected static void ModificarUsuario(Usuario usuario) {
+	        Connection con = LLamadasBD.Conexion();
+	        PreparedStatement preparedStatement = null;
+	        try {
+	            String query = "UPDATE USUARIO" +
+	                    "SET PASSWORD = '" + usuario.getPassword() + "'" +
+	                    " WHERE NICKNAME = '" +  usuario.getNickname() + "'";
+
+	            preparedStatement = con.prepareStatement(query);
+
+	            preparedStatement.executeUpdate();
+	            preparedStatement.close();
+
+	        } catch (Exception e) {
+	            System.err.println("A ocurrido un ERROR modificando los datos, intentelo mas tarde o contacte con el servicio técnico.");
+	            System.out.println(e);
+	            e.getMessage();
+	        }
+
+	    }
+	 
 }

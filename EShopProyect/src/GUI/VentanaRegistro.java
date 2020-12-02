@@ -20,12 +20,12 @@ import Tienda.Tienda;
 import Usuario.Usuario;
 
 public class VentanaRegistro extends JFrame {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	JLabel lnickname;
 	JTextField tnickname;
 	JLabel lemail;
@@ -44,7 +44,7 @@ public class VentanaRegistro extends JFrame {
 	JButton cancelar;
 
 	public VentanaRegistro(Usuario usuario, Tienda tienda, VentanaPrincipal principal) {
-		
+
 		lnickname = new JLabel("Nombre");
 		tnickname = new JTextField(20);
 		lfecha = new JLabel("Fecha de nacimiento");
@@ -65,54 +65,65 @@ public class VentanaRegistro extends JFrame {
 		crear.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Usuario nuevoUsuario;
-				boolean coincide = false;
-				if (usuario != null) {
-					nuevoUsuario = usuario;
-				} else {
-					nuevoUsuario = new Usuario();
-				}
-				
-				for (Usuario i : tienda.getClientes()) {
-					if(i.getCorreoElectronico().equals(temail.getText())){
-						coincide= true;
-					}
-				}
-				
-				if(coincide == false) {
-				nuevoUsuario.setNickname(tnickname.getText());;
-				nuevoUsuario.setFechaNacimiento((Date) spinFecha.getValue());
-			    nuevoUsuario.setCalle(tcalle.getText());
-				nuevoUsuario.setCorreoElectronico(temail.getText());
-				nuevoUsuario.setPassword(ppassword.getText());
-				nuevoUsuario.setTarjeta_credito(ttarjeta.getText());
-				if(cbtipo.isSelected() == true) {
-					nuevoUsuario.setTipo_cuenta(true);
-				} else {
-					nuevoUsuario.setTipo_cuenta(false);
-				}
-				
-				
-				if (usuario == null) {
-					tienda.getClientes().add(nuevoUsuario);
-				}
 
-				System.out.println(nuevoUsuario);
-				
-				dispose();
-				principal.binicio.setEnabled(true);
-				principal.bregistro.setEnabled(true);
-				
-				} 
-				
-				if(coincide == true) {
-					JOptionPane.showMessageDialog(null, "EL EMAIL YA ESTA SIENDO UTILIZADO.");
+				Usuario nuevoUsuario;
+
+				try {
+
+					boolean coincide = false;
+					if (usuario != null) {
+						nuevoUsuario = usuario;
+					} else {
+						nuevoUsuario = new Usuario();
+					}
+
+					for (Usuario i : tienda.getClientes()) {
+						if (i.getCorreoElectronico().equals(temail.getText())) {
+							coincide = true;
+						}
+					}
+					if (ppassword.getText().equals("") || temail.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "MAIL Y CONTRASEÑA OBLIGATORIAS.");
+					} else {
+
+						if (coincide == false) {
+							nuevoUsuario.setNickname(tnickname.getText());
+							;
+							nuevoUsuario.setFechaNacimiento((Date) spinFecha.getValue());
+							nuevoUsuario.setCalle(tcalle.getText());
+							nuevoUsuario.setCorreoElectronico(temail.getText());
+							nuevoUsuario.setPassword(ppassword.getText());
+							nuevoUsuario.setTarjeta_credito(ttarjeta.getText());
+							if (cbtipo.isSelected() == true) {
+								nuevoUsuario.setTipo_cuenta(true);
+							} else {
+								nuevoUsuario.setTipo_cuenta(false);
+							}
+
+							if (usuario == null) {
+								tienda.getClientes().add(nuevoUsuario);
+							}
+
+							System.out.println(nuevoUsuario);
+
+							dispose();
+							principal.binicio.setEnabled(true);
+							principal.bregistro.setEnabled(true);
+
+						}
+
+						if (coincide == true) {
+							JOptionPane.showMessageDialog(null, "EL EMAIL YA ESTA SIENDO UTILIZADO.");
+						}
+					}
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "FALtA ALGUN CAMPO", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
 
 		});
-		
+
 		cancelar = new JButton("Cancelar");
 
 		cancelar.addActionListener(new ActionListener() {
@@ -124,17 +135,19 @@ public class VentanaRegistro extends JFrame {
 			}
 		});
 
-		this.setLayout(new GridLayout(7, 2));
+		this.setLayout(new GridLayout(8, 2));
 		add(lnickname);
 		add(tnickname);
 		add(lemail);
 		add(temail);
+		add(lpassword);
+		add(ppassword);
 		add(lcalle);
 		add(tcalle);
 		add(lfecha);
 		add(spinFecha);
-		add(lpassword);
-		add(ppassword);
+		add(ltarjeta);
+		add(ttarjeta);
 		add(ltipo);
 		add(cbtipo);
 		add(crear);
@@ -144,8 +157,7 @@ public class VentanaRegistro extends JFrame {
 		setTitle("REGISTRATE");
 		pack();
 		setLocationRelativeTo(null);
-		//setLocation(700, 300);
+		// setLocation(700, 300);
 		setVisible(true);
 	}
 }
-

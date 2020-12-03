@@ -2,6 +2,9 @@ package BD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import Usuario.Usuario;
 
@@ -79,7 +82,60 @@ public class UsuarioBD {
 	        }
 	 }
 	//COMPROBAR LOGIN
+	   public boolean LoginUsuario(String nickName, String password) {
+
+	        boolean comprobar = false;
+	        try {
+	        	PreparedStatement preparedStatement;
+	        	Connection con = LLamadasBD.Conexion();
+
+	            String query = "SELECT PASSWORD FROM USUARIOS WHERE NICKNAME = '" + nickName + "'";
+
+	            Statement statement = con.createStatement();
+	            ResultSet resultSet = statement.executeQuery(query);
+
+	            while (resultSet.next()) {
+	               
+	                if (resultSet.getString("PASSWORD").equals(password)) {
+	                    System.out.println("Si");
+	                    comprobar = true;
+	                    break;
+	                } else {
+	                    System.out.println("Contrasenya Incorrecta");
+	                }
+	            }
+	        } catch (Exception e) {
+	            System.out.println("A ocurrido un ERROR");
+	            System.out.println(e);
+	        }
+	        if (comprobar == true) {
+	            System.out.println("Existe y la contraseña concuerda,permitir el logeo");
+	        }
+	        return comprobar;
+	    }
 	 //LEER DATOS DE USUARIO CONCRETO(Solo posible si es admin su modificacion)
+	 //ELIMINAR USUARAIO
+	 public void EliminarUsuario(String nickname) {
+	     
+	        PreparedStatement preparedStatement= null;
+	   	 	Connection con = LLamadasBD.Conexion();
+
+	        try {
+
+	            String query = "DELETE FROM USUARIO WHERE NICKNAME = '" + nickname + "'";
+
+	            preparedStatement = con.prepareStatement(query);
+
+	            preparedStatement.execute();
+	            preparedStatement.close();
+
+	        } catch (SQLException e) {
+
+	            System.out.println("No se pudo eliminar el usuario");
+	            System.out.println(e);
+	        }
+
+	    }
 	 //MODIFICAR USUARIO
 	    protected static void ModificarUsuario(Usuario usuario) {
 	        Connection con = LLamadasBD.Conexion();

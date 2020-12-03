@@ -36,7 +36,7 @@ public class UsuarioBD {
 				System.err.println("Error al crear la tabla" +e+ "");
 			}
 }
-	 //ELIMINAR
+	 //ELIMINAR TABLA
 	 protected static void EliminarTablaUsuario(Connection con) {
 		 
 	     PreparedStatement preparedStatement = null;
@@ -82,14 +82,14 @@ public class UsuarioBD {
 	        }
 	 }
 	//COMPROBAR LOGIN
-	   public boolean LoginUsuario(String nickName, String password) {
+	   public static boolean LoginUsuario(String nickName, String password) {
 
 	        boolean comprobar = false;
 	        try {
 	        	PreparedStatement preparedStatement;
 	        	Connection con = LLamadasBD.Conexion();
 
-	            String query = "SELECT PASSWORD FROM USUARIOS WHERE NICKNAME = '" + nickName + "'";
+	            String query = "SELECT PASSWORD FROM USUARIO WHERE NICKNAME = '" + nickName + "'";
 
 	            Statement statement = con.createStatement();
 	            ResultSet resultSet = statement.executeQuery(query);
@@ -111,9 +111,10 @@ public class UsuarioBD {
 	        if (comprobar == true) {
 	            System.out.println("Existe y la contraseña concuerda,permitir el logeo");
 	        }
+	        //Unicamente para ver que esto es cierto
 	        return comprobar;
 	    }
-	 //LEER DATOS DE USUARIO CONCRETO(Solo posible si es admin su modificacion)
+	   
 	 //ELIMINAR USUARAIO
 	 public void EliminarUsuario(String nickname) {
 	     

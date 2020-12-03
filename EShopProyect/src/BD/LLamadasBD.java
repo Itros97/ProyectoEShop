@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import Producto.Producto;
 import Usuario.Usuario;
 
 public class LLamadasBD
@@ -51,15 +52,24 @@ public class LLamadasBD
 	 private void BorrarBasesDeDatos(Connection con) {
 		 UsuarioBD.EliminarTablaUsuario(con);
 		 ProductoBD.EliminarTablaProducto(con);
-	 }
+	 	}
 	 
 	   //INSERT USUARIOS
 	    public void InsertarUsuario(Usuario nuevoUsuario) {
 	      UsuarioBD.InsertarUsuarios(nuevoUsuario);
 	    
-}
+	    }
 	      //MODIFICAR USUARIOS
-	      public void ModificarUsuario (Usuario usuario) {
+	      public void ModificarUsuario(Usuario usuario) {
 	    	  UsuarioBD.ModificarUsuario(usuario);
 	      }
-}
+	      //INSERT PRODUCTOS
+		    public void InsertarProducto(Producto nuevoProducto) {
+		      ProductoBD.InsertarProducto(nuevoProducto);
+		    
+	}
+		    //COMPROBAR LOGIN
+		    public boolean LoginUsuarios(String nickname, String password) {
+		    	return UsuarioBD.LoginUsuario(nickname, password);
+		    }
+	}

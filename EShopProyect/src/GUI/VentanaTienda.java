@@ -155,7 +155,7 @@ public class VentanaTienda extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				new VentanaProgreso(tienda);
 			}
 		});
 

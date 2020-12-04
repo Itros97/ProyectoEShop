@@ -10,7 +10,7 @@ import Usuario.Usuario;
 public class LLamadasBD
 {
 	//Llamadas de la base de datos y todos sus metodos
-	//REINICIO DE LA BD PARA EVITAR PROBLEMAS
+	//REINICIO DE LA BD PARA EVITAR PROBLEMAS 
 	public void ReiniciarBasesDeDatos(String codSeguridad) {
 
         if (codSeguridad.equals("Admin")) {

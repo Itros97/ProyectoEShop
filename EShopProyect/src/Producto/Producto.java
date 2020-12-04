@@ -27,6 +27,15 @@ public class Producto implements Serializable{
 		this.marca = marca;
 		this.categoria = categoria;
 	}
+	public Producto(String nombre, double precio, int stock, String descripcion, String imagen, String marca) {
+		super();
+		this.nombre = nombre;
+		this.precio = precio;
+		this.stock = stock;
+		this.descripcion = descripcion;
+		this.imagen = imagen;
+		this.marca = marca;
+	}
 
 	public Producto() {
 		super();

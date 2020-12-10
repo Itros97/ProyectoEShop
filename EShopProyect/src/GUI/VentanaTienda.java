@@ -11,6 +11,7 @@ import Producto.Ordenador;
 import Producto.Producto;
 import Producto.Camiseta;
 import Tienda.Tienda;
+import Usuario.Usuario;
 
 public class VentanaTienda extends JFrame {
 
@@ -32,6 +33,11 @@ public class VentanaTienda extends JFrame {
 	protected JPanel panelS;
 	protected JPanel panelCestaSouth;
 	protected JPanel panelCestaCenter;
+	
+	JMenuBar barra;
+	JMenu cliente;
+	JMenuItem editar;
+	JMenuItem cerrarSesion;
 
 	JList<Producto> listaProducto;
 	DefaultListModel<Producto> modeloProducto;
@@ -42,12 +48,17 @@ public class VentanaTienda extends JFrame {
 	VentanaTienda ventana;
 
 	public VentanaTienda(Tienda tienda) {
+		
+		barra = new JMenuBar();
+		cliente = new JMenu("Cliente");
+		cerrarSesion = new JMenuItem("Cerrar sesion");
+		editar = new JMenuItem("Editar datos");
 
 		textField = new JTextField(20);
 		botonBuscar = new JButton("Buscar");
 		botonComprar = new JButton("Comprar");
 		botonEliminar = new JButton("Eliminar");
-		anadir = new JButton("Sumar al carrito");
+		anadir = new JButton("Agregar al carrito");
 		botonComprar.setSize(100, 100);
 		cesta = new JLabel("--------------------Cesta---------------------");
 		checkBox1 = new JCheckBox();
@@ -170,8 +181,31 @@ public class VentanaTienda extends JFrame {
 		});
 		
 
+		editar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaEditarUsuario v = new VentanaEditarUsuario(tienda.getConectado(), tienda);
+				
+				
+			}
+		});
 		
-
+		cerrarSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaPrincipal v = new VentanaPrincipal();
+				dispose();
+				
+			}
+		});
+		
+		
+		cliente.add(editar);
+		cliente.add(cerrarSesion);
+		barra.add(cliente);
+		setJMenuBar(barra);
 
 
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);

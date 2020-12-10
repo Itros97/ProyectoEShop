@@ -19,11 +19,7 @@ import javax.swing.SpinnerDateModel;
 import Tienda.Tienda;
 import Usuario.Usuario;
 
-public class VentanaRegistro extends JFrame {
-
-	/**
-	 * 
-	 */
+public class VentanaEditarUsuario extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	JLabel lnickname;
@@ -38,83 +34,44 @@ public class VentanaRegistro extends JFrame {
 	JTextField ttarjeta;
 	JLabel lpassword;
 	JPasswordField ppassword;
-	JLabel ltipo;
-	JCheckBox cbtipo;
 	JButton crear;
 	JButton cancelar;
 
-	public VentanaRegistro(Usuario usuario, Tienda tienda, VentanaPrincipal principal) {
+	public VentanaEditarUsuario(Usuario usuario, Tienda tienda) {
 
 		lnickname = new JLabel("Nombre");
-		tnickname = new JTextField(20);
+		tnickname = new JTextField(usuario.getNickname(), 20);
 		lfecha = new JLabel("Fecha de nacimiento");
 		spinFecha = new JSpinner(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_MONTH));
 		spinFecha.setEditor(new JSpinner.DateEditor(spinFecha, "dd/MM/yyyy"));
 		lemail = new JLabel("Email");
-		temail = new JTextField(20);
+		temail = new JTextField(usuario.getCorreoElectronico(), 20);
 		lcalle = new JLabel("Direccion");
-		tcalle = new JTextField(20);
+		tcalle = new JTextField(usuario.getCalle(),20);
 		ltarjeta = new JLabel("Tarjeta Bancaria:");
-		ttarjeta = new JTextField(20);
+		ttarjeta = new JTextField(usuario.getTarjeta_credito(), 20);
 		lpassword = new JLabel("Contraseña");
-		ppassword = new JPasswordField(20);
-		ltipo = new JLabel("Administrador:");
-		cbtipo = new JCheckBox();
-		crear = new JButton("Crear");
+		ppassword = new JPasswordField(usuario.getPassword(),20);
+		crear = new JButton("Guardar cambios");
 
 		crear.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				Usuario nuevoUsuario;
 
 				try {
-
-					boolean coincide = false;
-					if (usuario != null) {
-						nuevoUsuario = usuario;
-					} else {
-						nuevoUsuario = new Usuario();
-					}
-
-					for (Usuario i : tienda.getClientes()) {
-						if (i.getCorreoElectronico().equals(temail.getText())) {
-							coincide = true;
-						}
-					}
-					if (ppassword.getText().equals("") || temail.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "MAIL Y CONTRASEÑA OBLIGATORIAS.");
-					} else {
-
-						if (coincide == false) {
-							nuevoUsuario.setNickname(tnickname.getText());
-							nuevoUsuario.setFechaNacimiento((Date) spinFecha.getValue());
-							nuevoUsuario.setCalle(tcalle.getText());
-							nuevoUsuario.setCorreoElectronico(temail.getText());
-							nuevoUsuario.setPassword(ppassword.getText());
-							nuevoUsuario.setTarjeta_credito(ttarjeta.getText());
-							if (cbtipo.isSelected() == true) {
-								nuevoUsuario.setTipo_cuenta(true);
-							} else {
-								nuevoUsuario.setTipo_cuenta(false);
-							}
-
-							if (usuario == null) {
-								tienda.getClientes().add(nuevoUsuario);
-							}
-
-							System.out.println(nuevoUsuario);
+							usuario.setNickname(tnickname.getText());
+							usuario.setFechaNacimiento((Date) spinFecha.getValue());
+							usuario.setCalle(tcalle.getText());
+							usuario.setCorreoElectronico(temail.getText());
+							usuario.setPassword(ppassword.getText());
+							usuario.setTarjeta_credito(ttarjeta.getText());
+								
+							System.out.println(usuario);
 
 							dispose();
-							principal.binicio.setEnabled(true);
-							principal.bregistro.setEnabled(true);
 
-						}
-
-						if (coincide == true) {
-							JOptionPane.showMessageDialog(null, "EL EMAIL YA ESTA SIENDO UTILIZADO.");
-						}
-					}
+					
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "FALtA ALGUN CAMPO", "Error", JOptionPane.ERROR_MESSAGE);
 				}
@@ -129,12 +86,12 @@ public class VentanaRegistro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				principal.binicio.setEnabled(true);
-				principal.bregistro.setEnabled(true);
+				//principal.binicio.setEnabled(true);
+				//principal.bregistro.setEnabled(true);
 			}
 		});
 
-		this.setLayout(new GridLayout(8, 2));
+		this.setLayout(new GridLayout(7, 2));
 		add(lnickname);
 		add(tnickname);
 		add(lemail);
@@ -147,8 +104,6 @@ public class VentanaRegistro extends JFrame {
 		add(spinFecha);
 		add(ltarjeta);
 		add(ttarjeta);
-		add(ltipo);
-		add(cbtipo);
 		add(crear);
 		add(cancelar);
 

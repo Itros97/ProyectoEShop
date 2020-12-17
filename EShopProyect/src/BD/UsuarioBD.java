@@ -1,10 +1,13 @@
 package BD;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import Usuario.Usuario;
 
 import Usuario.Usuario;
 
@@ -21,7 +24,11 @@ public class UsuarioBD {
 		    		"NICKNAME VARCHAR(50)  NOT NULL," +
 		    		"PASSWORD VARCHAR(50) NOT NULL," +
 		    		"CORREOELECTRONICO VARCHAR(50) NOT NULL," +
+
+		    		"FECHADENACIMIENTO DATE,"+
+=======
 		    		"FECHADENACIMIENTO INTEGER,"+
+
 		    		"CALLE VARCHAR(250)," +
 		    		"TARJETA_CREDITO INT," +
 		    		"TIPO_CUENTA BOOLEAN);";
@@ -68,13 +75,16 @@ public class UsuarioBD {
 	            preparedStatement.setString(1, nuevoUsuario.getNickname());
 	            preparedStatement.setString(2, nuevoUsuario.getPassword());
 	            preparedStatement.setString(3, nuevoUsuario.getCorreoElectronico());
+	            preparedStatement.setDate(4, (Date) nuevoUsuario.getFechaNacimiento());
+
 	            preparedStatement.setInt(4, nuevoUsuario.getFechaNacimiento());
+
 	            preparedStatement.setString(5, nuevoUsuario.getCalle());
 	            preparedStatement.setString(6, nuevoUsuario.getTarjeta_credito());
 	            preparedStatement.setBoolean(7, nuevoUsuario.isTipo_cuenta());
 	            preparedStatement.execute();
 
-	            System.out.println("Operación existosa");
+	            System.out.println("OperaciÃ³n existosa");
 
 	        } catch (Exception e) {
 	            System.out.println("A ocurrido un ERROR");
@@ -82,6 +92,9 @@ public class UsuarioBD {
 	        }
 	 }
 	//COMPROBAR LOGIN
+
+	 //LEER DATOS DE USUARIO CONCRETO(Solo posible si es admin su modificacion)
+
 	   public static boolean LoginUsuario(String nickName, String password) {
 
 	        boolean comprobar = false;
@@ -109,7 +122,7 @@ public class UsuarioBD {
 	            System.out.println(e);
 	        }
 	        if (comprobar == true) {
-	            System.out.println("Existe y la contraseña concuerda,permitir el logeo");
+	            System.out.println("Existe y la contraseÃ±a concuerda,permitir el logeo");
 	        }
 	        //Unicamente para ver que esto es cierto
 	        return comprobar;
@@ -152,7 +165,7 @@ public class UsuarioBD {
 	            preparedStatement.close();
 
 	        } catch (Exception e) {
-	            System.err.println("A ocurrido un ERROR modificando los datos, intentelo mas tarde o contacte con el servicio técnico.");
+	            System.err.println("A ocurrido un ERROR modificando los datos, intentelo mas tarde o contacte con el servicio tÃ©cnico.");
 	            System.out.println(e);
 	            e.getMessage();
 	        }

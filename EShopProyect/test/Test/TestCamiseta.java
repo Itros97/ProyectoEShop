@@ -13,7 +13,7 @@ class TestCamiseta {
 	void testTallas() {
 		Camiseta c = new Camiseta("", 0, 0, "" , "", "", Categoria.CUALQUIERA, 45, "Cuero");
 		
-		assertEquals(45, c.getTalla());	
+		assertEquals(45, c.getTalla(), 0.00001);	
 	}
 	
 	@Test

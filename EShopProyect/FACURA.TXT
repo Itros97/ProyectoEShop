@@ -1,0 +1,9 @@
+Usuario [nickname=h, correoElectronico=h]
+
+-----------------------------------------
+
+
+-----------------------------------------
+
+Prendas compradas: 0
+Precio Total: 0.0 €

@@ -95,5 +95,11 @@ public class Usuario {
 		this.tipo_cuenta = tipo_cuenta;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [nickname=" + nickname + ", correoElectronico=" + correoElectronico + "]";
+	}
 
+	
+	
 }

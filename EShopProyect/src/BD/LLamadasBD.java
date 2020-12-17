@@ -21,7 +21,7 @@ public class LLamadasBD
             //   InsertarBasesDeDatos(con);
 
         } else {
-            System.out.println("El código no es el correcto");
+            System.out.println("El cÃ³digo no es el correcto");
             
         }
         
@@ -57,7 +57,7 @@ public class LLamadasBD
 	   //INSERT USUARIOS
 	    public void InsertarUsuario(Usuario nuevoUsuario) {
 	      UsuarioBD.InsertarUsuarios(nuevoUsuario);
-	    
+
 	    }
 	      //MODIFICAR USUARIOS
 	      public void ModificarUsuario(Usuario usuario) {

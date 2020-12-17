@@ -57,7 +57,7 @@ public class VentanaInicioSesion extends JDialog {
 				}
 				
 				if(conectado == 1000) {
-					new VentanaTienda(tienda);
+					VentanaTienda v = new VentanaTienda(tienda);
 					
 					dispose();
 					principal.binicio.setEnabled(true);

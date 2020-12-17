@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import Producto.Producto;
 import Usuario.Usuario;
 
 public class LLamadasBD
 {
 	//Llamadas de la base de datos y todos sus metodos
-	//REINICIO DE LA BD PARA EVITAR PROBLEMAS
+	//REINICIO DE LA BD PARA EVITAR PROBLEMAS 
 	public void ReiniciarBasesDeDatos(String codSeguridad) {
 
         if (codSeguridad.equals("Admin")) {
@@ -20,7 +21,7 @@ public class LLamadasBD
             //   InsertarBasesDeDatos(con);
 
         } else {
-            System.out.println("El código no es el correcto");
+            System.out.println("El cÃ³digo no es el correcto");
             
         }
         
@@ -51,15 +52,24 @@ public class LLamadasBD
 	 private void BorrarBasesDeDatos(Connection con) {
 		 UsuarioBD.EliminarTablaUsuario(con);
 		 ProductoBD.EliminarTablaProducto(con);
-	 }
+	 	}
 	 
 	   //INSERT USUARIOS
 	    public void InsertarUsuario(Usuario nuevoUsuario) {
 	      UsuarioBD.InsertarUsuarios(nuevoUsuario);
-	    
-}
+
+	    }
 	      //MODIFICAR USUARIOS
-	      public void ModificarUsuario (Usuario usuario) {
+	      public void ModificarUsuario(Usuario usuario) {
 	    	  UsuarioBD.ModificarUsuario(usuario);
 	      }
-}
+	      //INSERT PRODUCTOS
+		    public void InsertarProducto(Producto nuevoProducto) {
+		      ProductoBD.InsertarProducto(nuevoProducto);
+		    
+	}
+		    //COMPROBAR LOGIN
+		    public boolean LoginUsuarios(String nickname, String password) {
+		    	return UsuarioBD.LoginUsuario(nickname, password);
+		    }
+	}

@@ -3,6 +3,9 @@ package BD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import Producto.Producto;
+import Usuario.Usuario;
+
 public class ProductoBD {
 
 	 protected static void CrearTablaProducto(Connection con) {
@@ -30,7 +33,7 @@ public class ProductoBD {
 				System.err.println("Error al crear la tabla" +e+ "");
 			}
 }
-	 //ELIMINAR
+	 //ELIMINAR TABLA
 	 protected static void EliminarTablaProducto(Connection con) {
 		 
 	     PreparedStatement preparedStatement = null;
@@ -46,5 +49,31 @@ public class ProductoBD {
 				System.err.println("Tabla Producto no ha podido crearse : "+e);
 		}
 	 }
-	
+	//INSERTAR PRODUCTOS
+	 protected static void InsertarProducto(Producto nuevoProducto) 
+	 {
+		 PreparedStatement preparedStatement = null;
+		 Connection con = LLamadasBD.Conexion();
+	        try {
+	            String query = " INSERT INTO PRODUCTO (NOMBRE,PRECIO,STOCK,DESCRIPCION,IMAGEN,MARCA)"
+	                    + " VALUES (?, ?, ?, ?, ?, ?)";
+
+	            preparedStatement = con.prepareStatement(query);
+
+
+	            preparedStatement.setString(1, nuevoProducto.getNombre());
+	            preparedStatement.setDouble(2, nuevoProducto.getPrecio());
+	            preparedStatement.setInt(3, nuevoProducto.getStock());
+	            preparedStatement.setString(4, nuevoProducto.getDescripcion());
+	            preparedStatement.setString(5, nuevoProducto.getImagen());
+	            preparedStatement.setString(6, nuevoProducto.getMarca());
+	            preparedStatement.execute();
+
+	            System.out.println("Operación existosa");
+
+	        } catch (Exception e) {
+	            System.out.println("A ocurrido un error al añadir el producto");
+	            System.out.println(e);
+	        }
+	 }
 }

@@ -3,6 +3,11 @@ package BD;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import Usuario.Usuario;
 
 import Usuario.Usuario;
 
@@ -19,7 +24,11 @@ public class UsuarioBD {
 		    		"NICKNAME VARCHAR(50)  NOT NULL," +
 		    		"PASSWORD VARCHAR(50) NOT NULL," +
 		    		"CORREOELECTRONICO VARCHAR(50) NOT NULL," +
+
 		    		"FECHADENACIMIENTO DATE,"+
+=======
+		    		"FECHADENACIMIENTO INTEGER,"+
+
 		    		"CALLE VARCHAR(250)," +
 		    		"TARJETA_CREDITO INT," +
 		    		"TIPO_CUENTA BOOLEAN);";
@@ -34,7 +43,7 @@ public class UsuarioBD {
 				System.err.println("Error al crear la tabla" +e+ "");
 			}
 }
-	 //ELIMINAR
+	 //ELIMINAR TABLA
 	 protected static void EliminarTablaUsuario(Connection con) {
 		 
 	     PreparedStatement preparedStatement = null;
@@ -67,12 +76,15 @@ public class UsuarioBD {
 	            preparedStatement.setString(2, nuevoUsuario.getPassword());
 	            preparedStatement.setString(3, nuevoUsuario.getCorreoElectronico());
 	            preparedStatement.setDate(4, (Date) nuevoUsuario.getFechaNacimiento());
+
+	            preparedStatement.setInt(4, nuevoUsuario.getFechaNacimiento());
+
 	            preparedStatement.setString(5, nuevoUsuario.getCalle());
 	            preparedStatement.setString(6, nuevoUsuario.getTarjeta_credito());
 	            preparedStatement.setBoolean(7, nuevoUsuario.isTipo_cuenta());
 	            preparedStatement.execute();
 
-	            System.out.println("OperaciÛn existosa");
+	            System.out.println("Operaci√≥n existosa");
 
 	        } catch (Exception e) {
 	            System.out.println("A ocurrido un ERROR");
@@ -80,7 +92,64 @@ public class UsuarioBD {
 	        }
 	 }
 	//COMPROBAR LOGIN
+
 	 //LEER DATOS DE USUARIO CONCRETO(Solo posible si es admin su modificacion)
+
+	   public static boolean LoginUsuario(String nickName, String password) {
+
+	        boolean comprobar = false;
+	        try {
+	        	PreparedStatement preparedStatement;
+	        	Connection con = LLamadasBD.Conexion();
+
+	            String query = "SELECT PASSWORD FROM USUARIO WHERE NICKNAME = '" + nickName + "'";
+
+	            Statement statement = con.createStatement();
+	            ResultSet resultSet = statement.executeQuery(query);
+
+	            while (resultSet.next()) {
+	               
+	                if (resultSet.getString("PASSWORD").equals(password)) {
+	                    System.out.println("Si");
+	                    comprobar = true;
+	                    break;
+	                } else {
+	                    System.out.println("Contrasenya Incorrecta");
+	                }
+	            }
+	        } catch (Exception e) {
+	            System.out.println("A ocurrido un ERROR");
+	            System.out.println(e);
+	        }
+	        if (comprobar == true) {
+	            System.out.println("Existe y la contrase√±a concuerda,permitir el logeo");
+	        }
+	        //Unicamente para ver que esto es cierto
+	        return comprobar;
+	    }
+	   
+	 //ELIMINAR USUARAIO
+	 public void EliminarUsuario(String nickname) {
+	     
+	        PreparedStatement preparedStatement= null;
+	   	 	Connection con = LLamadasBD.Conexion();
+
+	        try {
+
+	            String query = "DELETE FROM USUARIO WHERE NICKNAME = '" + nickname + "'";
+
+	            preparedStatement = con.prepareStatement(query);
+
+	            preparedStatement.execute();
+	            preparedStatement.close();
+
+	        } catch (SQLException e) {
+
+	            System.out.println("No se pudo eliminar el usuario");
+	            System.out.println(e);
+	        }
+
+	    }
 	 //MODIFICAR USUARIO
 	    protected static void ModificarUsuario(Usuario usuario) {
 	        Connection con = LLamadasBD.Conexion();
@@ -96,7 +165,7 @@ public class UsuarioBD {
 	            preparedStatement.close();
 
 	        } catch (Exception e) {
-	            System.err.println("A ocurrido un ERROR modificando los datos, intentelo mas tarde o contacte con el servicio tÈcnico.");
+	            System.err.println("A ocurrido un ERROR modificando los datos, intentelo mas tarde o contacte con el servicio t√©cnico.");
 	            System.out.println(e);
 	            e.getMessage();
 	        }

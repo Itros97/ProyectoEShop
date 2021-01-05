@@ -71,7 +71,7 @@ public class UsuarioBD {
 	            preparedStatement.setString(1, nuevoUsuario.getNickname());
 	            preparedStatement.setString(2, nuevoUsuario.getPassword());
 	            preparedStatement.setString(3, nuevoUsuario.getCorreoElectronico());
-	            preparedStatement.setInt(4, nuevoUsuario.getFechaNacimiento());
+	            preparedStatement.setDate(4, (Date) nuevoUsuario.getFechaNacimiento());
 	            preparedStatement.setString(5, nuevoUsuario.getCalle());
 	            preparedStatement.setString(6, nuevoUsuario.getTarjeta_credito());
 	            preparedStatement.setBoolean(7, nuevoUsuario.isTipo_cuenta());

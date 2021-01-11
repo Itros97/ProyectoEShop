@@ -28,19 +28,19 @@ public class VentanaAnyadirProducto {
 	private JTextField tfmarca;
 
 
+	//Inicializa la ventana
 	public VentanaAnyadirProducto() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+	//Especificamos todos los componentes de la ventana	
 		JButton btnNewButton = new JButton("Crear");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -77,7 +77,7 @@ public class VentanaAnyadirProducto {
 		tfstock.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Descripcion");
-		lblNewLabel_3.setBounds(295, 11, 46, 14);
+		lblNewLabel_3.setBounds(295, 11, 84, 14);
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		tfdescripcion = new JTextField();
@@ -86,7 +86,7 @@ public class VentanaAnyadirProducto {
 		tfdescripcion.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Imagen(Ruta)");
-		lblNewLabel_4.setBounds(295, 66, 46, 14);
+		lblNewLabel_4.setBounds(295, 66, 84, 14);
 		frame.getContentPane().add(lblNewLabel_4);
 		
 		tfimagen = new JTextField();
@@ -102,5 +102,12 @@ public class VentanaAnyadirProducto {
 		tfmarca.setBounds(293, 147, 86, 20);
 		frame.getContentPane().add(tfmarca);
 		tfmarca.setColumns(10);
+	}
+	public static void main(String[] args) {
+		try {
+			VentanaAnyadirProducto v1 = new VentanaAnyadirProducto();
+		} catch (Exception e) {
+			System.out.println("No se ha podido ejecutar correctamente la ventada administracion");
+		}
 	}
 }

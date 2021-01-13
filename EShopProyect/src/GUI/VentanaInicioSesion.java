@@ -3,6 +3,10 @@ package GUI;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -12,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import BD.LLamadasBD;
 import BD.UsuarioBD;
 import Tienda.Tienda;
 import Usuario.Usuario;
@@ -33,36 +38,30 @@ public class VentanaInicioSesion extends JDialog {
 	String contra;
 	int conectado = 0;
 	ArrayList<Usuario> listaUsuarios ;
+	Tienda tienda;
 	
 	public VentanaInicioSesion(Tienda tienda, VentanaPrincipal principal) {
 		Usuario u1 = null;
 		
-		lemail = new JLabel("Email");
+		lemail = new JLabel("Nickname");
 		temail = new JTextField(20);
 		lpassword = new JLabel("Contraseña");
 		ppassword = new JPasswordField(20);
 
 		conectarse = new JButton("Conectarse");
+	
 		
 		conectarse.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				mail = temail.getText();
 				contra = ppassword.getText();
+				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText(),tienda);
 				
-				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText());
-				if (temail.getText().equals(ppassword.getText())) {
-					conectado = 1000;
-				}
-					if(conectado == 1000) {
-					VentanaTienda v = new VentanaTienda(tienda);
-					} else {
-					JOptionPane.showMessageDialog(null, "EMAIL O CONTRASENYA INCORRECTAS");
-					}
-				
-				}
-			});
+			}
+		});
 		
 		cancelar = new JButton("Cancelar");
 

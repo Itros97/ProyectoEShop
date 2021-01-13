@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
+import GUI.VentanaTienda;
+import Tienda.Tienda;
 import Usuario.Usuario;
 
 import Usuario.Usuario;
@@ -87,8 +91,7 @@ public class UsuarioBD {
 
 	 //LEER DATOS DE USUARIO CONCRETO(Solo posible si es admin su modificacion)
 	 
-
-	   public static boolean LoginUsuario(String nickName, String password) {
+	   public static boolean LoginUsuario(String nickName, String password, Tienda tienda) {
 		      
 		   boolean comprobar = false;
 	  
@@ -109,6 +112,7 @@ public class UsuarioBD {
 	                    break;
 	                } else {
 	                    System.out.println("Contrasenya Incorrecta");
+	                    JOptionPane.showMessageDialog(null, "EMAIL O CONTRASENYA INCORRECTAS");
 	                }
 	            }
 	        } catch (Exception e) {
@@ -117,7 +121,7 @@ public class UsuarioBD {
 	        }
 	        if (comprobar == true) {
 	            System.out.println("Existe y la contraseña concuerda,permitir el logeo");
-	            
+	            VentanaTienda v = new VentanaTienda(tienda);
 	        }
 	        //Unicamente para ver que esto es cierto
 	        return comprobar;
@@ -166,5 +170,6 @@ public class UsuarioBD {
 	        }
 
 	    }
+		
 	 
 }

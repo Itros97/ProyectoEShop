@@ -52,6 +52,7 @@ public class VentanaAdministracion {
 		frame.getContentPane().add(bcerrar, BorderLayout.SOUTH);
 		bcerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
 			}
 		});
 		

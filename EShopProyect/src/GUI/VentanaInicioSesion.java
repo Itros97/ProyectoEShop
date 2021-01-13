@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import BD.UsuarioBD;
 import Tienda.Tienda;
 import Usuario.Usuario;
 
@@ -34,6 +35,7 @@ public class VentanaInicioSesion extends JDialog {
 	ArrayList<Usuario> listaUsuarios ;
 	
 	public VentanaInicioSesion(Tienda tienda, VentanaPrincipal principal) {
+		Usuario u1 = null;
 		
 		lemail = new JLabel("Email");
 		temail = new JTextField(20);
@@ -49,26 +51,18 @@ public class VentanaInicioSesion extends JDialog {
 				mail = temail.getText();
 				contra = ppassword.getText();
 				
-				for (Usuario i : tienda.getClientes()) {
-					if(i.getCorreoElectronico().equals(mail) && i.getPassword().equals(contra)){
-						tienda.setConectado(i);
-						conectado = 1000;
-					}
+				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText());
+				if (temail.getText().equals(ppassword.getText())) {
+					conectado = 1000;
 				}
-				
-				if(conectado == 1000) {
+					if(conectado == 1000) {
 					VentanaTienda v = new VentanaTienda(tienda);
-					
-					dispose();
-					principal.binicio.setEnabled(true);
-					principal.bregistro.setEnabled(true);
-					
-				} else {
+					} else {
 					JOptionPane.showMessageDialog(null, "EMAIL O CONTRASENYA INCORRECTAS");
-				}
+					}
 				
-			}
-		});
+				}
+			});
 		
 		cancelar = new JButton("Cancelar");
 

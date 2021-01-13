@@ -10,18 +10,18 @@ public class Usuario {
 	private String nickname;
 	private String password;
 	private String correoElectronico;
-	private Date fechaNacimiento;
+//	private Date fechaNacimiento;
 	private String calle;
 	private String tarjeta_credito;
 	private boolean tipo_cuenta; //tipo_cuenta => Si el usuario es administrador o no.
 
-	public Usuario(String nickname, String password, String correoElectronico, Date fechaNacimiento, String calle,
+	public Usuario(String nickname, String password, String correoElectronico, String calle,
 			String tarjeta_credito, boolean tipo_cuenta) {
 		super();
 		this.nickname = nickname;
 		this.password = password;
 		this.correoElectronico = correoElectronico;
-		this.fechaNacimiento = fechaNacimiento;
+		//this.fechaNacimiento = fechaNacimiento;
 		this.calle = calle;
 		this.tarjeta_credito = tarjeta_credito;
 		this.tipo_cuenta = tipo_cuenta;
@@ -32,7 +32,7 @@ public class Usuario {
 		this.nickname = "default";
 		this.password = "default";
 		this.correoElectronico = "default@def.def";
-		this.fechaNacimiento = null;
+	//	this.fechaNacimiento = null;
 		this.calle = "default";
 		this.tarjeta_credito = "";
 		this.tipo_cuenta = false;
@@ -62,14 +62,6 @@ public class Usuario {
 		this.correoElectronico = correoElectronico;
 	}
 
-
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	public void setFechaNacimiento(Date date) {
-		this.fechaNacimiento = date;
-	}
 
 	public String getCalle() {
 		return calle;

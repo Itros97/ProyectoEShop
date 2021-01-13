@@ -3,6 +3,8 @@ package GUI;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -16,6 +18,10 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 
+import com.mysql.cj.xdevapi.PreparableStatement;
+
+import BD.LLamadasBD;
+import BD.UsuarioBD;
 import Tienda.Tienda;
 import Usuario.Usuario;
 
@@ -25,7 +31,7 @@ public class VentanaRegistro extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	JLabel lnickname;
 	JTextField tnickname;
 	JLabel lemail;
@@ -47,9 +53,9 @@ public class VentanaRegistro extends JFrame {
 
 		lnickname = new JLabel("Nombre");
 		tnickname = new JTextField(20);
-		lfecha = new JLabel("Fecha de nacimiento");
-		spinFecha = new JSpinner(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_MONTH));
-		spinFecha.setEditor(new JSpinner.DateEditor(spinFecha, "dd/MM/yyyy"));
+	//	lfecha = new JLabel("Fecha de nacimiento");
+	//	spinFecha = new JSpinner(new SpinnerDateModel(new Date(), null, null, Calendar.DAY_OF_MONTH));
+	//	spinFecha.setEditor(new JSpinner.DateEditor(spinFecha, "dd/MM/yyyy"));
 		lemail = new JLabel("Email");
 		temail = new JTextField(20);
 		lcalle = new JLabel("Direccion");
@@ -66,8 +72,8 @@ public class VentanaRegistro extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				Usuario nuevoUsuario;
-
+				Usuario nuevoUsuario = null;
+				
 				try {
 
 					boolean coincide = false;
@@ -88,19 +94,22 @@ public class VentanaRegistro extends JFrame {
 
 						if (coincide == false) {
 							nuevoUsuario.setNickname(tnickname.getText());
-							nuevoUsuario.setFechaNacimiento((Date) spinFecha.getValue());
+						//	nuevoUsuario.setFechaNacimiento((Date) spinFecha.getValue());
 							nuevoUsuario.setCalle(tcalle.getText());
 							nuevoUsuario.setCorreoElectronico(temail.getText());
 							nuevoUsuario.setPassword(ppassword.getText());
 							nuevoUsuario.setTarjeta_credito(ttarjeta.getText());
 							if (cbtipo.isSelected() == true) {
 								nuevoUsuario.setTipo_cuenta(true);
+								UsuarioBD.InsertarUsuarios(nuevoUsuario);
 							} else {
 								nuevoUsuario.setTipo_cuenta(false);
+								UsuarioBD.InsertarUsuarios(nuevoUsuario);
 							}
 
 							if (usuario == null) {
 								tienda.getClientes().add(nuevoUsuario);
+								UsuarioBD.InsertarUsuarios(nuevoUsuario);
 							}
 
 							System.out.println(nuevoUsuario);
@@ -122,7 +131,8 @@ public class VentanaRegistro extends JFrame {
 			}
 
 		});
-
+		
+		
 		cancelar = new JButton("Cancelar");
 
 		cancelar.addActionListener(new ActionListener() {
@@ -143,8 +153,8 @@ public class VentanaRegistro extends JFrame {
 		add(ppassword);
 		add(lcalle);
 		add(tcalle);
-		add(lfecha);
-		add(spinFecha);
+		//add(lfecha);
+		//add(spinFecha);
 		add(ltarjeta);
 		add(ttarjeta);
 		add(ltipo);

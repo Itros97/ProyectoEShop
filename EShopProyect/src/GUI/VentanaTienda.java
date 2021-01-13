@@ -19,6 +19,7 @@ public class VentanaTienda extends JFrame {
 	protected JButton botonBuscar;
 	protected JButton botonComprar;
 	protected JButton botonEliminar;
+	protected JButton botonAdministar;
 	protected JButton anadir;
 	protected JLabel cesta;
 	protected JCheckBox checkBox1;
@@ -27,7 +28,6 @@ public class VentanaTienda extends JFrame {
 	protected JCheckBox checkBox4;
 	protected JCheckBox checkBox5;
 	protected JCheckBox checkBox6;
-	protected JButton administrar;
 
 	protected JPanel panelNorth;
 	protected JPanel panelEast;
@@ -59,6 +59,7 @@ public class VentanaTienda extends JFrame {
 		botonBuscar = new JButton("Buscar");
 		botonComprar = new JButton("Comprar");
 		botonEliminar = new JButton("Eliminar");
+		botonAdministar = new JButton("Administar");
 		anadir = new JButton("Agregar al carrito");
 		botonComprar.setSize(100, 100);
 		cesta = new JLabel("--------------------Cesta---------------------");
@@ -81,7 +82,7 @@ public class VentanaTienda extends JFrame {
 
 		panelCestaSouth.add(botonEliminar);
 		panelCestaSouth.add(botonComprar);
-		panelCestaSouth.add(administrar);
+		panelCestaSouth.add(botonAdministar);
 		panelNorth.add(textField);
 		panelNorth.add(botonBuscar);
 		panelEast.add(cesta, BorderLayout.NORTH);
@@ -108,6 +109,7 @@ public class VentanaTienda extends JFrame {
 		}
 
 		modeloCarro = new DefaultListModel<Producto>();
+		listaCarro = new JList<Producto>(modeloCarro);
 		scrollCarro = new JScrollPane(listaCarro);
 
 		botonBuscar.addActionListener(new ActionListener() {
@@ -162,19 +164,20 @@ public class VentanaTienda extends JFrame {
 
 			}
 		});
-		administrar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new VentanaAdministracion();
-			}
-		});
 
 		botonComprar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new VentanaProgreso(tienda);
+			}
+		});
+		
+		botonAdministar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaAdministracion();
 			}
 		});
 
@@ -198,7 +201,6 @@ public class VentanaTienda extends JFrame {
 				
 			}
 		});
-		
 		cerrarSesion.addActionListener(new ActionListener() {
 			
 			@Override

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.*;
 
 import Usuario.Usuario;
 
@@ -24,9 +25,8 @@ public class UsuarioBD {
 		    		"NICKNAME VARCHAR(50)  NOT NULL," +
 		    		"PASSWORD VARCHAR(50) NOT NULL," +
 		    		"CORREOELECTRONICO VARCHAR(50) NOT NULL," +
-		    		"FECHADENACIMIENTO DATE,"+
 		    		"CALLE VARCHAR(250)," +
-		    		"TARJETA_CREDITO INT," +
+		    		"TARJETA_CREDITO VARCHAR(50)," +
 		    		"TIPO_CUENTA BOOLEAN);";
 		    try {
 		    	
@@ -57,13 +57,13 @@ public class UsuarioBD {
 	 }
 	 //INSERT USUARIOS
 	 
-	 protected static void InsertarUsuarios(Usuario nuevoUsuario) 
+	 public static void InsertarUsuarios(Usuario nuevoUsuario) 
 	 {
 		 PreparedStatement preparedStatement = null;
 		 Connection con = LLamadasBD.Conexion();
 	        try {
-	            String query = " INSERT INTO USUARIO (NICKNAME,PASSWORD,CORREOELECTRONICO,FECHADENACIMIENTO,CALLE,TARJETA_CREDITO,TIPO_CUENTA)"
-	                    + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+	            String query = " INSERT INTO USUARIO (NICKNAME,PASSWORD,CORREOELECTRONICO,CALLE,TARJETA_CREDITO,TIPO_CUENTA)"
+	                    + " VALUES (?, ?, ?, ?, ?, ?)";
 
 	            preparedStatement = con.prepareStatement(query);
 
@@ -71,10 +71,9 @@ public class UsuarioBD {
 	            preparedStatement.setString(1, nuevoUsuario.getNickname());
 	            preparedStatement.setString(2, nuevoUsuario.getPassword());
 	            preparedStatement.setString(3, nuevoUsuario.getCorreoElectronico());
-	            preparedStatement.setDate(4, (Date) nuevoUsuario.getFechaNacimiento());
-	            preparedStatement.setString(5, nuevoUsuario.getCalle());
-	            preparedStatement.setString(6, nuevoUsuario.getTarjeta_credito());
-	            preparedStatement.setBoolean(7, nuevoUsuario.isTipo_cuenta());
+	            preparedStatement.setString(4, nuevoUsuario.getCalle());
+	            preparedStatement.setString(5, nuevoUsuario.getTarjeta_credito());
+	            preparedStatement.setBoolean(6, nuevoUsuario.isTipo_cuenta());
 	            preparedStatement.execute();
 
 	            System.out.println("Operación existosa");
@@ -87,10 +86,12 @@ public class UsuarioBD {
 	//COMPROBAR LOGIN
 
 	 //LEER DATOS DE USUARIO CONCRETO(Solo posible si es admin su modificacion)
+	 
 
 	   public static boolean LoginUsuario(String nickName, String password) {
-
-	        boolean comprobar = false;
+		      
+		   boolean comprobar = false;
+	  
 	        try {
 	        	PreparedStatement preparedStatement;
 	        	Connection con = LLamadasBD.Conexion();
@@ -116,6 +117,7 @@ public class UsuarioBD {
 	        }
 	        if (comprobar == true) {
 	            System.out.println("Existe y la contraseña concuerda,permitir el logeo");
+	            
 	        }
 	        //Unicamente para ver que esto es cierto
 	        return comprobar;

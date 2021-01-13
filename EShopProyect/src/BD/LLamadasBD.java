@@ -69,7 +69,7 @@ public class LLamadasBD
 		    
 	}
 	 //COMPROBAR LOGIN
-     public boolean LoginUsuarios(String nickname, String password) {
-     return UsuarioBD.LoginUsuario(nickname, password);
-		    }
+    // public boolean LoginUsuarios(String nickname, String password) {
+   //  return UsuarioBD.LoginUsuario(nickname, password);
+		    //}
 	}

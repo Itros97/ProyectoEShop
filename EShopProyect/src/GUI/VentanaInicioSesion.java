@@ -41,7 +41,6 @@ public class VentanaInicioSesion extends JDialog {
 	Tienda tienda;
 	
 	public VentanaInicioSesion(Tienda tienda, VentanaPrincipal principal) {
-		Usuario u1 = null;
 		
 		lemail = new JLabel("Nickname");
 		temail = new JTextField(20);

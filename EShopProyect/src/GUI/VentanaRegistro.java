@@ -109,7 +109,7 @@ public class VentanaRegistro extends JFrame {
 
 							if (usuario == null) {
 								tienda.getClientes().add(nuevoUsuario);
-								UsuarioBD.InsertarUsuarios(nuevoUsuario);
+								
 							}
 
 							System.out.println(nuevoUsuario);

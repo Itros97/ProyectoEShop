@@ -61,7 +61,6 @@ public class VentanaEditarUsuario extends JFrame {
 
 				try {
 							usuario.setNickname(tnickname.getText());
-							usuario.setFechaNacimiento((Date) spinFecha.getValue());
 							usuario.setCalle(tcalle.getText());
 							usuario.setCorreoElectronico(temail.getText());
 							usuario.setPassword(ppassword.getText());

@@ -66,6 +66,8 @@ public class VentanaAdministracion {
 		frame.getContentPane().add(bproducto, BorderLayout.WEST);
 		bproducto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				VentanaAnyadirProducto v1 = new VentanaAnyadirProducto();
 			}
 		});
 	

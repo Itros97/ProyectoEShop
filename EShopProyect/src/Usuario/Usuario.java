@@ -97,7 +97,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [nickname=" + nickname + ", correoElectronico=" + correoElectronico + "]";
+		return "Usuario [nickname=" + nickname + ", correoElectronico=" + correoElectronico + ",is Admin="+tipo_cuenta+ "]";
 	}
 
 	

@@ -27,6 +27,7 @@ public class VentanaTienda extends JFrame {
 	protected JCheckBox checkBox4;
 	protected JCheckBox checkBox5;
 	protected JCheckBox checkBox6;
+	protected JButton administrar;
 
 	protected JPanel panelNorth;
 	protected JPanel panelEast;
@@ -80,6 +81,7 @@ public class VentanaTienda extends JFrame {
 
 		panelCestaSouth.add(botonEliminar);
 		panelCestaSouth.add(botonComprar);
+		panelCestaSouth.add(administrar);
 		panelNorth.add(textField);
 		panelNorth.add(botonBuscar);
 		panelEast.add(cesta, BorderLayout.NORTH);
@@ -106,7 +108,6 @@ public class VentanaTienda extends JFrame {
 		}
 
 		modeloCarro = new DefaultListModel<Producto>();
-		listaCarro = new JList<Producto>(modeloCarro);
 		scrollCarro = new JScrollPane(listaCarro);
 
 		botonBuscar.addActionListener(new ActionListener() {
@@ -159,6 +160,13 @@ public class VentanaTienda extends JFrame {
 					tienda.getCarro().getProducto().add(nueva);
 				}
 
+			}
+		});
+		administrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaAdministracion();
 			}
 		});
 

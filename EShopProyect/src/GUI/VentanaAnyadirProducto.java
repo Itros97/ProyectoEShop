@@ -41,6 +41,7 @@ public class VentanaAnyadirProducto {
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		
+		
 	//Especificamos todos los componentes de la ventana	
 		JButton btnNewButton = new JButton("Crear");
 		btnNewButton.addActionListener(new ActionListener() {

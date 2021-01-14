@@ -9,6 +9,10 @@ import java.awt.GridLayout;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import BD.ProductoBD;
+import Producto.Producto;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -46,6 +50,15 @@ public class VentanaAnyadirProducto {
 		JButton btnNewButton = new JButton("Crear");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Producto p = new Producto();
+				p.setNombre(tfnombre.getText());
+				p.setPrecio(Double.parseDouble(tfprecio.getText()));
+				p.setStock(Integer.parseInt(tfstock.getText()));
+				p.setDescripcion(tfdescripcion.getText());
+				p.setImagen(tfimagen.getText());
+				p.setMarca(tfimagen.getText());
+				
+				ProductoBD.InsertarProducto(p);
 			}
 		});
 		btnNewButton.setBounds(10, 227, 89, 23);
@@ -104,6 +117,9 @@ public class VentanaAnyadirProducto {
 		tfmarca.setBounds(293, 147, 86, 20);
 		frame.getContentPane().add(tfmarca);
 		tfmarca.setColumns(10);
+		
+		
+		
 	}
 	public static void main(String[] args) {
 		try {

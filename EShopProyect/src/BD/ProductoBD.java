@@ -3,6 +3,8 @@ package BD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import javax.swing.JOptionPane;
+
 import Producto.Producto;
 import Usuario.Usuario;
 
@@ -50,7 +52,7 @@ public class ProductoBD {
 		}
 	 }
 	//INSERTAR PRODUCTOS
-	 protected static void InsertarProducto(Producto nuevoProducto) 
+	 public static void InsertarProducto(Producto nuevoProducto) 
 	 {
 		 PreparedStatement preparedStatement = null;
 		 Connection con = LLamadasBD.Conexion();
@@ -70,9 +72,11 @@ public class ProductoBD {
 	            preparedStatement.execute();
 
 	            System.out.println("Operación existosa");
+	            JOptionPane.showMessageDialog(null, "PRODUCTO INSERTADO CORRECTAMENTE EN LA BD");
 
 	        } catch (Exception e) {
 	            System.out.println("A ocurrido un error al añadir el producto");
+	            JOptionPane.showMessageDialog(null, "EL PRODUCTO NO PUEDO SER INSERTADO CORRECTAMENTE EN LA BD");
 	            System.out.println(e);
 	        }
 	 }

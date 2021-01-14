@@ -76,7 +76,7 @@ public class LeerProductoCSV {
 				}
 				
 				if(tipoProducto.equals("balon")) {
-					Balon b = new Balon(nombre, precio, stock, descripcion, imagen, marca, cate, categoriaDeporte, material);
+					Balon b = new Balon(nombre, precio, stock, descripcion, imagen, marca, categoriaDeporte, material);
 					
 					linea = br.readLine();
 					System.out.println(b);
@@ -90,7 +90,7 @@ public class LeerProductoCSV {
 					productos.add(c);
 					
 				}else if(tipoProducto.equals("ordenador")) {
-					Ordenador o = new Ordenador(nombre, precio, stock, descripcion, imagen, marca, cate, pulgadas, resolucion, memoriaRam, almacenamiento, color);
+					Ordenador o = new Ordenador(nombre, precio, stock, descripcion, imagen, marca, pulgadas, resolucion, memoriaRam, almacenamiento, color);
 					
 					linea = br.readLine();
 					System.out.println(o);

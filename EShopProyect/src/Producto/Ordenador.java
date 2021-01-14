@@ -11,9 +11,9 @@ public class Ordenador extends Producto {
 	protected int almacenamiento;
 	protected String color;
 
-	public Ordenador(String nombre, double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria,
+	public Ordenador(String nombre, double precio, int stock, String descripcion, String imagen, String marca,
 			double pulgadas, String resolucion, int memoriaRam, int almacenamiento, String color) {
-		super(nombre, precio, stock, descripcion, imagen, marca, categoria);
+		super(nombre, precio, stock, descripcion, imagen, marca);
 		this.pulgadas = pulgadas;
 		this.resolucion = resolucion;
 		this.memoriaRam = memoriaRam;
@@ -31,7 +31,7 @@ public class Ordenador extends Producto {
 	}
 
 	public Ordenador(Ordenador o) {
-		super(o.nombre, o.precio, o.stock, o.descripcion, o.imagen, o.marca, o.categoria);
+		super(o.nombre, o.precio, o.stock, o.descripcion, o.imagen, o.marca);
 		this.pulgadas = o.pulgadas;
 		this.resolucion = o.resolucion;
 		this.memoriaRam = o.memoriaRam;

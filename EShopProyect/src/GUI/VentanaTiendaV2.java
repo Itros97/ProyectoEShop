@@ -5,16 +5,29 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
+import javax.swing.table.DefaultTableModel;
+
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import com.mysql.cj.xdevapi.PreparableStatement;
+
+import BD.LLamadasBD;
+import Producto.Producto;
 
 public class VentanaTiendaV2 {
 
-	private JFrame frame;
+	public JFrame frame;
 	private JTable table;
+	private JTable table_1;
 
 	/**
 	 * Launch the application.
@@ -37,6 +50,7 @@ public class VentanaTiendaV2 {
 	 */
 	public VentanaTiendaV2() {
 		initialize();
+		
 	}
 
 	/**
@@ -47,10 +61,6 @@ public class VentanaTiendaV2 {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JList list = new JList();
-		list.setBounds(0, 261, 311, -220);
-		frame.getContentPane().add(list);
 		
 		table = new JTable();
 		table.setBounds(313, 43, 111, 162);
@@ -75,5 +85,46 @@ public class VentanaTiendaV2 {
 		JLabel lblNewLabel_1 = new JLabel("Tienda");
 		lblNewLabel_1.setBounds(10, 27, 46, 14);
 		frame.getContentPane().add(lblNewLabel_1);
+		
+		table_1 = new JTable();
+		table_1.setBounds(20, 43, 283, 162);
+		frame.getContentPane().add(table_1);
+		table_1.setVisible(true);
+		cargarproductos();
 	}
+	
+	protected void cargarproductos() 
+	{
+		DefaultTableModel modelo = (DefaultTableModel) table_1.getModel();
+		modelo.setRowCount(0);
+
+		PreparedStatement ps;
+		ResultSet rs;
+		java.sql.ResultSetMetaData rsmd;
+		int columnas;
+	
+		try {
+		Connection con = LLamadasBD.Conexion();	
+		ps = con.prepareStatement("SELECT * FROM PRODUCTO");
+		rs= ps.executeQuery();
+		rsmd= rs.getMetaData();
+		columnas = rsmd.getColumnCount();
+		System.out.println("Se ha inicializado");
+		
+		while(rs.next()) 
+		{
+			
+			System.out.println(columnas);
+			Object[] fila = new Object[columnas];
+			for (int i = 0; i < columnas; i++) {
+				fila[i] = rs.getObject(i+1);
+			}
+			modelo.addRow(fila);
+		}
+		
+		} catch (Exception e) {
+			JOptionPane.showConfirmDialog(null, e.toString());
+		}
+	}
+	
 }

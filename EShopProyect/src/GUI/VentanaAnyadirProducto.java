@@ -129,6 +129,18 @@ public class VentanaAnyadirProducto {
 		frame.getContentPane().add(tfmarca);
 		tfmarca.setColumns(10);
 		
+		JButton btnNewButton_1 = new JButton("Cerrar");
+		btnNewButton_1.setBounds(295, 227, 89, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				
+			}
+		});
+		
 		
 		
 	}

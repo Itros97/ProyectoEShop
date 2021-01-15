@@ -60,7 +60,7 @@ public class VentanaInicioSesion extends JDialog {
 				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText(),tienda);
 				if(u1.isTipo_cuenta()== true) 
 				{
-					VentanaTienda.
+					System.out.println("Es admin");
 				}
 				
 			}

@@ -29,6 +29,7 @@ public class LLamadasBD
 	
 	//CODIGO PARA LA CONEXION CON LA BASE DE DATOS
 	 public static Connection Conexion() {
+		 
 	        Connection con = null;
 
 	        try {

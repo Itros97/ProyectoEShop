@@ -25,6 +25,7 @@ import com.mysql.cj.xdevapi.PreparableStatement;
 import BD.LLamadasBD;
 import BD.UsuarioBD;
 import Producto.Producto;
+import ddbbcon.Connect;
 import net.proteanit.sql.DbUtils;
 
 public class VentanaTiendaV2 {
@@ -47,7 +48,8 @@ public class VentanaTiendaV2 {
 			}
 		});
 	}
-
+	LLamadasBD cct= new LLamadasBD();
+	Connection conn = cct.Conexion();
 	/**
 	 * Create the application.
 	 */
@@ -83,7 +85,7 @@ public class VentanaTiendaV2 {
 			public void actionPerformed(ActionEvent e) {				
 				try {
 					String query = "SELECT name, prize, desc FROM product";
-					PreparedStatement pst = LLamadasBD.Conexion().prepareStatement(query);
+					PreparedStatement pst = conn.prepareStatement(query);
 					ResultSet rs = pst.executeQuery();
 					System.out.println();
 					
@@ -110,7 +112,6 @@ public class VentanaTiendaV2 {
 		JList list = new JList();
 		list.setBounds(20, 42, 283, 162);
 		frame.getContentPane().add(list);
-		cargarTabla();
 		
 		JScrollPane scrollShop = new JScrollPane();
 		scrollShop.setBounds(10, 11, 404, 227);
@@ -124,7 +125,7 @@ public class VentanaTiendaV2 {
 			public void actionPerformed(ActionEvent e) {				
 				try {
 					String query = "SELECT NOMBRE, PRECIO, DESCRIPCION FROM PRODUCTO";
-					PreparedStatement pst = LLamadasBD.Conexion().prepareStatement(query);
+					PreparedStatement pst = conn.prepareStatement(query);
 					ResultSet rs = pst.executeQuery();
 					System.out.println();
 					
@@ -153,9 +154,9 @@ public class VentanaTiendaV2 {
 						//System.out.println(table_id);
 						//lblNewLabel.setText(""+table_id);
 						try {
-							String query = "SELECT image FROM product where name = ? ";
+							String query = "SELECT STOCK FROM PRODUCTO WHERE NOMBRE = ? ";
 							
-							PreparedStatement pst = LLamadasBD.Conexion().prepareStatement(query);
+							PreparedStatement pst = conn.prepareStatement(query);
 							pst.setString(1, table_id);
 							ResultSet rs = pst.executeQuery();
 							if(rs.next()) {
@@ -174,10 +175,4 @@ public class VentanaTiendaV2 {
 		};
 		row.start();
 	}
-	
-		private void cargarTabla() 
-		{
-			
-			
-		}
 }

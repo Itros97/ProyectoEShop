@@ -36,7 +36,15 @@ public class VentanaAnyadirProducto {
 	public VentanaAnyadirProducto() {
 		initialize();
 	}
-
+	public void limpiar() 
+	{
+		tfnombre.setText("");
+		tfprecio.setText("");
+		tfstock.setText("");
+		tfdescripcion.setText("");
+		tfimagen.setText("");
+		tfmarca.setText("");
+	}
 
 	private void initialize() {
 		frame = new JFrame();
@@ -59,8 +67,11 @@ public class VentanaAnyadirProducto {
 				p.setMarca(tfimagen.getText());
 				
 				ProductoBD.InsertarProducto(p);
+				limpiar();
 			}
 		});
+		
+		
 		btnNewButton.setBounds(10, 227, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
@@ -121,6 +132,7 @@ public class VentanaAnyadirProducto {
 		
 		
 	}
+	
 	public static void main(String[] args) {
 		try {
 			VentanaAnyadirProducto v1 = new VentanaAnyadirProducto();

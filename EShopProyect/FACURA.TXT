@@ -1,4 +1,4 @@
-Usuario [nickname=h, correoElectronico=h]
+Usuario [nickname=default, correoElectronico=default@def.def,is Admin=false]
 
 -----------------------------------------
 

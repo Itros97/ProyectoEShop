@@ -15,7 +15,7 @@ import javax.swing.SpringLayout;
 
 public class VentanaAdministracion {
 
-	private JFrame frame;
+	protected JFrame frame;
 
 	/**
 	 * Launch the application.

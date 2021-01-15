@@ -19,7 +19,7 @@ public class VentanaTienda extends JFrame {
 	protected JButton botonBuscar;
 	protected JButton botonComprar;
 	protected JButton botonEliminar;
-	protected JButton botonAdministar;
+	public JButton botonAdministar;
 	protected JButton anadir;
 	protected JLabel cesta;
 	protected JCheckBox checkBox1;
@@ -47,6 +47,7 @@ public class VentanaTienda extends JFrame {
 	JScrollPane scrollProducto;
 	JScrollPane scrollCarro;
 	VentanaTienda ventana;
+	
 
 	public VentanaTienda(Tienda tienda) {
 		
@@ -172,12 +173,14 @@ public class VentanaTienda extends JFrame {
 				new VentanaProgreso(tienda);
 			}
 		});
-		
+				
 		botonAdministar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new VentanaAdministracion();
+				setadmin(null);
+				VentanaAdministracion window = new VentanaAdministracion();
+				window.frame.setVisible(true);
 			}
 		});
 
@@ -225,4 +228,14 @@ public class VentanaTienda extends JFrame {
 		setVisible(true);
 	}
 
+	public void setadmin(Usuario u) 
+	{
+		if(u.isTipo_cuenta()== true || u.equals(null))
+		{
+			
+			botonAdministar.setVisible(true);
+		}
+		else
+			botonAdministar.setVisible(false);
+	} 
 }

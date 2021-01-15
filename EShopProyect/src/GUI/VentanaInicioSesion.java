@@ -51,13 +51,17 @@ public class VentanaInicioSesion extends JDialog {
 	
 		
 		conectarse.addActionListener(new ActionListener() {
-			
+			Usuario u1;
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				mail = temail.getText();
 				contra = ppassword.getText();
 				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText(),tienda);
+				if(u1.isTipo_cuenta()== true) 
+				{
+					VentanaTienda.
+				}
 				
 			}
 		});

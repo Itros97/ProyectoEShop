@@ -28,11 +28,12 @@ public class Codigo {
 
 	protected String generarcodigo(int lenght,int size) 
 	{
-		
+		//Caso base o caso por el que tiene que acabar
 		if(size==lenght) 
 		{
 			return codigo;
 		}
+		//Caso recursivo, el cual se repite hasta que se cumpla la condicion
 		else 
 		{
 			int iterator = (int) (Math.random()*2);

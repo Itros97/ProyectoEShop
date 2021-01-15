@@ -51,7 +51,7 @@ public class Codigos {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		lblNewLabel1.setBounds(10, 11, 151, 32);
+		lblNewLabel1.setBounds(10, 11, 242, 32);
 		frame.getContentPane().add(lblNewLabel1);
 		
 		
@@ -60,13 +60,13 @@ public class Codigos {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		
-		lblNewLabel2.setBounds(10, 67, 56, 14);
+		lblNewLabel2.setBounds(10, 67, 242, 14);
 		frame.getContentPane().add(lblNewLabel2);
 		
-		lblNewLabel3.setBounds(10, 110, 56, 14);
+		lblNewLabel3.setBounds(10, 110, 242, 14);
 		frame.getContentPane().add(lblNewLabel3);
 		
-		lblNewLabel4.setBounds(10, 158, 56, 14);
+		lblNewLabel4.setBounds(10, 158, 242, 14);
 		frame.getContentPane().add(lblNewLabel4);
 		
 		JLabel lblNewLabel5 = new JLabel("Longitud de los codigos");

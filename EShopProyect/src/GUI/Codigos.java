@@ -58,6 +58,11 @@ public class Codigos {
 		JButton btnNewButton_1 = new JButton("Cerrar");
 		btnNewButton_1.setBounds(335, 227, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		
 		
 		lblNewLabel2.setBounds(10, 67, 242, 14);

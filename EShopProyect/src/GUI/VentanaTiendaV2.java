@@ -27,7 +27,6 @@ public class VentanaTiendaV2 {
 
 	public JFrame frame;
 	private JTable table;
-	private JTable table_1;
 
 	/**
 	 * Launch the application.
@@ -86,17 +85,15 @@ public class VentanaTiendaV2 {
 		lblNewLabel_1.setBounds(10, 27, 46, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		table_1 = new JTable();
-		table_1.setBounds(20, 43, 283, 162);
-		frame.getContentPane().add(table_1);
-		table_1.setVisible(true);
+		JList list = new JList();
+		list.setBounds(20, 42, 280, 162);
+		frame.getContentPane().add(list);
 		cargarproductos();
 	}
 	
 	protected void cargarproductos() 
 	{
-		DefaultTableModel modelo = (DefaultTableModel) table_1.getModel();
-		modelo.setRowCount(0);
+	//	list.setRowCount(0);
 
 		PreparedStatement ps;
 		ResultSet rs;
@@ -126,5 +123,4 @@ public class VentanaTiendaV2 {
 			JOptionPane.showConfirmDialog(null, e.toString());
 		}
 	}
-	
 }

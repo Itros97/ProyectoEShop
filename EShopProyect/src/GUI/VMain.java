@@ -27,7 +27,7 @@ import javax.swing.JLabel;
 
 public class VMain {
 
-	JFrame ventanaMain;
+	public JFrame ventanaMain;
 	private final Action actionHome = new SwingActionHome();
 	private final Action actionShop = new SwingActionShop();
 	private final Action actionAccount = new SwingActionAccount();
@@ -228,15 +228,15 @@ public class VMain {
 	}
 	private class SwingActionShop extends AbstractAction {
 		public SwingActionShop() {
-			putValue(NAME, "Shop");
-			putValue(SHORT_DESCRIPTION, "Some short description");
+			putValue(NAME, "Tienda");
+			putValue(SHORT_DESCRIPTION, "Accedes a la tienda");
 		}
 		public void actionPerformed(ActionEvent e) {
 		}
 	}
 	private class SwingActionAccount extends AbstractAction {
 		public SwingActionAccount() {
-			putValue(NAME, "Account");
+			putValue(NAME, "Añadir a carrito");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
@@ -244,7 +244,7 @@ public class VMain {
 	}
 	private class SwingActionHistory extends AbstractAction {
 		public SwingActionHistory() {
-			putValue(NAME, "History");
+			putValue(NAME, "Carrito");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
@@ -252,7 +252,7 @@ public class VMain {
 	}
 	private class SwingActionPreferences extends AbstractAction {
 		public SwingActionPreferences() {
-			putValue(NAME, "Preferences");
+			putValue(NAME, "Cuenta");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {

@@ -36,18 +36,16 @@ public class Codigo {
 		else 
 		{
 			int iterator = (int) (Math.random()*2);
-			System.out.println(iterator);
 			if(iterator==0) 
 			{
-				System.out.println("soy una cifra");
+				
 				codigo += getletra();
 				generarcodigo(lenght,size-1);
 			}
 			else if (iterator==1)
 			{
-				System.out.println("soy un numero");
+			
 				codigo += getnumero();
-				System.out.println(codigo);
 				generarcodigo(lenght,size-1);
 			}
 			
@@ -55,9 +53,13 @@ public class Codigo {
 			return codigo;
 		
 	}
-	public static void main(String[] args) {
-		Codigo p = new Codigo();
-		
-		System.out.println(p.generarcodigo(0, 10));
+	
+	public String getCodigo() {
+		return codigo;
 	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 }

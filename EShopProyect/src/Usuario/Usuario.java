@@ -10,18 +10,18 @@ public class Usuario {
 	private String nickname;
 	private String password;
 	private String correoElectronico;
-	private int fechaNacimiento;
+//	private Date fechaNacimiento;
 	private String calle;
 	private String tarjeta_credito;
 	private boolean tipo_cuenta; //tipo_cuenta => Si el usuario es administrador o no.
 
-	public Usuario(String nickname, String password, String correoElectronico, int fechaNacimiento, String calle,
+	public Usuario(String nickname, String password, String correoElectronico, String calle,
 			String tarjeta_credito, boolean tipo_cuenta) {
 		super();
 		this.nickname = nickname;
 		this.password = password;
 		this.correoElectronico = correoElectronico;
-		this.fechaNacimiento = fechaNacimiento;
+		//this.fechaNacimiento = fechaNacimiento;
 		this.calle = calle;
 		this.tarjeta_credito = tarjeta_credito;
 		this.tipo_cuenta = tipo_cuenta;
@@ -32,7 +32,7 @@ public class Usuario {
 		this.nickname = "default";
 		this.password = "default";
 		this.correoElectronico = "default@def.def";
-		this.fechaNacimiento = 0;
+	//	this.fechaNacimiento = null;
 		this.calle = "default";
 		this.tarjeta_credito = "";
 		this.tipo_cuenta = false;
@@ -63,14 +63,6 @@ public class Usuario {
 	}
 
 
-	public int getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	public void setFechaNacimiento(int fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-
 	public String getCalle() {
 		return calle;
 	}
@@ -97,7 +89,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [nickname=" + nickname + ", correoElectronico=" + correoElectronico + "]";
+		return "Usuario [nickname=" + nickname + ", correoElectronico=" + correoElectronico + ",is Admin="+tipo_cuenta+ "]";
 	}
 
 	

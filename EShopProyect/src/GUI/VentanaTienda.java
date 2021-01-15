@@ -19,6 +19,8 @@ public class VentanaTienda extends JFrame {
 	protected JButton botonBuscar;
 	protected JButton botonComprar;
 	protected JButton botonEliminar;
+	public JButton botonAdministar;
+	public JButton botonCargar;
 	protected JButton anadir;
 	protected JLabel cesta;
 	protected JCheckBox checkBox1;
@@ -46,6 +48,7 @@ public class VentanaTienda extends JFrame {
 	JScrollPane scrollProducto;
 	JScrollPane scrollCarro;
 	VentanaTienda ventana;
+	
 
 	public VentanaTienda(Tienda tienda) {
 		
@@ -58,6 +61,8 @@ public class VentanaTienda extends JFrame {
 		botonBuscar = new JButton("Buscar");
 		botonComprar = new JButton("Comprar");
 		botonEliminar = new JButton("Eliminar");
+		botonAdministar = new JButton("Administar");
+		botonCargar = new JButton("Cargar");
 		anadir = new JButton("Agregar al carrito");
 		botonComprar.setSize(100, 100);
 		cesta = new JLabel("--------------------Cesta---------------------");
@@ -80,6 +85,8 @@ public class VentanaTienda extends JFrame {
 
 		panelCestaSouth.add(botonEliminar);
 		panelCestaSouth.add(botonComprar);
+		panelCestaSouth.add(botonAdministar);
+		panelCestaSouth.add(botonCargar);
 		panelNorth.add(textField);
 		panelNorth.add(botonBuscar);
 		panelEast.add(cesta, BorderLayout.NORTH);
@@ -169,6 +176,24 @@ public class VentanaTienda extends JFrame {
 				new VentanaProgreso(tienda);
 			}
 		});
+		botonCargar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaTiendaV2 window = new VentanaTiendaV2();
+				window.frame.setVisible(true);
+			}
+		});
+				
+		botonAdministar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//setadmin(null);
+				VentanaAdministracion window = new VentanaAdministracion();
+				window.frame.setVisible(true);
+			}
+		});
 
 		botonEliminar.addActionListener(new ActionListener() {
 
@@ -190,7 +215,6 @@ public class VentanaTienda extends JFrame {
 				
 			}
 		});
-		
 		cerrarSesion.addActionListener(new ActionListener() {
 			
 			@Override
@@ -214,5 +238,16 @@ public class VentanaTienda extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
-
+/*
+	public void setadmin(Usuario u) 
+	{
+		if(u.isTipo_cuenta()== true || u.equals(null))
+		{
+			
+			botonAdministar.setVisible(true);
+		}
+		else
+			botonAdministar.setVisible(false);
+	}
+	*/ 
 }

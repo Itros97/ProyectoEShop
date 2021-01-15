@@ -15,8 +15,8 @@ public class Producto implements Serializable{
 	protected String descripcion;
 	protected String imagen;
 	protected String marca;
-	protected Categoria categoria;
-
+//	protected Categoria categoria;
+/*
 	public Producto(String nombre, double precio, int stock, String descripcion, String imagen, String marca, Categoria categoria) {
 		super();
 		this.nombre = nombre;
@@ -27,6 +27,7 @@ public class Producto implements Serializable{
 		this.marca = marca;
 		this.categoria = categoria;
 	}
+*/	
 	public Producto(String nombre, double precio, int stock, String descripcion, String imagen, String marca) {
 		super();
 		this.nombre = nombre;
@@ -45,7 +46,7 @@ public class Producto implements Serializable{
 		this.descripcion = "";
 		this.imagen = "";
 		this.marca = "";
-		this.categoria = Categoria.CUALQUIERA;
+	//	this.categoria = Categoria.CUALQUIERA;
 	}
 
 	public Producto(Producto p) {
@@ -56,7 +57,7 @@ public class Producto implements Serializable{
 		this.descripcion = p.descripcion;
 		this.imagen = p.imagen;
 		this.marca = p.marca;
-		this.categoria = p.categoria;
+	//	this.categoria = p.categoria;
 	}
 
 	
@@ -67,7 +68,7 @@ public class Producto implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+/*
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -75,6 +76,7 @@ public class Producto implements Serializable{
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+*/
 
 	public String getMarca() {
 		return marca;

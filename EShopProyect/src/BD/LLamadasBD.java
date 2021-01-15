@@ -28,13 +28,13 @@ public class LLamadasBD
 	}
 	
 	//CODIGO PARA LA CONEXION CON LA BASE DE DATOS
-	 protected static Connection Conexion() {
+	 public static Connection Conexion() {
 	        Connection con = null;
 
 	        try {
 	            Class.forName("com.mysql.jdbc.Driver");
 	            //Conexion con la BD de XAMPP(EN MI CASO USO EL PUERTO 3307 EN VEZ DEL 3306 YA QUE NO ME DEJA ACCEDER A ESTE PRIMERO)
-	            con = DriverManager.getConnection("jdbc:mysql://localhost:3307/tiendaonline", "root", "");
+	            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiendaonline", "root", "");
 
 	        } catch (Exception e) {
 	            System.err.println("No se ha podido conectar a la base de datos de la tienda\n" + e.getMessage());
@@ -54,22 +54,22 @@ public class LLamadasBD
 		 ProductoBD.EliminarTablaProducto(con);
 	 	}
 	 
-	   //INSERT USUARIOS
-	    public void InsertarUsuario(Usuario nuevoUsuario) {
-	      UsuarioBD.InsertarUsuarios(nuevoUsuario);
+	 //INSERT USUARIOS
+	 public void InsertarUsuario(Usuario nuevoUsuario) {
+		 UsuarioBD.InsertarUsuarios(nuevoUsuario);
 
 	    }
-	      //MODIFICAR USUARIOS
-	      public void ModificarUsuario(Usuario usuario) {
-	    	  UsuarioBD.ModificarUsuario(usuario);
+	  //MODIFICAR USUARIOS
+	  public void ModificarUsuario(Usuario usuario) {
+		  UsuarioBD.ModificarUsuario(usuario);
 	      }
-	      //INSERT PRODUCTOS
-		    public void InsertarProducto(Producto nuevoProducto) {
-		      ProductoBD.InsertarProducto(nuevoProducto);
+	  //INSERT PRODUCTOS
+	  public void InsertarProducto(Producto nuevoProducto) {
+      ProductoBD.InsertarProducto(nuevoProducto);
 		    
 	}
-		    //COMPROBAR LOGIN
-		    public boolean LoginUsuarios(String nickname, String password) {
-		    	return UsuarioBD.LoginUsuario(nickname, password);
-		    }
+	 //COMPROBAR LOGIN
+    // public boolean LoginUsuarios(String nickname, String password) {
+   //  return UsuarioBD.LoginUsuario(nickname, password);
+		    //}
 	}

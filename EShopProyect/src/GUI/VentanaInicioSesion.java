@@ -3,6 +3,10 @@ package GUI;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -12,6 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import BD.LLamadasBD;
+import BD.UsuarioBD;
 import Tienda.Tienda;
 import Usuario.Usuario;
 
@@ -32,39 +38,29 @@ public class VentanaInicioSesion extends JDialog {
 	String contra;
 	int conectado = 0;
 	ArrayList<Usuario> listaUsuarios ;
+	Tienda tienda;
 	
 	public VentanaInicioSesion(Tienda tienda, VentanaPrincipal principal) {
 		
-		lemail = new JLabel("Email");
+		lemail = new JLabel("Nickname");
 		temail = new JTextField(20);
 		lpassword = new JLabel("Contraseña");
 		ppassword = new JPasswordField(20);
 
 		conectarse = new JButton("Conectarse");
+	
 		
 		conectarse.addActionListener(new ActionListener() {
-			
+			Usuario u1;
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				mail = temail.getText();
 				contra = ppassword.getText();
-				
-				for (Usuario i : tienda.getClientes()) {
-					if(i.getCorreoElectronico().equals(mail) && i.getPassword().equals(contra)){
-						tienda.setConectado(i);
-						conectado = 1000;
-					}
-				}
-				
-				if(conectado == 1000) {
-					VentanaTienda v = new VentanaTienda(tienda);
-					
-					dispose();
-					principal.binicio.setEnabled(true);
-					principal.bregistro.setEnabled(true);
-					
-				} else {
-					JOptionPane.showMessageDialog(null, "EMAIL O CONTRASENYA INCORRECTAS");
+				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText(),tienda);
+				if(u1.isTipo_cuenta()== true) 
+				{
+					System.out.println("Es admin");
 				}
 				
 			}

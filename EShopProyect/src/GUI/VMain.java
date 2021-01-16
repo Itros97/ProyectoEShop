@@ -19,6 +19,7 @@ import javax.swing.table.TableModel;
 
 import BD.LLamadasBD;
 import BD.LinkPhoto;
+import BD.UsuarioBD;
 import Usuario.Usuario;
 import net.proteanit.sql.DbUtils;
 import javax.swing.JScrollPane;
@@ -54,7 +55,8 @@ public class VMain {
 		});
 	}
 	 
-
+	JButton bAdministar = new JButton("Administrar");
+	JPanel pBotonera= new JPanel();
 	LLamadasBD cct= new LLamadasBD();
 	Connection conn = null;
 	/**
@@ -77,13 +79,13 @@ public class VMain {
 		ventanaMain.getContentPane().setLayout(null);
 		
 		
-		JPanel pBotonera= new JPanel();
+	
 		pBotonera.setBounds(0, 0, 350, 698);
 		ventanaMain.getContentPane().add(pBotonera);
 		pBotonera.setLayout(null);
 		
-		JButton bHome = new JButton("Home");
-		bHome.addActionListener(new ActionListener() {
+		
+		bAdministar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel pHome = new JPanel();
 				pHome.setBounds(0, 0, 360, 900);
@@ -91,10 +93,10 @@ public class VMain {
 				pHome.setLayout(null);
 			}
 		});
-		bHome.setAction(actionHome);
-		bHome.setBounds(10, 10, 250, 50);
-		bHome.setFocusPainted(false);
-		pBotonera.add(bHome);
+		bAdministar.setAction(actionHome);
+		bAdministar.setBounds(10, 10, 250, 50);
+		bAdministar.setFocusPainted(false);
+		
 		
 		jTextFieldID.setBounds(10, 170, 250, 20);
 		pBotonera.add(jTextFieldID);
@@ -183,6 +185,7 @@ public class VMain {
 	                jTable1MouseClicked(evt);
 	            }
 	        });
+		   setAdministrarvisible();
 		scrollShop.setViewportView(table);
 		Thread row = new Thread () {
 			@Override
@@ -218,9 +221,21 @@ public class VMain {
 		};
 		row.start();
 	}
+	protected void setAdministrarvisible() 
+	{
+		
+		if(UsuarioBD.getUsuario(UsuarioBD.nickg).isTipo_cuenta()== true)
+		{
+			pBotonera.add(bAdministar);
+		}
+		else 
+		{
+			
+		}
+	}
 	private class SwingActionHome extends AbstractAction {
 		public SwingActionHome() {
-			putValue(NAME, "Home");
+			putValue(NAME, "Administar");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {

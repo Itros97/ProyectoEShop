@@ -21,6 +21,7 @@ public class UsuarioBD {
 
 	
 	public static String nickg;
+	public static boolean esadmin;
 	//CREAR
 	 protected static void CrearTablaUsuario(Connection con) {
 			// TODO Auto-generated method stub
@@ -148,7 +149,8 @@ public class UsuarioBD {
 	                    	//Tengo que hacer el enable del boton Administrar
 	                    	System.out.println("Es Admin");
 	                    	nickg = getUsuario(nickName).getNickname();
-	                    	System.out.println(nickg);
+	                    	esadmin = getUsuario(nickName).isTipo_cuenta();
+	                    	System.out.println(esadmin);
 	                    }
 	                    else {
 	                    	System.out.println("No es admin");

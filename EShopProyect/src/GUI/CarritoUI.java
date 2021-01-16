@@ -13,7 +13,8 @@ import javax.swing.JLabel;
 
 public class CarritoUI {
 
-	protected JFrame frame;
+	 protected JFrame frame;
+	 public JList list = new JList(cr1.toArray());
 	 public static ArrayList<Producto.Carrito> cr1 = new ArrayList<Producto.Carrito>();
 	 JLabel lblNewLabel_1 = new JLabel("null");
 	 /**
@@ -66,7 +67,7 @@ public class CarritoUI {
 		btnNewButton_2.setBounds(310, 193, 114, 23);
 		frame.getContentPane().add(btnNewButton_2);
 		
-		JList list = new JList();
+		
 		list.setBounds(10, 11, 414, 172);
 		frame.getContentPane().add(list);
 		
@@ -78,15 +79,22 @@ public class CarritoUI {
 		lblNewLabel_1.setBounds(97, 197, 46, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 	}
+
+	public void cargarlista() 
+	{
+		System.out.println("Hola");
+	}
 	double valoraco=0;
 	public void getCarro(ArrayList<Producto.Carrito> cr1) 
 	{
 		
 		cr1 = VMain.carro;
 		valoraco=VMain.precioaco;
+		cargarlista();
 		lblNewLabel_1.setText(Double.toString(valoraco));
 		System.out.println(cr1.toString());
 		System.out.println(valoraco);
 		
 	}
+	
 }

@@ -26,6 +26,7 @@ import net.proteanit.sql.DbUtils;
 import javax.swing.JScrollPane;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JLabel;
 
@@ -43,7 +44,7 @@ public class VMain {
 	protected JTextField jTextFieldNombre = new JTextField();
     protected JTextField jTextFieldPrecio = new JTextField();
     protected JTextField jTextFieldLN = new JTextField();
-    public ArrayList<Carrito> carro = new ArrayList<Carrito>();
+    public static ArrayList<Carrito> carro = new ArrayList<Carrito>();
 	
 	 public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -263,32 +264,47 @@ public class VMain {
 			putValue(SHORT_DESCRIPTION, "Añade el objeto al carrito");
 		}
 		public void actionPerformed(ActionEvent e) {
-			
-			Carrito c1 = new Carrito();
-			c1.setId_carrito(i);
-			c1.setNickname(UsuarioBD.nickg);
-			c1.setNombre(jTextFieldNombre.getText());
-			c1.setPrecio(Double.parseDouble(jTextFieldPrecio.getText()));
-			
-			carro.add(c1);
-			i++;
-			System.out.println(c1.toString());
+			insertCarro(carro);
 		}
 	}
 	private class SwingActionHistory extends AbstractAction {
 		public SwingActionHistory() {
 			putValue(NAME, "Carrito");
-			putValue(SHORT_DESCRIPTION, "Some short description");
+			putValue(SHORT_DESCRIPTION, "Accede a la ventana carrito");
 		}
 		public void actionPerformed(ActionEvent e) {
 		}
 	}
+	public ArrayList<Carrito> insertCarro(ArrayList<Carrito> carro)
+	{
+		Carrito c1 = new Carrito();
+		c1.setId_carrito(i);
+		c1.setNickname(UsuarioBD.nickg);
+		c1.setNombre(jTextFieldNombre.getText());
+		c1.setPrecio(Double.parseDouble(jTextFieldPrecio.getText()));
+		
+		carro.add(c1);
+		i++;
+		System.out.println(c1.toString());
+		return carro;
+
+	}
+	public ArrayList<Carrito> getCarro(ArrayList<Carrito> carro)
+	{
+		for (int i = 0; i < carro.size(); i++)
+		{
+			System.out.println(carro.get(i));
+		}
+		return carro;
+
+	}
 	private class SwingActionPreferences extends AbstractAction {
 		public SwingActionPreferences() {
 			putValue(NAME, "Cuenta");
-			putValue(SHORT_DESCRIPTION, "Some short description");
+			putValue(SHORT_DESCRIPTION, "Accede a los datos de la cuenta");
 		}
 		public void actionPerformed(ActionEvent e) {
+			getCarro(carro);
 		}
 	}
 		  public void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     

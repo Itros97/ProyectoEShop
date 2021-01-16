@@ -88,7 +88,39 @@ public class UsuarioBD {
 	            System.out.println(e);
 	        }
 	 }
-	//COMPROBAR LOGIN
+	 //Obtener usuario logeado
+	    public static Usuario getUsuario(String nickname) 
+	    {
+	    Usuario user = new Usuario();
+	     PreparedStatement preparedStatement= null;
+		 Connection con = LLamadasBD.Conexion();
+		 try {
+			 String query = "SELECT NICKNAME,PASSWORD,TIPO_CUENTA FROM USUARIO WHERE NICKNAME = '" + nickname + "'";
+			 Statement statement = con.createStatement();
+	         ResultSet resultSet = statement.executeQuery(query);
+	         while(resultSet.next()) 
+	         {
+	        	 if(resultSet.getString("NICKNAME").equals(nickname)) 
+	        	 {
+	        		user.setNickname(nickname);
+	        		user.setPassword(resultSet.getString("PASSWORD"));
+	        		user.setTipo_cuenta(resultSet.getBoolean("TIPO_CUENTA"));
+	        	 }
+	        	 else 
+	        	 {
+	        		 System.err.println("No hay usuario asi");
+	        	 }
+	         }
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		 System.out.println(user.getNickname());
+		 System.out.println(user.getPassword());
+		 System.out.println(user.isTipo_cuenta());
+		return user;
+	    }
+	
+	 //COMPROBAR LOGIN
 
 	 //LEER DATOS DE USUARIO CONCRETO(Solo posible si es admin su modificacion)
 	 
@@ -109,6 +141,15 @@ public class UsuarioBD {
 	               
 	                if (resultSet.getString("PASSWORD").equals(password)) {
 	                    System.out.println("Si");
+	                    if(getUsuario(nickName).isTipo_cuenta() == true)
+	                    {
+	                    	//Tengo que hacer el enable del boton Administrar
+	                    	System.out.println("Hello");
+
+	                    }
+	                    else {
+	                    	System.out.println("Mec");
+	                    }
 	                    comprobar = true;
 	                    break;
 	                } else {
@@ -124,6 +165,7 @@ public class UsuarioBD {
 	            System.out.println("Existe y la contraseña concuerda,permitir el logeo");
 	            VMain window = new VMain(usuario);
 	            window.ventanaMain.setVisible(true);
+	            
 			
 	        }
 	        //Unicamente para ver que esto es cierto

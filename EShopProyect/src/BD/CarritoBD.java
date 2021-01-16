@@ -8,7 +8,7 @@ public class CarritoBD {
 	 protected static void CrearTablaCarrito(Connection con) {
 			// TODO Auto-generated method stub
 		    PreparedStatement preparedStatement = null;
-		    //IDUsuario,nOMBREPRODUCTO E PRECIO
+		    //Nickname(id_usuario),nOMBREPRODUCTO E PRECIO
 		    //TABLA PRODUCTO
 		    String createcarrito = "CREATE TABLE CARRITO(" +
 		    		"IDCARRITO INTEGER PRIMARY KEY AUTO_INCREMENT," +

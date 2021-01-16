@@ -10,11 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import Producto.Carrito;
+public class CarritoUI {
 
-public class Carrito {
-
-	private JFrame frame;
+	protected JFrame frame;
 	 public static ArrayList<Producto.Carrito> cr1 = new ArrayList<Producto.Carrito>();
 	/**
 	 * Launch the application.
@@ -23,7 +21,7 @@ public class Carrito {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Carrito window = new Carrito();
+					CarritoUI window = new CarritoUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +33,7 @@ public class Carrito {
 	/**
 	 * Create the application.
 	 */
-	public Carrito() {
+	public CarritoUI() {
 		initialize();
 	}
 

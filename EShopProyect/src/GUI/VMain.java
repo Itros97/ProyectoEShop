@@ -293,7 +293,7 @@ public class VMain {
 	{
 		for (int i = 0; i < carro.size(); i++)
 		{
-			System.out.println(i);
+			System.out.println(carro.get(i));
 		}
 		return carro;
 

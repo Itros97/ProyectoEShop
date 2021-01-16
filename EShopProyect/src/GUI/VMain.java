@@ -45,7 +45,7 @@ public class VMain {
     protected JTextField jTextFieldPrecio = new JTextField();
     protected JTextField jTextFieldLN = new JTextField();
     public static ArrayList<Carrito> carro = new ArrayList<Carrito>();
-	
+	public static double precioaco=0;
 	 public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -291,12 +291,16 @@ public class VMain {
 		return carro;
 
 	}
+
 	public ArrayList<Carrito> getCarro(ArrayList<Carrito> carro)
 	{
+		
 		for (int i = 0; i < carro.size(); i++)
 		{
 			System.out.println(carro.get(i));
+			precioaco +=carro.get(i).precio;
 		}
+		System.out.println(precioaco);
 		return carro;
 
 	}

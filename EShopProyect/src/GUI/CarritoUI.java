@@ -9,12 +9,14 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 public class CarritoUI {
 
 	protected JFrame frame;
 	 public static ArrayList<Producto.Carrito> cr1 = new ArrayList<Producto.Carrito>();
-	/**
+	 JLabel lblNewLabel_1 = new JLabel("null");
+	 /**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
@@ -67,11 +69,24 @@ public class CarritoUI {
 		JList list = new JList();
 		list.setBounds(10, 11, 414, 172);
 		frame.getContentPane().add(list);
+		
+		JLabel lblNewLabel = new JLabel("Precio Total:");
+		lblNewLabel.setBounds(10, 197, 71, 14);
+		frame.getContentPane().add(lblNewLabel);
+		
+		
+		lblNewLabel_1.setBounds(97, 197, 46, 14);
+		frame.getContentPane().add(lblNewLabel_1);
 	}
-	
+	double valoraco=0;
 	public void getCarro(ArrayList<Producto.Carrito> cr1) 
 	{
+		
 		cr1 = VMain.carro;
+		valoraco=VMain.precioaco;
+		lblNewLabel_1.setText(Double.toString(valoraco));
 		System.out.println(cr1.toString());
+		System.out.println(valoraco);
+		
 	}
 }

@@ -275,6 +275,7 @@ public class VMain {
 		public void actionPerformed(ActionEvent e) {
 			CarritoUI crui1 = new CarritoUI();
 			crui1.frame.setVisible(true);
+			getCarro(carro);
 		}
 	}
 	public ArrayList<Carrito> insertCarro(ArrayList<Carrito> carro)

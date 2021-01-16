@@ -20,10 +20,13 @@ import javax.swing.table.TableModel;
 import BD.LLamadasBD;
 import BD.LinkPhoto;
 import BD.UsuarioBD;
+import Producto.Carrito;
 import Usuario.Usuario;
 import net.proteanit.sql.DbUtils;
 import javax.swing.JScrollPane;
 import java.sql.*;
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 
 public class VMain {
@@ -37,10 +40,10 @@ public class VMain {
 	private JTable table;
 	private static Usuario usuario;
 	private LinkPhoto lblNewLabel;
-	protected JTextField jTextFieldID = new JTextField();
-    protected JTextField jTextFieldFN = new JTextField();
+	protected JTextField jTextFieldNombre = new JTextField();
+    protected JTextField jTextFieldPrecio = new JTextField();
     protected JTextField jTextFieldLN = new JTextField();
-
+    public ArrayList<Carrito> carro = new ArrayList<Carrito>();
 	
 	 public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -98,8 +101,8 @@ public class VMain {
 		bAdministar.setFocusPainted(false);
 		
 		
-		jTextFieldID.setBounds(10, 170, 250, 20);
-		pBotonera.add(jTextFieldID);
+		jTextFieldNombre.setBounds(10, 170, 250, 20);
+		pBotonera.add(jTextFieldNombre);
 		
 		JButton bShop = new JButton("Shop");
 		bShop.addActionListener(new ActionListener() {
@@ -187,6 +190,7 @@ public class VMain {
 	        });
 		   setAdministrarvisible();
 		scrollShop.setViewportView(table);
+		//Hilo de ejecuccion que permite que podamos seleccionar entre disitintos elementos de la tabla y hacer display de su foto
 		Thread row = new Thread () {
 			@Override
 			public void run () {
@@ -236,9 +240,12 @@ public class VMain {
 	private class SwingActionHome extends AbstractAction {
 		public SwingActionHome() {
 			putValue(NAME, "Administar");
-			putValue(SHORT_DESCRIPTION, "Some short description");
+			putValue(SHORT_DESCRIPTION, "Boton de administracion");
 		}
 		public void actionPerformed(ActionEvent e) {
+			VentanaAdministracion v1 = new VentanaAdministracion();
+			v1.frame.setVisible(true);
+			System.out.println("Abres el admin");
 		}
 	}
 	private class SwingActionShop extends AbstractAction {
@@ -249,12 +256,23 @@ public class VMain {
 		public void actionPerformed(ActionEvent e) {
 		}
 	}
+	int i =0;
 	private class SwingActionAccount extends AbstractAction {
 		public SwingActionAccount() {
 			putValue(NAME, "Añadir a carrito");
-			putValue(SHORT_DESCRIPTION, "Some short description");
+			putValue(SHORT_DESCRIPTION, "Añade el objeto al carrito");
 		}
 		public void actionPerformed(ActionEvent e) {
+			
+			Carrito c1 = new Carrito();
+			c1.setId_carrito(i);
+			c1.setNickname(UsuarioBD.nickg);
+			c1.setNombre(jTextFieldNombre.getText());
+			c1.setPrecio(Double.parseDouble(jTextFieldPrecio.getText()));
+			
+			carro.add(c1);
+			i++;
+			System.out.println(c1.toString());
 		}
 	}
 	private class SwingActionHistory extends AbstractAction {
@@ -283,8 +301,8 @@ public class VMain {
 		       
 		       
 			// set the selected row data into jtextfields
-		       jTextFieldID.setText(model.getValueAt(selectedRowIndex, 0).toString());
-		       jTextFieldFN.setText(model.getValueAt(selectedRowIndex, 1).toString());
+		       jTextFieldNombre.setText(model.getValueAt(selectedRowIndex, 0).toString());
+		       jTextFieldPrecio.setText(model.getValueAt(selectedRowIndex, 1).toString());
 		       jTextFieldLN.setText(model.getValueAt(selectedRowIndex, 2).toString());
 
 		        

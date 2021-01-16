@@ -14,6 +14,13 @@ public class Carrito {
 		this.nombre = nombre;
 		this.precio = precio;
 	}
+	public Carrito() {
+		super();
+		this.id_carrito = 0;
+		this.nickname = "Por defecto";
+		this.nombre = "Objeto generico";
+		this.precio = 0;
+	}
 
 	public int getId_carrito() {
 		return id_carrito;
@@ -45,6 +52,11 @@ public class Carrito {
 
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+	@Override
+	public String toString() {
+		return "Carrito [id_carrito=" + id_carrito + ", nickname=" + nickname + ", nombre=" + nombre + ", precio="
+				+ precio + "]";
 	}
 	
 	

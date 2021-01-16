@@ -4,12 +4,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 public class Codigos {
 
@@ -92,12 +94,15 @@ public class Codigos {
 		btnNewButton.setBounds(10, 227, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_2 = new JButton("Exportar c\u00F3digos");
+		JButton btnNewButton_2 = new JButton("Exportar codigos");
 		btnNewButton_2.setBounds(100, 227, 123, 23);
 		frame.getContentPane().add(btnNewButton_2);
 	}
+	int gen =0;
 	private void labelwritter() 
 	{
+		
+		if(gen==0) {
 		for (int i = 0; i < 4; i++) {
 			
 			Codigo p = new Codigo();
@@ -105,17 +110,28 @@ public class Codigos {
 			System.out.println(p.getCodigo());
 			if (i==0) {
 				lblNewLabel1.setText(p.getCodigo());
+				
+				System.out.println(gen);
 			}
 			else if (i==1) {
 				lblNewLabel2.setText(p.getCodigo());
+				
 			}
 			else if (i==2) {
 				lblNewLabel3.setText(p.getCodigo());
+				
 			}
 			else if (i==3) {
 				lblNewLabel4.setText(p.getCodigo());
+				
 			}
+			gen++;
+		}
 			
+		}
+		else 
+		{
+			JOptionPane.showConfirmDialog(null, "HA EXCEDIDO EL MAXIMO DE SUS CODIGOS DE DESCUENTO POR HOY");
 		}
 		
 	}

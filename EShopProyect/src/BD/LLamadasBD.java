@@ -52,8 +52,8 @@ public class LLamadasBD
 
 	 //ELIMINACION DE LA BASE DE DATOS
 	 private void BorrarBasesDeDatos(Connection con) {
-		// UsuarioBD.EliminarTablaUsuario(con);
-		// ProductoBD.EliminarTablaProducto(con);
+		 UsuarioBD.EliminarTablaUsuario(con);
+		 ProductoBD.EliminarTablaProducto(con);
 		 CarritoBD.EliminarTablaCarrito(con);
 	 	}
 	 

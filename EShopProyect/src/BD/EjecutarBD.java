@@ -20,7 +20,7 @@ public class EjecutarBD {
 		bd.ReiniciarBasesDeDatos("Admin");
 	//	bd.InsertarUsuario(u1);
 	//	bd.InsertarUsuario(u2);
-		bd.InsertarProducto(p1);
+	//	bd.InsertarProducto(p1);
 	//	bd.LoginUsuarios("James", "frgy");
 //		bd.ModificarUsuario(u1);
 		System.out.println("Acabo agregando una BD Funcional ");

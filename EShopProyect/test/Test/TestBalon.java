@@ -13,14 +13,14 @@ class TestBalon {
 
 	@Test
 	void testCategoriaDeporte() {
-		Balon b = new Balon("", 0, 0, "" , "", "", Categoria.CUALQUIERA, "Futbol", "Cuero");
+		Balon b = new Balon("", 0.0, 2, "", "", "", "", "");
 		
 		assertEquals("Futbol", b.getCategoriaDeporte());	
 	}
 	
 	@Test
 	void testMaterial() {
-		Balon b = new Balon("", 0, 0, "" , "", "", Categoria.CUALQUIERA, "Futbol", "Cuero");
+		Balon b = new Balon("", 0.0, 0, "", "", "", "Futbol", "Cuero");
 		
 		assertEquals("Cuero", b.getMaterial());	
 	}

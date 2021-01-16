@@ -26,6 +26,7 @@ import net.proteanit.sql.DbUtils;
 import javax.swing.JScrollPane;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JLabel;
 
@@ -288,12 +289,22 @@ public class VMain {
 		return carro;
 
 	}
+	public ArrayList<Carrito> getCarro(ArrayList<Carrito> carro)
+	{
+		for (int i = 0; i < carro.size(); i++)
+		{
+			System.out.println(i);
+		}
+		return carro;
+
+	}
 	private class SwingActionPreferences extends AbstractAction {
 		public SwingActionPreferences() {
 			putValue(NAME, "Cuenta");
 			putValue(SHORT_DESCRIPTION, "Accede a los datos de la cuenta");
 		}
 		public void actionPerformed(ActionEvent e) {
+			getCarro(carro);
 		}
 	}
 		  public void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     

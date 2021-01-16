@@ -29,6 +29,7 @@ public class LLamadasBD
 	
 	//CODIGO PARA LA CONEXION CON LA BASE DE DATOS
 	 public static Connection Conexion() {
+		 
 	        Connection con = null;
 
 	        try {
@@ -46,12 +47,14 @@ public class LLamadasBD
 	 private void CrearBasesDeDatos(Connection con) {
 		 UsuarioBD.CrearTablaUsuario(con);
 		 ProductoBD.CrearTablaProducto(con);
+		 CarritoBD.CrearTablaCarrito(con);
 		}
 
 	 //ELIMINACION DE LA BASE DE DATOS
 	 private void BorrarBasesDeDatos(Connection con) {
 		 UsuarioBD.EliminarTablaUsuario(con);
 		 ProductoBD.EliminarTablaProducto(con);
+		 CarritoBD.EliminarTablaCarrito(con);
 	 	}
 	 
 	 //INSERT USUARIOS

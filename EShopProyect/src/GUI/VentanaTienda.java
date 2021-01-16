@@ -176,14 +176,6 @@ public class VentanaTienda extends JFrame {
 				new VentanaProgreso(tienda);
 			}
 		});
-		botonCargar.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VentanaTiendaV2 window = new VentanaTiendaV2();
-				window.frame.setVisible(true);
-			}
-		});
 				
 		botonAdministar.addActionListener(new ActionListener() {
 

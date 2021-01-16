@@ -39,8 +39,9 @@ public class VentanaInicioSesion extends JDialog {
 	int conectado = 0;
 	ArrayList<Usuario> listaUsuarios ;
 	Tienda tienda;
+	Usuario usuario;
 	
-	public VentanaInicioSesion(Tienda tienda, VentanaPrincipal principal) {
+	public VentanaInicioSesion(Usuario usuario, VentanaPrincipal principal) {
 		
 		lemail = new JLabel("Nickname");
 		temail = new JTextField(20);
@@ -57,12 +58,7 @@ public class VentanaInicioSesion extends JDialog {
 
 				mail = temail.getText();
 				contra = ppassword.getText();
-				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText(),tienda);
-				if(u1.isTipo_cuenta()== true) 
-				{
-					System.out.println("Es admin");
-				}
-				
+				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText(),usuario);
 			}
 		});
 		

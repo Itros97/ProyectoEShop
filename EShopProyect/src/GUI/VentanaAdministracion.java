@@ -81,6 +81,8 @@ public class VentanaAdministracion {
 		JButton btnNewButton = new JButton("Generar codigos de descuento");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Codigos window = new Codigos();
+				window.frame.setVisible(true);
 			}
 		});
 		springLayout.putConstraint(SpringLayout.SOUTH, busuario, -6, SpringLayout.NORTH, btnNewButton);

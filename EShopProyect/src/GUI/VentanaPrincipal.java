@@ -13,13 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import Tienda.Tienda;
+import Usuario.Usuario;
 
 public class VentanaPrincipal extends JFrame {
 	
 
 	private static final long serialVersionUID = 1L;
-	
 	Tienda tienda;
+	Usuario usuario;
 	VentanaPrincipal ventana;
 	JMenuBar barra;
 	JMenu cliente;
@@ -50,7 +51,7 @@ public class VentanaPrincipal extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaInicioSesion v = new VentanaInicioSesion(tienda, ventana);
+				VentanaInicioSesion v = new VentanaInicioSesion(usuario, ventana);
 				v.setModal(true);
 				binicio.setEnabled(false);
 				bregistro.setEnabled(false);
@@ -62,7 +63,7 @@ public class VentanaPrincipal extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VentanaInicioSesion v = new VentanaInicioSesion(tienda, ventana);
+				VentanaInicioSesion v = new VentanaInicioSesion(usuario, ventana);
 				v.setModal(true);
 				binicio.setEnabled(false);
 				bregistro.setEnabled(false);

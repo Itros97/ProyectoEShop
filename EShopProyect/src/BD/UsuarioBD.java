@@ -10,6 +10,7 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
+import GUI.VMain;
 import GUI.VentanaTienda;
 import Tienda.Tienda;
 import Usuario.Usuario;
@@ -18,6 +19,9 @@ import Usuario.Usuario;
 
 public class UsuarioBD {
 
+	
+	public static String nickg;
+	public static boolean esadmin;
 	//CREAR
 	 protected static void CrearTablaUsuario(Connection con) {
 			// TODO Auto-generated method stub
@@ -87,11 +91,43 @@ public class UsuarioBD {
 	            System.out.println(e);
 	        }
 	 }
-	//COMPROBAR LOGIN
+	 //Obtener usuario logeado
+	    public static Usuario getUsuario(String nickname) 
+	    {
+	    Usuario user = new Usuario();
+	     PreparedStatement preparedStatement= null;
+		 Connection con = LLamadasBD.Conexion();
+		 try {
+			 String query = "SELECT NICKNAME,PASSWORD,TIPO_CUENTA FROM USUARIO WHERE NICKNAME = '" + nickname + "'";
+			 Statement statement = con.createStatement();
+	         ResultSet resultSet = statement.executeQuery(query);
+	         while(resultSet.next()) 
+	         {
+	        	 if(resultSet.getString("NICKNAME").equals(nickname)) 
+	        	 {
+	        		user.setNickname(nickname);
+	        		user.setPassword(resultSet.getString("PASSWORD"));
+	        		user.setTipo_cuenta(resultSet.getBoolean("TIPO_CUENTA"));
+	        	 }
+	        	 else 
+	        	 {
+	        		 System.err.println("No hay usuario asi");
+	        	 }
+	         }
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		 System.out.println(user.getNickname());
+		 System.out.println(user.getPassword());
+		 System.out.println(user.isTipo_cuenta());
+		return user;
+	    }
+	
+	 //COMPROBAR LOGIN
 
 	 //LEER DATOS DE USUARIO CONCRETO(Solo posible si es admin su modificacion)
 	 
-	   public static boolean LoginUsuario(String nickName, String password, Tienda tienda) {
+	   public static boolean LoginUsuario(String nickName, String password, Usuario usuario) {
 		      
 		   boolean comprobar = false;
 	  
@@ -108,6 +144,17 @@ public class UsuarioBD {
 	               
 	                if (resultSet.getString("PASSWORD").equals(password)) {
 	                    System.out.println("Si");
+	                    if(getUsuario(nickName).isTipo_cuenta() == true)
+	                    {
+	                    	//Tengo que hacer el enable del boton Administrar
+	                    	System.out.println("Es Admin");
+	                    	nickg = getUsuario(nickName).getNickname();
+	                    	esadmin = getUsuario(nickName).isTipo_cuenta();
+	                    	System.out.println(esadmin);
+	                    }
+	                    else {
+	                    	System.out.println("No es admin");
+	                    }
 	                    comprobar = true;
 	                    break;
 	                } else {
@@ -121,7 +168,10 @@ public class UsuarioBD {
 	        }
 	        if (comprobar == true) {
 	            System.out.println("Existe y la contraseña concuerda,permitir el logeo");
-	            VentanaTienda v = new VentanaTienda(tienda);
+	            VMain window = new VMain(usuario);
+	            window.ventanaMain.setVisible(true);
+	            
+			
 	        }
 	        //Unicamente para ver que esto es cierto
 	        return comprobar;

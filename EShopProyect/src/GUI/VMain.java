@@ -43,7 +43,7 @@ public class VMain {
 	protected JTextField jTextFieldNombre = new JTextField();
     protected JTextField jTextFieldPrecio = new JTextField();
     protected JTextField jTextFieldLN = new JTextField();
-    public ArrayList<Carrito> carro = new ArrayList<Carrito>();
+    public static ArrayList<Carrito> carro = new ArrayList<Carrito>();
 	
 	 public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -263,8 +263,7 @@ public class VMain {
 			putValue(SHORT_DESCRIPTION, "Añade el objeto al carrito");
 		}
 		public void actionPerformed(ActionEvent e) {
-			
-			insertCarro();
+			insertCarro(carro);
 		}
 	}
 	private class SwingActionHistory extends AbstractAction {
@@ -275,7 +274,7 @@ public class VMain {
 		public void actionPerformed(ActionEvent e) {
 		}
 	}
-	public ArrayList<Carrito> insertCarro()
+	public ArrayList<Carrito> insertCarro(ArrayList<Carrito> carro)
 	{
 		Carrito c1 = new Carrito();
 		c1.setId_carrito(i);

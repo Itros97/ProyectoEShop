@@ -144,7 +144,7 @@ public class VentanaRegistro extends JFrame {
 			}
 		});
 
-		this.setLayout(new GridLayout(8, 2));
+		this.setLayout(new GridLayout(7, 2));
 		add(lnickname);
 		add(tnickname);
 		add(lemail);

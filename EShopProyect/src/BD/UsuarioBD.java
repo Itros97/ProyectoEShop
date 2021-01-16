@@ -144,11 +144,11 @@ public class UsuarioBD {
 	                    if(getUsuario(nickName).isTipo_cuenta() == true)
 	                    {
 	                    	//Tengo que hacer el enable del boton Administrar
-	                    	System.out.println("Hello");
+	                    	System.out.println("Es Admin");
 
 	                    }
 	                    else {
-	                    	System.out.println("Mec");
+	                    	System.out.println("No es admin");
 	                    }
 	                    comprobar = true;
 	                    break;

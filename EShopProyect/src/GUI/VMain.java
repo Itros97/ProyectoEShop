@@ -264,29 +264,35 @@ public class VMain {
 		}
 		public void actionPerformed(ActionEvent e) {
 			
-			Carrito c1 = new Carrito();
-			c1.setId_carrito(i);
-			c1.setNickname(UsuarioBD.nickg);
-			c1.setNombre(jTextFieldNombre.getText());
-			c1.setPrecio(Double.parseDouble(jTextFieldPrecio.getText()));
-			
-			carro.add(c1);
-			i++;
-			System.out.println(c1.toString());
+			insertCarro();
 		}
 	}
 	private class SwingActionHistory extends AbstractAction {
 		public SwingActionHistory() {
 			putValue(NAME, "Carrito");
-			putValue(SHORT_DESCRIPTION, "Some short description");
+			putValue(SHORT_DESCRIPTION, "Accede a la ventana carrito");
 		}
 		public void actionPerformed(ActionEvent e) {
 		}
 	}
+	public ArrayList<Carrito> insertCarro()
+	{
+		Carrito c1 = new Carrito();
+		c1.setId_carrito(i);
+		c1.setNickname(UsuarioBD.nickg);
+		c1.setNombre(jTextFieldNombre.getText());
+		c1.setPrecio(Double.parseDouble(jTextFieldPrecio.getText()));
+		
+		carro.add(c1);
+		i++;
+		System.out.println(c1.toString());
+		return carro;
+
+	}
 	private class SwingActionPreferences extends AbstractAction {
 		public SwingActionPreferences() {
 			putValue(NAME, "Cuenta");
-			putValue(SHORT_DESCRIPTION, "Some short description");
+			putValue(SHORT_DESCRIPTION, "Accede a los datos de la cuenta");
 		}
 		public void actionPerformed(ActionEvent e) {
 		}

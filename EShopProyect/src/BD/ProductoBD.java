@@ -20,7 +20,6 @@ public class ProductoBD {
 		    		"NOMBRE VARCHAR(50) NOT NULL," +
 		    		"PRECIO DOUBLE NOT NULL," +
 		    		"STOCK INTEGER," +
-		    		"TIPODEPRODUCTO VARCHAR(20)," +
 		    		"DESCRIPCION VARCHAR(300)," +
 		    		"IMAGEN VARCHAR(225)," +
 		    		"MARCA VARCHAR(20));";

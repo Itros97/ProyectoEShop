@@ -16,7 +16,7 @@ public class LLamadasBD
         if (codSeguridad.equals("Admin")) {
             //EJECUTAR EL REINICIO DE TODOS LOS DATOS
             Connection con = Conexion();
-          //  BorrarBasesDeDatos(con);
+            BorrarBasesDeDatos(con);
             CrearBasesDeDatos(con);
             //   InsertarBasesDeDatos(con);
 
@@ -56,6 +56,7 @@ public class LLamadasBD
 		 UsuarioBD.EliminarTablaUsuario(con);
 		 ProductoBD.EliminarTablaProducto(con);
 		 CarritoBD.EliminarTablaCarrito(con);
+		 CodigosBD.EliminarTablaCodigo(con);
 	 	}
 	 
 	 //INSERT USUARIOS

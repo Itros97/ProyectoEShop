@@ -91,6 +91,7 @@ public class CarritoUI {
 				System.out.println(nick);
 				deletecarro(nick);
 				displaycarro(nick);
+				lblNewLabel_1.setText(Double.toString(0.0));
 			}
 		});
 		btnNewButton_2.setBounds(310, 193, 114, 23);
@@ -132,7 +133,7 @@ public class CarritoUI {
 	public void displaycarro(String nickname) 
 	{
 		try {
-			String query = "SELECT NICKNAME ,NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME = '" +nickname+ "'";
+			String query = "SELECT NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME = '" +nickname+ "'";
 			PreparedStatement pst = conn.prepareStatement(query);
 			ResultSet rs = pst.executeQuery();
 			

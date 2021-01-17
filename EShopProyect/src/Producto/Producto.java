@@ -123,5 +123,8 @@ public class Producto implements Serializable{
 		return "Producto [precio=" + precio + ", stock=" + stock + ", descripcion=" + descripcion + ", imagen=" + imagen
 				+ ", marca=" + marca + "]";
 	}
+	public String toString2() {
+		return "Producto [Nombre ="+nombre+ " n\" Precio=" + precio + "]";
+	}
 
 }

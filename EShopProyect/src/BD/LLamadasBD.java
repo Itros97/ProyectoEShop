@@ -48,6 +48,7 @@ public class LLamadasBD
 		 UsuarioBD.CrearTablaUsuario(con);
 		 ProductoBD.CrearTablaProducto(con);
 		 CarritoBD.CrearTablaCarrito(con);
+		 CodigosBD.CrearTablaCodigos(con);
 		}
 
 	 //ELIMINACION DE LA BASE DE DATOS
@@ -55,6 +56,7 @@ public class LLamadasBD
 		 UsuarioBD.EliminarTablaUsuario(con);
 		 ProductoBD.EliminarTablaProducto(con);
 		 CarritoBD.EliminarTablaCarrito(con);
+		 CodigosBD.EliminarTablaCodigo(con);
 	 	}
 	 
 	 //INSERT USUARIOS

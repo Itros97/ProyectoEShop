@@ -59,6 +59,7 @@ public class VentanaInicioSesion extends JDialog {
 				mail = temail.getText();
 				contra = ppassword.getText();
 				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText(),usuario);
+				dispose();
 			}
 		});
 		

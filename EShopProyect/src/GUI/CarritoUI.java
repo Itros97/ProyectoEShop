@@ -3,6 +3,8 @@ package GUI;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,6 +21,7 @@ import javax.swing.JTable;
 
 import BD.LLamadasBD;
 import BD.UsuarioBD;
+import Producto.Carrito;
 import net.proteanit.sql.DbUtils;
 
 public class CarritoUI {
@@ -69,7 +72,34 @@ public class CarritoUI {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				printticket(VMain.carro);
 				JOptionPane.showMessageDialog(frame, "COMPRA REALIZADA.");
+				deletecarro(nick);
+			}
+
+			private void printticket(ArrayList<Carrito> carro) {
+				try {
+					int vt= 0;
+					FileWriter writter = new FileWriter("Ticket.txt");
+					for (int i = 0; i < carro.size(); i++) {
+						vt += carro.get(i).precio;
+						System.out.println(vt);
+						writter.write("Datos prod: \n");
+						writter.write(carro.get(i).toString());
+						writter.write("\n");
+						if(carro.size()-i > 1 ) {
+						writter.write("-----");
+						writter.write("\n");
+						}
+					}
+					writter.write("--------------- \n");
+					writter.write("Precio Total: \n");
+					writter.write(vt);
+					writter.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}
 		});
@@ -90,6 +120,8 @@ public class CarritoUI {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(nick);
 				deletecarro(nick);
+				displaycarro(nick);
+				lblNewLabel_1.setText(Double.toString(0.0));
 			}
 		});
 		btnNewButton_2.setBounds(310, 193, 114, 23);
@@ -131,7 +163,7 @@ public class CarritoUI {
 	public void displaycarro(String nickname) 
 	{
 		try {
-			String query = "SELECT NICKNAME ,NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME = '" +nickname+ "'";
+			String query = "SELECT NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME = '" +nickname+ "'";
 			PreparedStatement pst = conn.prepareStatement(query);
 			ResultSet rs = pst.executeQuery();
 			
@@ -155,4 +187,17 @@ public class CarritoUI {
 			// TODO: handle exception
 		}
 	}
-}
+	public void aplicardescuento(String code) 
+	{
+		try {
+			String query = "DELETE FROM CODIGOS WHERE CODIGO = '" +code+ "'";
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.execute();
+			pst.close();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	}
+

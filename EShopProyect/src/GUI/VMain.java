@@ -8,6 +8,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
@@ -16,6 +18,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+
+import com.mysql.cj.xdevapi.JsonArray;
+import com.mysql.cj.xdevapi.JsonValue;
 
 import BD.CarritoBD;
 import BD.LLamadasBD;
@@ -28,7 +33,6 @@ import javax.swing.JScrollPane;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import javax.swing.JLabel;
 
 public class VMain {
@@ -146,8 +150,8 @@ public class VMain {
 		bAccount.setFocusPainted(false);
 		pBotonera.add(bAccount);
 		
-		JButton bHistory = new JButton("History");
-		bHistory.addActionListener(new ActionListener() {
+		JButton bcarrito = new JButton("Carrito");
+		bcarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel pHistory = new JPanel();
 				pHistory.setBounds(0, 0, 360, 900);
@@ -155,13 +159,13 @@ public class VMain {
 				pHistory.setLayout(null);
 			}
 		});
-		bHistory.setAction(actionHistory);
-		bHistory.setBounds(10, 570, 250, 50);
-		bHistory.setFocusPainted(false);
-		pBotonera.add(bHistory);
+		bcarrito.setAction(actionHistory);
+		bcarrito.setBounds(10, 570, 250, 50);
+		bcarrito.setFocusPainted(false);
+		pBotonera.add(bcarrito);
 		
-		JButton bPreferences = new JButton("Preferences");
-		bPreferences.addActionListener(new ActionListener() {
+		JButton bHistorial = new JButton("Historial");
+		bHistorial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel pPreferences = new JPanel();
 				pPreferences.setBounds(0, 0, 360, 900);
@@ -169,10 +173,10 @@ public class VMain {
 				pPreferences.setLayout(null);
 			}
 		});
-		bPreferences.setAction(actionPreferences);
-		bPreferences.setBounds(10, 630, 250, 50);
-		bPreferences.setFocusPainted(false);
-		pBotonera.add(bPreferences);
+		bHistorial.setAction(actionPreferences);
+		bHistorial.setBounds(10, 630, 250, 50);
+		bHistorial.setFocusPainted(false);
+		pBotonera.add(bHistorial);
 		
 		
 		String path = "";
@@ -193,18 +197,17 @@ public class VMain {
 		   setAdministrarvisible();
 		scrollShop.setViewportView(table);
 		//Hilo de ejecuccion que permite que podamos seleccionar entre disitintos elementos de la tabla y hacer display de su foto
-		Thread row = new Thread () {
+		//ya que mientras hace display de ella la app se quedaria colgada
+		Thread showpic = new Thread () {
 			@Override
 			public void run () {
 				while(table.isEnabled()) {
-					//System.out.println("W");
 					if(table.getSelectedRow() < 0) {
 						lblNewLabel.setText("");
 					}
 					else {
 						String table_id = table.getValueAt(table.getSelectedRow(), 0).toString();
-						//System.out.println(table_id);
-						//lblNewLabel.setText(""+table_id);
+
 						try {
 							String query = "SELECT IMAGEN FROM PRODUCTO WHERE NOMBRE = ? ";
 							
@@ -215,7 +218,7 @@ public class VMain {
 								lblNewLabel.setText(rs.getString(1));
 								lblNewLabel.setPath(rs.getString(1));
 								lblNewLabel.PutImage();
-								//System.out.println(rs.getString(1));
+								
 							}
 						}catch (Exception e) {
 							System.out.println(e);
@@ -225,7 +228,7 @@ public class VMain {
 				}
 			}
 		};
-		row.start();
+		showpic.start();
 	}
 	protected void setAdministrarvisible() 
 	{
@@ -310,6 +313,7 @@ public class VMain {
 		return carro;
 
 	}
+	
 	private class SwingActionPreferences extends AbstractAction {
 		public SwingActionPreferences() {
 			putValue(NAME, "Historial");
@@ -317,6 +321,7 @@ public class VMain {
 		}
 		public void actionPerformed(ActionEvent e) {
 			getCarro(carro);
+			
 		}
 	}
 		  public void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     

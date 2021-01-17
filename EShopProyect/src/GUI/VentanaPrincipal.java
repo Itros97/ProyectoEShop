@@ -111,7 +111,7 @@ public class VentanaPrincipal extends JFrame {
 		setJMenuBar(barra);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setTitle("TIENDA DE ROPA");
+		setTitle("EShop Browser");
 		setSize(500, 500);
 		setLocationRelativeTo(null);
 		setVisible(true);

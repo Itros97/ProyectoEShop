@@ -13,7 +13,8 @@ public class LinkPhoto extends JLabel{
 		this.ruta = Path;
 	}
 	public void PutImage () {
-		this.setIcon( new ImageIcon(this.ruta));
+		this.setIcon(new ImageIcon(this.ruta));
+		
 	}
 
 }

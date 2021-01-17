@@ -312,8 +312,8 @@ public class VMain {
 	}
 	private class SwingActionPreferences extends AbstractAction {
 		public SwingActionPreferences() {
-			putValue(NAME, "Cuenta");
-			putValue(SHORT_DESCRIPTION, "Accede a los datos de la cuenta");
+			putValue(NAME, "Historial");
+			putValue(SHORT_DESCRIPTION, "Accede a las compras de la cuenta");
 		}
 		public void actionPerformed(ActionEvent e) {
 			getCarro(carro);

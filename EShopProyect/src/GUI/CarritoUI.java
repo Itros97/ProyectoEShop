@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -68,9 +69,8 @@ public class CarritoUI {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				getCarro(cr1);
+				JOptionPane.showMessageDialog(frame, "COMPRA REALIZADA.");
 				
-				displaycarro(nick);
 			}
 		});
 		btnNewButton.setBounds(10, 227, 89, 23);
@@ -89,6 +89,7 @@ public class CarritoUI {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(nick);
+				deletecarro(nick);
 			}
 		});
 		btnNewButton_2.setBounds(310, 193, 114, 23);
@@ -101,6 +102,16 @@ public class CarritoUI {
 		
 		lblNewLabel_1.setBounds(97, 197, 46, 14);
 		frame.getContentPane().add(lblNewLabel_1);
+		
+		JButton btnNewButton_3 = new JButton("Abrir Cesta");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getCarro(cr1);
+				displaycarro(nick);
+			}
+		});
+		btnNewButton_3.setBounds(211, 193, 89, 23);
+		frame.getContentPane().add(btnNewButton_3);
 		
 	
 	}

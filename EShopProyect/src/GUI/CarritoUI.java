@@ -74,23 +74,27 @@ public class CarritoUI {
 			public void actionPerformed(ActionEvent e) {
 				printticket(VMain.carro);
 				JOptionPane.showMessageDialog(frame, "COMPRA REALIZADA.");
-				
+				deletecarro(nick);
 			}
 
 			private void printticket(ArrayList<Carrito> carro) {
 				try {
-					FileWriter writter = new FileWriter("C:\\Users\\itros\\Ticket.txt");
+					int vt= 0;
+					FileWriter writter = new FileWriter("Ticket.txt");
 					for (int i = 0; i < carro.size(); i++) {
-						writter.write("Nombre: \n");
-						writter.write(carro.get(i).nombre);
-						writter.write("\n");
-						writter.write("Precio: \n ");
-						writter.write((int) carro.get(i).precio);
+						vt += carro.get(i).precio;
+						System.out.println(vt);
+						writter.write("Datos prod: \n");
+						writter.write(carro.get(i).toString());
 						writter.write("\n");
 						if(carro.size()-i > 1 ) {
-						writter.write(", ");
+						writter.write("-----");
+						writter.write("\n");
 						}
 					}
+					writter.write("--------------- \n");
+					writter.write("Precio Total: \n");
+					writter.write(vt);
 					writter.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

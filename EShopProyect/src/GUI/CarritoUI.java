@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 
 import BD.LLamadasBD;
+import BD.UsuarioBD;
 import net.proteanit.sql.DbUtils;
 
 public class CarritoUI {
@@ -26,7 +27,7 @@ public class CarritoUI {
 	 JLabel lblNewLabel_1 = new JLabel("null");
 	 static LLamadasBD cct= new LLamadasBD();
 	 static Connection conn = cct.Conexion();
-	 String nickg="Magni";
+	 String nick = UsuarioBD.nickg;
 	 /**
 	 * Launch the application.
 	 */
@@ -69,7 +70,7 @@ public class CarritoUI {
 			public void actionPerformed(ActionEvent e) {
 				getCarro(cr1);
 				
-				displaycarro(nickg);
+				displaycarro(nick);
 			}
 		});
 		btnNewButton.setBounds(10, 227, 89, 23);
@@ -85,6 +86,11 @@ public class CarritoUI {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("LimpiarCesta");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(nick);
+			}
+		});
 		btnNewButton_2.setBounds(310, 193, 114, 23);
 		frame.getContentPane().add(btnNewButton_2);
 		

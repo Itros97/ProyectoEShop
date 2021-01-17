@@ -55,8 +55,8 @@ public class Carrito {
 	}
 	@Override
 	public String toString() {
-		return "Carrito [Nombre=" + nombre + "\n Precio="
-				+ precio + "]";
+		return "\nNombre=" + nombre + "\nPrecio="
+				+ precio;
 	}
 	
 	

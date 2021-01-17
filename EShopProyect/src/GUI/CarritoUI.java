@@ -79,10 +79,10 @@ public class CarritoUI {
 
 			private void printticket(ArrayList<Carrito> carro) {
 				try {
-					int vt= 0;
+					double vt= 0;
 					FileWriter writter = new FileWriter("Ticket.txt");
 					for (int i = 0; i < carro.size(); i++) {
-						vt += carro.get(i).precio;
+						vt += carro.get(i).getPrecio();
 						System.out.println(vt);
 						writter.write("Datos prod: \n");
 						writter.write(carro.get(i).toString());
@@ -94,7 +94,8 @@ public class CarritoUI {
 					}
 					writter.write("--------------- \n");
 					writter.write("Precio Total: \n");
-					writter.write(vt);
+				//	Double.toString(vt);
+				//	writter.write(vt);
 					writter.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block

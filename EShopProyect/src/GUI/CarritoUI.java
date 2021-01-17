@@ -132,4 +132,16 @@ public class CarritoUI {
 			e1.printStackTrace();
 		}
 	}
+	public void deletecarro(String nickname) 
+	{
+		try {
+			String query = "DELETE FROM CARRITO WHERE NICKNAME = '" +nickname+ "'";
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.execute();
+			pst.close();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 }

@@ -90,6 +90,7 @@ public class CarritoUI {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(nick);
 				deletecarro(nick);
+				displaycarro(nick);
 			}
 		});
 		btnNewButton_2.setBounds(310, 193, 114, 23);

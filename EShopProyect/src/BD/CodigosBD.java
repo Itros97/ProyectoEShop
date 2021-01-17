@@ -10,7 +10,7 @@ public class CodigosBD {
 			    PreparedStatement preparedStatement = null;
 			    
 			    //TABLA CODIGOS
-			    String createUsuario = "CREATE TABLE USUARIO(" +
+			    String createUsuario = "CREATE TABLE CODIGOS(" +
 			    		"CODIGO VARCHAR(50) PRIMARY KEY  NOT NULL);";
 			    try {
 			    	

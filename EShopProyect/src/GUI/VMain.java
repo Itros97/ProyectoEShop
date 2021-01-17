@@ -193,7 +193,7 @@ public class VMain {
 		   setAdministrarvisible();
 		scrollShop.setViewportView(table);
 		//Hilo de ejecuccion que permite que podamos seleccionar entre disitintos elementos de la tabla y hacer display de su foto
-		//y para que mientras hace display de ella la app no se quede colgada
+		//ya que mientras hace display de ella la app se quedaria colgada
 		Thread showpic = new Thread () {
 			@Override
 			public void run () {

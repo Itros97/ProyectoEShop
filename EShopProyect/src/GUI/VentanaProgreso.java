@@ -54,7 +54,7 @@ public class VentanaProgreso extends JDialog{
             pw.println();
             pw.println("-----------------------------------------");
             pw.println();
-            pw.println("Prendas compradas: "+tienda.getCarro().getCantidad());
+            pw.println("Articulos comprados: "+tienda.getCarro().getCantidad());
             pw.println("Precio Total: "+ tienda.getCarro().getPrecioTotal()+" €");
             pw.close();
         } catch (Exception e1) {

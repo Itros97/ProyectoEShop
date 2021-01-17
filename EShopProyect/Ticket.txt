@@ -1,14 +1,17 @@
 Datos prod: 
-Carrito [Nombre=GeForce GTX 3060Ti
- Precio=599.99]
+Carrito 
+Nombre=GeForce GTX 3060Ti
+Precio=599.99
 -----
 Datos prod: 
-Carrito [Nombre=KeyBoard
- Precio=39.99]
+Carrito 
+Nombre=KeyBoard
+Precio=39.99
 -----
 Datos prod: 
-Carrito [Nombre=LG Q6+
- Precio=250.99]
+Carrito 
+Nombre=LG Q6+
+Precio=250.99
 --------------- 
 Precio Total: 
 ?

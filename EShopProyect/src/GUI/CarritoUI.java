@@ -3,6 +3,8 @@ package GUI;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,6 +21,7 @@ import javax.swing.JTable;
 
 import BD.LLamadasBD;
 import BD.UsuarioBD;
+import Producto.Carrito;
 import net.proteanit.sql.DbUtils;
 
 public class CarritoUI {
@@ -69,7 +72,30 @@ public class CarritoUI {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				printticket(VMain.carro);
 				JOptionPane.showMessageDialog(frame, "COMPRA REALIZADA.");
+				
+			}
+
+			private void printticket(ArrayList<Carrito> carro) {
+				try {
+					FileWriter writter = new FileWriter("C:\\Users\\itros\\Ticket.txt");
+					for (int i = 0; i < carro.size(); i++) {
+						writter.write("Nombre: \n");
+						writter.write(carro.get(i).nombre);
+						writter.write("\n");
+						writter.write("Precio: \n ");
+						writter.write((int) carro.get(i).precio);
+						writter.write("\n");
+						if(carro.size()-i > 1 ) {
+						writter.write(", ");
+						}
+					}
+					writter.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}
 		});

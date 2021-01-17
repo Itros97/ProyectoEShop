@@ -314,20 +314,6 @@ public class VMain {
 
 	}
 	
-	public void printticket(ArrayList<Carrito> carro) 
-	{
-		try {
-			FileWriter writter = new FileWriter("C:\\Users\\itros\\Ticket.txt");
-			for (int i = 0; i < carro.size(); i++) {
-				writter.write(carro.get(i).nombre);
-				System.out.println(i);
-			}
-			writter.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	private class SwingActionPreferences extends AbstractAction {
 		public SwingActionPreferences() {
 			putValue(NAME, "Historial");
@@ -335,7 +321,7 @@ public class VMain {
 		}
 		public void actionPerformed(ActionEvent e) {
 			getCarro(carro);
-			printticket(carro);
+			
 		}
 	}
 		  public void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     

@@ -193,18 +193,17 @@ public class VMain {
 		   setAdministrarvisible();
 		scrollShop.setViewportView(table);
 		//Hilo de ejecuccion que permite que podamos seleccionar entre disitintos elementos de la tabla y hacer display de su foto
-		Thread row = new Thread () {
+		//y para que mientras hace display de ella la app no se quede colgada
+		Thread showpic = new Thread () {
 			@Override
 			public void run () {
 				while(table.isEnabled()) {
-					//System.out.println("W");
 					if(table.getSelectedRow() < 0) {
 						lblNewLabel.setText("");
 					}
 					else {
 						String table_id = table.getValueAt(table.getSelectedRow(), 0).toString();
-						//System.out.println(table_id);
-						//lblNewLabel.setText(""+table_id);
+
 						try {
 							String query = "SELECT IMAGEN FROM PRODUCTO WHERE NOMBRE = ? ";
 							
@@ -215,7 +214,6 @@ public class VMain {
 								lblNewLabel.setText(rs.getString(1));
 								lblNewLabel.setPath(rs.getString(1));
 								lblNewLabel.PutImage();
-								//System.out.println(rs.getString(1));
 							}
 						}catch (Exception e) {
 							System.out.println(e);
@@ -225,7 +223,7 @@ public class VMain {
 				}
 			}
 		};
-		row.start();
+		showpic.start();
 	}
 	protected void setAdministrarvisible() 
 	{

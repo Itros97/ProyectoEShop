@@ -155,4 +155,17 @@ public class CarritoUI {
 			// TODO: handle exception
 		}
 	}
-}
+	public void aplicardescuento(String code) 
+	{
+		try {
+			String query = "DELETE FROM CODIGOS WHERE CODIGO = '" +code+ "'";
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.execute();
+			pst.close();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	}
+

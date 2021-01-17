@@ -134,21 +134,19 @@ public class VMain {
 		bShop.setFocusPainted(false);
 		pBotonera.add(bShop);
 		
-		JButton bAccount = new JButton("Account");
-		bAccount.addActionListener(new ActionListener() {
+		JButton baddcarrito = new JButton("Añadir al carrito");
+		baddcarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel pAccount = new JPanel();
 				pAccount.setBounds(0, 0, 360, 900);
 				ventanaMain.getContentPane().add(pAccount);
 				pAccount.setLayout(null);
-			//	VProfile vP = new VProfile(usuario);
-			//	vP.frame.setVisible(true);
 			}
 		});
-		bAccount.setAction(actionAccount);
-		bAccount.setBounds(10, 510, 250, 50);
-		bAccount.setFocusPainted(false);
-		pBotonera.add(bAccount);
+		baddcarrito.setAction(actionAccount);
+		baddcarrito.setBounds(10, 510, 250, 50);
+		baddcarrito.setFocusPainted(false);
+		pBotonera.add(baddcarrito);
 		
 		JButton bcarrito = new JButton("Carrito");
 		bcarrito.addActionListener(new ActionListener() {

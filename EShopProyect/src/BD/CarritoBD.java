@@ -3,6 +3,9 @@ package BD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import Producto.Carrito;
+import Usuario.Usuario;
+
 public class CarritoBD {
 	
 	 protected static void CrearTablaCarrito(Connection con) {
@@ -41,4 +44,30 @@ public class CarritoBD {
 					System.err.println("Tabla CARRITO no ha podido eliminarse : "+e);
 			}
 		 }
+		 
+		 public void InsertarCarrito(Carrito nuevoCarro) 
+		 {
+			 PreparedStatement preparedStatement = null;
+			 Connection con = LLamadasBD.Conexion();
+		        try {
+		            String query = " INSERT INTO CARRO (NICKNAME,PASSWORD,CORREOELECTRONICO)"
+		                    + " VALUES (?, ?, ?)";
+
+		            preparedStatement = con.prepareStatement(query);
+
+
+		            preparedStatement.setString(1, nuevoCarro.getNickname());
+		            preparedStatement.setString(2, nuevoCarro.getNombre());
+		            preparedStatement.setLong(3, (long) nuevoCarro.getPrecio());
+		          
+		            preparedStatement.execute();
+
+		            System.out.println("Operación existosa");
+
+		        } catch (Exception e) {
+		            System.out.println("A ocurrido un ERROR");
+		            System.out.println(e);
+		        }
+		 }
+		 
 }

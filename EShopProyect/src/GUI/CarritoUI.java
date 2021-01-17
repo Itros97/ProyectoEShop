@@ -60,6 +60,11 @@ public class CarritoUI {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cerrar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		btnNewButton_1.setBounds(310, 227, 114, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
@@ -82,7 +87,7 @@ public class CarritoUI {
 
 	public void cargarlista() 
 	{
-		System.out.println("Hola");
+		list = new JList(cr1.toArray());
 	}
 	double valoraco=0;
 	public void getCarro(ArrayList<Producto.Carrito> cr1) 

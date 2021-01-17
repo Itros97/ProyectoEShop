@@ -278,6 +278,7 @@ public class VMain {
 			getCarro(carro);
 		}
 	}
+	
 	public ArrayList<Carrito> insertCarro(ArrayList<Carrito> carro)
 	{
 		Carrito c1 = new Carrito();

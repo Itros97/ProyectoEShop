@@ -3,6 +3,10 @@ package GUI;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -10,13 +14,18 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JTable;
+
+import BD.LLamadasBD;
+import net.proteanit.sql.DbUtils;
 
 public class CarritoUI {
 
 	 protected JFrame frame;
-	 public JList list = new JList(cr1.toArray());
 	 public static ArrayList<Producto.Carrito> cr1 = new ArrayList<Producto.Carrito>();
 	 JLabel lblNewLabel_1 = new JLabel("null");
+	 static LLamadasBD cct= new LLamadasBD();
+	 static Connection conn = cct.Conexion();
 	 /**
 	 * Launch the application.
 	 */
@@ -48,12 +57,17 @@ public class CarritoUI {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+	
+		table = new JTable();
+		table.setBounds(10, 11, 414, 173);
+		frame.getContentPane().add(table);
 		
 		JButton btnNewButton = new JButton("Comprar");
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getCarro(cr1);
+				displaycarro(null);
 			}
 		});
 		btnNewButton.setBounds(10, 227, 89, 23);
@@ -72,10 +86,6 @@ public class CarritoUI {
 		btnNewButton_2.setBounds(310, 193, 114, 23);
 		frame.getContentPane().add(btnNewButton_2);
 		
-		
-		list.setBounds(10, 11, 414, 172);
-		frame.getContentPane().add(list);
-		
 		JLabel lblNewLabel = new JLabel("Precio Total:");
 		lblNewLabel.setBounds(10, 197, 71, 14);
 		frame.getContentPane().add(lblNewLabel);
@@ -83,23 +93,35 @@ public class CarritoUI {
 		
 		lblNewLabel_1.setBounds(97, 197, 46, 14);
 		frame.getContentPane().add(lblNewLabel_1);
+		
+	
 	}
 
-	public void cargarlista() 
-	{
-		list = new JList(cr1.toArray());
-	}
 	double valoraco=0;
+	private JTable table;
 	public void getCarro(ArrayList<Producto.Carrito> cr1) 
 	{
 		
 		cr1 = VMain.carro;
 		valoraco=VMain.precioaco;
-		cargarlista();
 		lblNewLabel_1.setText(Double.toString(valoraco));
 		System.out.println(cr1.toString());
 		System.out.println(valoraco);
 		
 	}
-	
+	public void displaycarro(String nickname) 
+	{
+		try {
+			String query = "SELECT NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME ="+nickname+";";
+			PreparedStatement pst = conn.prepareStatement(query);
+			ResultSet rs = pst.executeQuery();
+			
+			
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+			table.setDefaultEditor(Object.class, null);
+
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	}
 }

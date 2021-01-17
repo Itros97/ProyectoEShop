@@ -45,12 +45,12 @@ public class CarritoBD {
 			}
 		 }
 		 
-		 public void InsertarCarrito(Carrito nuevoCarro) 
+		 public static void InsertarCarrito(Carrito nuevoCarro) 
 		 {
 			 PreparedStatement preparedStatement = null;
 			 Connection con = LLamadasBD.Conexion();
 		        try {
-		            String query = " INSERT INTO CARRO (NICKNAME,PASSWORD,CORREOELECTRONICO)"
+		            String query = " INSERT INTO CARRITO (NICKNAME,NOMBRE,PRECIO)"
 		                    + " VALUES (?, ?, ?)";
 
 		            preparedStatement = con.prepareStatement(query);

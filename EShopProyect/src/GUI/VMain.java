@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import BD.CarritoBD;
 import BD.LLamadasBD;
 import BD.LinkPhoto;
 import BD.UsuarioBD;
@@ -278,7 +279,10 @@ public class VMain {
 			getCarro(carro);
 		}
 	}
-	
+	public void getdata() 
+	{
+		
+	}
 	public ArrayList<Carrito> insertCarro(ArrayList<Carrito> carro)
 	{
 		Carrito c1 = new Carrito();
@@ -286,7 +290,7 @@ public class VMain {
 		c1.setNickname(UsuarioBD.nickg);
 		c1.setNombre(jTextFieldNombre.getText());
 		c1.setPrecio(Double.parseDouble(jTextFieldPrecio.getText()));
-		
+		CarritoBD.InsertarCarrito(c1);
 		carro.add(c1);
 		i++;
 		System.out.println(c1.toString());

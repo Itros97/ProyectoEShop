@@ -26,6 +26,7 @@ public class CarritoUI {
 	 JLabel lblNewLabel_1 = new JLabel("null");
 	 static LLamadasBD cct= new LLamadasBD();
 	 static Connection conn = cct.Conexion();
+	 String nickg="Magni";
 	 /**
 	 * Launch the application.
 	 */
@@ -67,7 +68,8 @@ public class CarritoUI {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getCarro(cr1);
-				displaycarro(null);
+				
+				displaycarro(nickg);
 			}
 		});
 		btnNewButton.setBounds(10, 227, 89, 23);
@@ -112,7 +114,7 @@ public class CarritoUI {
 	public void displaycarro(String nickname) 
 	{
 		try {
-			String query = "SELECT NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME ="+nickname+";";
+			String query = "SELECT NICKNAME ,NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME = '" +nickname+ "'";
 			PreparedStatement pst = conn.prepareStatement(query);
 			ResultSet rs = pst.executeQuery();
 			

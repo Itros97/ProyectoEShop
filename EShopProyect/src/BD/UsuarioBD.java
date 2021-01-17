@@ -154,6 +154,8 @@ public class UsuarioBD {
 	                    }
 	                    else {
 	                    	System.out.println("No es admin");
+	                    	nickg = getUsuario(nickName).getNickname();
+	                    	esadmin = getUsuario(nickName).isTipo_cuenta();
 	                    }
 	                    comprobar = true;
 	                    break;

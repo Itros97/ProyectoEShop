@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import BD.CarritoBD;
 import BD.LLamadasBD;
 import BD.LinkPhoto;
 import BD.UsuarioBD;
@@ -45,7 +46,7 @@ public class VMain {
     protected JTextField jTextFieldPrecio = new JTextField();
     protected JTextField jTextFieldLN = new JTextField();
     public static ArrayList<Carrito> carro = new ArrayList<Carrito>();
-	
+	public static double precioaco=0;
 	 public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -275,7 +276,12 @@ public class VMain {
 		public void actionPerformed(ActionEvent e) {
 			CarritoUI crui1 = new CarritoUI();
 			crui1.frame.setVisible(true);
+			getCarro(carro);
 		}
+	}
+	public void getdata() 
+	{
+		
 	}
 	public ArrayList<Carrito> insertCarro(ArrayList<Carrito> carro)
 	{
@@ -284,26 +290,30 @@ public class VMain {
 		c1.setNickname(UsuarioBD.nickg);
 		c1.setNombre(jTextFieldNombre.getText());
 		c1.setPrecio(Double.parseDouble(jTextFieldPrecio.getText()));
-		
+		CarritoBD.InsertarCarrito(c1);
 		carro.add(c1);
 		i++;
 		System.out.println(c1.toString());
 		return carro;
 
 	}
+
 	public ArrayList<Carrito> getCarro(ArrayList<Carrito> carro)
 	{
+		
 		for (int i = 0; i < carro.size(); i++)
 		{
 			System.out.println(carro.get(i));
+			precioaco +=carro.get(i).precio;
 		}
+		System.out.println(precioaco);
 		return carro;
 
 	}
 	private class SwingActionPreferences extends AbstractAction {
 		public SwingActionPreferences() {
-			putValue(NAME, "Cuenta");
-			putValue(SHORT_DESCRIPTION, "Accede a los datos de la cuenta");
+			putValue(NAME, "Historial");
+			putValue(SHORT_DESCRIPTION, "Accede a las compras de la cuenta");
 		}
 		public void actionPerformed(ActionEvent e) {
 			getCarro(carro);

@@ -31,6 +31,7 @@ public class Codigos {
 				try {
 					Codigos window = new Codigos();
 					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -1,9 +1,0 @@
-Usuario [nickname=default, correoElectronico=default@def.def,is Admin=false]
-
------------------------------------------
-
-
------------------------------------------
-
-Prendas compradas: 0
-Precio Total: 0.0 €

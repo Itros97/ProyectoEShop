@@ -215,7 +215,7 @@ public class VMain {
 							if(rs.next()) {
 								lblNewLabel.setText(rs.getString(1));
 								lblNewLabel.setPath(rs.getString(1));
-								lblNewLabel.PutImage();
+								lblNewLabel.PutImage(lblNewLabel);
 								
 							}
 						}catch (Exception e) {

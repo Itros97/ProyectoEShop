@@ -64,7 +64,7 @@ public class VentanaAnyadirProducto {
 				p.setStock(Integer.parseInt(tfstock.getText()));
 				p.setDescripcion(tfdescripcion.getText());
 				p.setImagen(tfimagen.getText());
-				p.setMarca(tfimagen.getText());
+				p.setMarca(tfmarca.getText());
 				
 				ProductoBD.InsertarProducto(p);
 				limpiar();

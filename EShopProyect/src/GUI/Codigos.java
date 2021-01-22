@@ -7,11 +7,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+
+import Producto.Carrito;
 
 public class Codigos {
 
@@ -96,6 +101,25 @@ public class Codigos {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_2 = new JButton("Exportar codigos");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					FileWriter writter = new FileWriter("Codigos/Codigos.txt");
+					writter.write("--------------- \n");
+					writter.write(lblNewLabel1.getText());
+					writter.write("\n--------------- \n");
+					writter.write(lblNewLabel2.getText());
+					writter.write("\n--------------- \n");
+					writter.write(lblNewLabel3.getText());
+					writter.write("\n--------------- \n");
+					writter.write(lblNewLabel4.getText());
+					writter.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnNewButton_2.setBounds(100, 227, 123, 23);
 		frame.getContentPane().add(btnNewButton_2);
 	}
@@ -135,5 +159,8 @@ public class Codigos {
 			JOptionPane.showConfirmDialog(null, "HA EXCEDIDO EL MAXIMO DE SUS CODIGOS DE DESCUENTO POR HOY");
 		}
 		
+			
+			
+		}
 	}
-}
+

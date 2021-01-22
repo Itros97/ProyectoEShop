@@ -80,7 +80,7 @@ public class CarritoUI {
 			private void printticket(ArrayList<Carrito> carro) {
 				try {
 					double vt= 0;
-					FileWriter writter = new FileWriter("Ticket.txt");
+					FileWriter writter = new FileWriter("tickets/Ticket.txt");
 					for (int i = 0; i < carro.size(); i++) {
 						vt += carro.get(i).getPrecio();
 						System.out.println(vt);

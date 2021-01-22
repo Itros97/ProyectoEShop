@@ -61,32 +61,21 @@ public class VentanaAdministracion {
 			}
 		});
 		
-		JButton busuario = new JButton("Usuario");
-		springLayout.putConstraint(SpringLayout.WEST, busuario, 0, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, busuario, 434, SpringLayout.WEST, frame.getContentPane());
-		frame.getContentPane().add(busuario);
-		busuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
 		JButton bproducto = new JButton("Producto");
-		springLayout.putConstraint(SpringLayout.NORTH, busuario, 6, SpringLayout.SOUTH, bproducto);
 		springLayout.putConstraint(SpringLayout.NORTH, bproducto, 0, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, bproducto, -198, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, bproducto, -154, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, bproducto, 0, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, bproducto, 0, SpringLayout.EAST, bcerrar);
 		frame.getContentPane().add(bproducto);
 		
 		JButton btnNewButton = new JButton("Generar codigos de descuento");
+		springLayout.putConstraint(SpringLayout.NORTH, btnNewButton, 6, SpringLayout.SOUTH, bproducto);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Codigos window = new Codigos();
 				window.frame.setVisible(true);
 			}
 		});
-		springLayout.putConstraint(SpringLayout.SOUTH, busuario, -6, SpringLayout.NORTH, btnNewButton);
-		springLayout.putConstraint(SpringLayout.NORTH, btnNewButton, -89, SpringLayout.NORTH, bcerrar);
 		springLayout.putConstraint(SpringLayout.WEST, btnNewButton, 0, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, btnNewButton, -6, SpringLayout.NORTH, bcerrar);
 		springLayout.putConstraint(SpringLayout.EAST, btnNewButton, 0, SpringLayout.EAST, bcerrar);

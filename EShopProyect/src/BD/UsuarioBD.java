@@ -91,6 +91,7 @@ public class UsuarioBD {
 	            System.out.println(e);
 	        }
 	 }
+	 
 	 //Obtener usuario logeado
 	    public static Usuario getUsuario(String nickname) 
 	    {

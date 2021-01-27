@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Test;
 
 import BD.UsuarioBD;
-import Usuario.Usuario;
+import Tienda.Usuario;
 
 public class TestUsuarioBD {
 

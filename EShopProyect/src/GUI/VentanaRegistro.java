@@ -23,7 +23,7 @@ import com.mysql.cj.xdevapi.PreparableStatement;
 import BD.LLamadasBD;
 import BD.UsuarioBD;
 import Tienda.Tienda;
-import Usuario.Usuario;
+import Tienda.Usuario;
 
 public class VentanaRegistro extends JFrame {
 

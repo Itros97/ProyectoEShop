@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -19,7 +21,8 @@ import javax.swing.JTextField;
 import BD.LLamadasBD;
 import BD.UsuarioBD;
 import Tienda.Tienda;
-import Usuario.Usuario;
+import Tienda.Usuario;
+
 
 public class VentanaInicioSesion extends JDialog {
 
@@ -27,6 +30,8 @@ public class VentanaInicioSesion extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private final static Logger log = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	
 	JLabel lemail;
 	JTextField temail;
@@ -40,6 +45,7 @@ public class VentanaInicioSesion extends JDialog {
 	ArrayList<Usuario> listaUsuarios ;
 	Tienda tienda;
 	Usuario usuario;
+	
 	
 	public VentanaInicioSesion(Usuario usuario, VentanaPrincipal principal) {
 		
@@ -60,6 +66,7 @@ public class VentanaInicioSesion extends JDialog {
 				contra = ppassword.getText();
 				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText(),usuario);
 				dispose();
+				log.log(Level.INFO, "Primer Log");
 			}
 		});
 		

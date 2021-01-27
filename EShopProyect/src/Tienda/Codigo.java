@@ -1,4 +1,4 @@
-package GUI;
+package Tienda;
 
 import java.awt.EventQueue;
 import java.util.Random;
@@ -26,7 +26,7 @@ public class Codigo {
 		return numeros[r.nextInt(numeros.length)];
 	}
 
-	protected String generarcodigo(int lenght,int size) 
+	public String generarcodigo(int lenght,int size) 
 	{
 		//Caso base o caso por el que tiene que acabar
 		if(size==lenght) 

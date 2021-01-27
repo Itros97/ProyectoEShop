@@ -1,4 +1,4 @@
-package Usuario;
+package Tienda;
 
 import java.sql.Connection;
 import java.util.Date;

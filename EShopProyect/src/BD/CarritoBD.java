@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import Producto.Carrito;
-import Usuario.Usuario;
+import Tienda.Usuario;
 
 public class CarritoBD {
 	

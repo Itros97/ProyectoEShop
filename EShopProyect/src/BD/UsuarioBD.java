@@ -11,11 +11,9 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 import GUI.VMain;
-import GUI.VentanaTienda;
-import Tienda.Tienda;
-import Usuario.Usuario;
 
-import Usuario.Usuario;
+import Tienda.Tienda;
+import Tienda.Usuario;
 
 public class UsuarioBD {
 

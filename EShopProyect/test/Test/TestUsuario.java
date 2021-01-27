@@ -6,7 +6,7 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
-import Usuario.Usuario;
+import Tienda.Usuario;
 
 class TestUsuario {
 

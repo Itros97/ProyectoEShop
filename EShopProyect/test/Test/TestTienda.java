@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import Producto.Producto;
 import Tienda.Carro;
 import Tienda.Tienda;
-import Usuario.Usuario;
+import Tienda.Usuario;
 
 class TestTienda {
 

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import Producto.Producto;
-import Usuario.Usuario;
+import Tienda.Usuario;
 
 public class LLamadasBD
 {

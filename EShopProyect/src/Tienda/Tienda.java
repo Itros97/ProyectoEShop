@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import Producto.Producto;
-import Usuario.Usuario;
 
 /*
 Tienda es la clase principal del programa en la cual se unen todas las demas clases,

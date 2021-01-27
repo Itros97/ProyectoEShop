@@ -1,2 +1,11 @@
+Datos prod: 
+
+Nombre=GeForce GTX 3060Ti
+Precio=599.99
+-----
+Datos prod: 
+
+Nombre=LG Q6+
+Precio=250.99
 --------------- 
 Precio Total: 

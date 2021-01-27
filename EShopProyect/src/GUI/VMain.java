@@ -27,7 +27,7 @@ import BD.LLamadasBD;
 import BD.LinkPhoto;
 import BD.UsuarioBD;
 import Producto.Carrito;
-import Usuario.Usuario;
+import Tienda.Usuario;
 import net.proteanit.sql.DbUtils;
 import javax.swing.JScrollPane;
 import java.sql.*;

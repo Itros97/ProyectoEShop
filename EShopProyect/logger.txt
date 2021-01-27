@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-01-27T19:48:31.991058500Z</date>
+  <millis>1611776911991</millis>
+  <nanos>58500</nanos>
+  <sequence>0</sequence>
+  <logger>global</logger>
+  <level>INFO</level>
+  <class>GUI.VentanaInicioSesion$1</class>
+  <method>actionPerformed</method>
+  <thread>18</thread>
+  <message>Usuario logeado: Tod</message>
+</record>
+</log>

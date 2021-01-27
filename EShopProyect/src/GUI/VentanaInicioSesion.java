@@ -3,11 +3,13 @@ package GUI;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,7 +68,19 @@ public class VentanaInicioSesion extends JDialog {
 				contra = ppassword.getText();
 				UsuarioBD.LoginUsuario(temail.getText(), ppassword.getText(),usuario);
 				dispose();
-				log.log(Level.INFO, "Primer Log");
+				try {
+					//Generar el txt del log
+					FileHandler fh = new FileHandler("logger.txt");//Tambien se puede usar .log en vez de .txt
+					fh.setLevel(Level.FINE);
+					log.addHandler(fh);
+				} catch (SecurityException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				log.log(Level.INFO, "Usuario logeado: "+temail.getText());
 			}
 		});
 		

@@ -30,6 +30,8 @@ public class VentanaAnyadirProducto {
 	private JTextField tfdescripcion;
 	private JTextField tfimagen;
 	private JTextField tfmarca;
+	private JTextField tfideliminar;
+
 
 
 	//Inicializa la ventana
@@ -44,6 +46,7 @@ public class VentanaAnyadirProducto {
 		tfdescripcion.setText("");
 		tfimagen.setText("");
 		tfmarca.setText("");
+		tfideliminar.setText("");
 	}
 
 	private void initialize() {
@@ -72,7 +75,7 @@ public class VentanaAnyadirProducto {
 		});
 		
 		
-		btnNewButton.setBounds(10, 227, 89, 23);
+		btnNewButton.setBounds(10, 178, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Nombre");
@@ -132,6 +135,27 @@ public class VentanaAnyadirProducto {
 		JButton btnNewButton_1 = new JButton("Cerrar");
 		btnNewButton_1.setBounds(295, 227, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		JLabel lblNewLabel_6 = new JLabel("ID Producto");
+		lblNewLabel_6.setBounds(143, 209, 86, 14);
+		frame.getContentPane().add(lblNewLabel_6);
+		
+		tfideliminar = new JTextField();
+		tfideliminar.setBounds(143, 228, 86, 20);
+		frame.getContentPane().add(tfideliminar);
+		tfideliminar.setColumns(10);
+		
+		JButton btnNewButton_2 = new JButton("Eliminar Producto");
+		btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.out.println(tfideliminar.getText());
+					ProductoBD.EliminarUsuario(Integer.parseInt(tfideliminar.getText()));
+					limpiar();
+				}
+			});
+		btnNewButton_2.setBounds(10, 227, 123, 23);
+		frame.getContentPane().add(btnNewButton_2);
+		
 		btnNewButton_1.addActionListener(new ActionListener() {
 			
 			@Override

@@ -2,6 +2,7 @@ package BD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
@@ -79,4 +80,26 @@ public class ProductoBD {
 	            System.out.println(e);
 	        }
 	 }
+	 //ELIMINAR Producto
+	 public static void EliminarUsuario(int id) {
+	     
+	        PreparedStatement preparedStatement= null;
+	   	 	Connection con = LLamadasBD.Conexion();
+
+	        try {
+
+	            String query = "DELETE FROM PRODUCTO WHERE IDPRODUCTO = '" + id + "'";
+
+	            preparedStatement = con.prepareStatement(query);
+
+	            preparedStatement.execute();
+	            preparedStatement.close();
+
+	        } catch (SQLException e) {
+
+	            System.out.println("No se pudo eliminar el producto");
+	            System.out.println(e);
+	        }
+
+	    }
 }

@@ -74,7 +74,7 @@ public class VentanaAdministracion {
 		springLayout.putConstraint(SpringLayout.EAST, btnNewButton, 0, SpringLayout.EAST, bcerrar);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Codigos window = new Codigos();
+				CodigosUI window = new CodigosUI();
 				window.frame.setVisible(true);
 			}
 		});

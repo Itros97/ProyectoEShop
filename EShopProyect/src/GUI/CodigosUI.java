@@ -19,7 +19,7 @@ import javax.swing.JTextPane;
 import Producto.Carrito;
 import Tienda.Codigo;
 
-public class Codigos {
+public class CodigosUI {
 
 	JFrame frame;
 	private JTextField textField;
@@ -27,6 +27,7 @@ public class Codigos {
 	protected JLabel lblNewLabel2 = new JLabel("CODIGO2");
 	protected JLabel lblNewLabel3 = new JLabel("CODIGO3");
 	protected JLabel lblNewLabel4 = new JLabel("CODIGO4");
+	public String code[] = new String[4];
 	
 	/**
 	 * Launch the application.
@@ -35,7 +36,7 @@ public class Codigos {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Codigos window = new Codigos();
+					CodigosUI window = new CodigosUI();
 					window.frame.setVisible(true);
 					
 				} catch (Exception e) {
@@ -47,7 +48,7 @@ public class Codigos {
 	/**
 	 * Create the application.
 	 */
-	public Codigos() {
+	public CodigosUI() {
 		initialize();
 	}
 
@@ -136,20 +137,21 @@ public class Codigos {
 			System.out.println(p.getCodigo());
 			if (i==0) {
 				lblNewLabel1.setText(p.getCodigo());
-				
-				System.out.println(gen);
+				code[i] = p.getCodigo();
+			//	System.out.println(code[i]); Este esta bien
 			}
 			else if (i==1) {
 				lblNewLabel2.setText(p.getCodigo());
+				code[i] = p.getCodigo();
 				
 			}
 			else if (i==2) {
 				lblNewLabel3.setText(p.getCodigo());
-				
+				code[i] = p.getCodigo();
 			}
 			else if (i==3) {
 				lblNewLabel4.setText(p.getCodigo());
-				
+				code[i] = p.getCodigo();
 			}
 			gen++;
 		}

@@ -1,6 +1,7 @@
 package Tienda;
 
 import java.awt.EventQueue;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Codigo {
@@ -11,7 +12,7 @@ public class Codigo {
 	protected final char[] numeros = "0123456789".toCharArray();
 	protected Random r;
 	String codigo = "";
-	
+
 	public Codigo() 
 	{
 		r = new Random();
@@ -32,6 +33,7 @@ public class Codigo {
 		if(size==lenght) 
 		{
 			return codigo;
+		
 		}
 		//Caso recursivo, el cual se repite hasta que se cumpla la condicion
 		else 
@@ -51,12 +53,14 @@ public class Codigo {
 			}
 			
 		}
-			return codigo;
 		
+			return codigo;
+			
 	}
 	
 	public String getCodigo() {
 		return codigo;
+		
 	}
 
 	public void setCodigo(String codigo) {

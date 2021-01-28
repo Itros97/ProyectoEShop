@@ -11,15 +11,23 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 import GUI.VMain;
-
-import Tienda.Tienda;
-import Tienda.Usuario;
+import Tiendapck.Codigo;
+import Tiendapck.Tienda;
+import Tiendapck.Usuario;
 
 public class UsuarioBD {
 
 	
 	public static String nickg;
 	public static boolean esadmin;
+	public static String cods;
+
+	public static void generarcodigoacceso() {
+		Codigo c1 = new Codigo();
+		c1.generarcodigo(0, 8);
+		cods= c1.getCodigo();
+		System.out.println("El codigo es:"+c1.getCodigo());
+		}
 	//CREAR
 	 protected static void CrearTablaUsuario(Connection con) {
 			// TODO Auto-generated method stub
@@ -149,6 +157,8 @@ public class UsuarioBD {
 	                    	System.out.println("Es Admin");
 	                    	nickg = getUsuario(nickName).getNickname();
 	                    	esadmin = getUsuario(nickName).isTipo_cuenta();
+	                    	generarcodigoacceso();
+	                    	System.out.println(cods);
 	                    	System.out.println(esadmin);
 	                    }
 	                    else {

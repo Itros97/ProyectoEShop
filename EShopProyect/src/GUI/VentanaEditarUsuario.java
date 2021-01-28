@@ -16,8 +16,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 
-import Tienda.Tienda;
-import Tienda.Usuario;
+import Tiendapck.Tienda;
+import Tiendapck.Usuario;
 
 public class VentanaEditarUsuario extends JFrame {
 	private static final long serialVersionUID = 1L;

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import Producto.Carrito;
-import Tienda.Usuario;
+import Tiendapck.Usuario;
 
 public class CarritoBD {
 	
@@ -16,6 +16,7 @@ public class CarritoBD {
 		    		"IDCARRITO INTEGER PRIMARY KEY AUTO_INCREMENT," +
 		    		"NICKNAME VARCHAR(50),"+
 		    		"NOMBRE VARCHAR(50),"+
+		    		"CODIGOACCESO VARCHAR(20),"+
 		    		"PRECIO DOUBLE);";
 		    try {
 		    	
@@ -50,15 +51,16 @@ public class CarritoBD {
 			 PreparedStatement preparedStatement = null;
 			 Connection con = LLamadasBD.Conexion();
 		        try {
-		            String query = " INSERT INTO CARRITO (NICKNAME,NOMBRE,PRECIO)"
-		                    + " VALUES (?, ?, ?)";
+		            String query = " INSERT INTO CARRITO (NICKNAME,NOMBRE,CODIGOACCESO,PRECIO)"
+		                    + " VALUES (?, ?, ?, ?)";
 
 		            preparedStatement = con.prepareStatement(query);
 
 
 		            preparedStatement.setString(1, nuevoCarro.getNickname());
 		            preparedStatement.setString(2, nuevoCarro.getNombre());
-		            preparedStatement.setLong(3, (long) nuevoCarro.getPrecio());
+		            preparedStatement.setString(3, nuevoCarro.getCodigoac());
+		            preparedStatement.setLong(4, (long) nuevoCarro.getPrecio());
 		          
 		            preparedStatement.execute();
 

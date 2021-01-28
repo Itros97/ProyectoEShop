@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import BD.LLamadasBD;
 import BD.UsuarioBD;
@@ -32,6 +33,8 @@ public class CarritoUI {
 	 static LLamadasBD cct= new LLamadasBD();
 	 static Connection conn = cct.Conexion();
 	 String nick = UsuarioBD.nickg;
+	 String codigoac = UsuarioBD.cods;
+	
 	 /**
 	 * Launch the application.
 	 */
@@ -39,7 +42,7 @@ public class CarritoUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CarritoUI window = new CarritoUI();
+				CarritoUI window = new CarritoUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -72,9 +75,15 @@ public class CarritoUI {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				printticket(VMain.carro);
+			
+	
 				JOptionPane.showMessageDialog(frame, "COMPRA REALIZADA.");
-				deletecarro(nick);
+				//deletecarro(nick);
+				
+				lblNewLabel_1.setText(Double.toString(0.0));
+				UsuarioBD.generarcodigoacceso();//Genero un codigo nuevo de acceso para que cuando se acceda al carrito sin haber cerrado la sesion, no se borre la ultima compra efectuada
 			}
 
 			private void printticket(ArrayList<Carrito> carro) {
@@ -94,8 +103,8 @@ public class CarritoUI {
 					}
 					writter.write("--------------- \n");
 					writter.write("Precio Total: \n");
-				//	Double.toString(vt);
-				//	writter.write(vt);
+					Double.toString(vt);
+					writter.write((int) vt);
 					writter.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -120,8 +129,8 @@ public class CarritoUI {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(nick);
-				deletecarro(nick);
-				displaycarro(nick);
+				deletecarro(nick, codigoac);
+				displaycarro(nick, codigoac);
 				lblNewLabel_1.setText(Double.toString(0.0));
 			}
 		});
@@ -140,7 +149,7 @@ public class CarritoUI {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getCarro(cr1);
-				displaycarro(nick);
+				displaycarro(nick, codigoac);
 			}
 		});
 		btnNewButton_3.setBounds(211, 193, 89, 23);
@@ -161,7 +170,7 @@ public class CarritoUI {
 		System.out.println(valoraco);
 		
 	}
-	public void displaycarro(String nickname) 
+	public void displaycarro(String nickname,String codigoac) 
 	{
 		try {
 			String query = "SELECT NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME = '" +nickname+ "'";
@@ -176,10 +185,10 @@ public class CarritoUI {
 			e1.printStackTrace();
 		}
 	}
-	public void deletecarro(String nickname) 
+	public void deletecarro(String nickname,String codigoac) 
 	{
 		try {
-			String query = "DELETE FROM CARRITO WHERE NICKNAME = '" +nickname+ "'";
+			String query = "DELETE FROM CARRITO WHERE NICKNAME = '" +nickname+ "'AND CODIGOACCESO= "+codigoac+"'";
 			PreparedStatement pst = conn.prepareStatement(query);
 			pst.execute();
 			pst.close();

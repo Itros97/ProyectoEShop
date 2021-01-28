@@ -27,7 +27,7 @@ import BD.LLamadasBD;
 import BD.LinkPhoto;
 import BD.UsuarioBD;
 import Producto.Carrito;
-import Tienda.Usuario;
+import Tiendapck.Usuario;
 import net.proteanit.sql.DbUtils;
 import javax.swing.JScrollPane;
 import java.sql.*;
@@ -51,6 +51,7 @@ public class VMain {
     protected JTextField jTextFieldLN = new JTextField();
     public static ArrayList<Carrito> carro = new ArrayList<Carrito>();
 	public static double precioaco=0;
+	String codigoac = UsuarioBD.cods;
 	 public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -290,6 +291,7 @@ public class VMain {
 		c1.setId_carrito(i);
 		c1.setNickname(UsuarioBD.nickg);
 		c1.setNombre(jTextFieldNombre.getText());
+		c1.setCodigoac(UsuarioBD.cods);
 		c1.setPrecio(Double.parseDouble(jTextFieldPrecio.getText()));
 		CarritoBD.InsertarCarrito(c1);
 		carro.add(c1);

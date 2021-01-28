@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 import Producto.Producto;
-import Tienda.Carro;
-import Tienda.Tienda;
-import Tienda.Usuario;
+import Tiendapck.Carro;
+import Tiendapck.Tienda;
+import Tiendapck.Usuario;
 
 class TestTienda {
 

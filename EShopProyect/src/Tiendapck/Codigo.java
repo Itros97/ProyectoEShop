@@ -1,4 +1,4 @@
-package Tienda;
+package Tiendapck;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;

@@ -13,8 +13,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import Tienda.Tienda;
-import Tienda.Usuario;
+import Tiendapck.Tienda;
+import Tiendapck.Usuario;
 
 public class VentanaPrincipal extends JFrame {
 	

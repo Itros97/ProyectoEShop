@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import Producto.Producto;
-import Tienda.Usuario;
+import Tiendapck.Usuario;
 
 public class LLamadasBD
 {
@@ -45,16 +45,16 @@ public class LLamadasBD
 	    }
 	 //CREACION DE LA BASE DE DATOS
 	 private void CrearBasesDeDatos(Connection con) {
-		 UsuarioBD.CrearTablaUsuario(con);
-		 ProductoBD.CrearTablaProducto(con);
+		// UsuarioBD.CrearTablaUsuario(con);
+		// ProductoBD.CrearTablaProducto(con);
 		 CarritoBD.CrearTablaCarrito(con);
 		
 		}
 
 	 //ELIMINACION DE LA BASE DE DATOS
 	 private void BorrarBasesDeDatos(Connection con) {
-		 UsuarioBD.EliminarTablaUsuario(con);
-		 ProductoBD.EliminarTablaProducto(con);
+		 //UsuarioBD.EliminarTablaUsuario(con);
+		 //ProductoBD.EliminarTablaProducto(con);
 		 CarritoBD.EliminarTablaCarrito(con);
 		
 	 	}

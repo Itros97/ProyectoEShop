@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import Producto.Carrito;
-import Tienda.Codigo;
+import Tiendapck.Codigo;
 
 public class CodigosUI {
 

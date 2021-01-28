@@ -22,8 +22,8 @@ import javax.swing.JTextField;
 
 import BD.LLamadasBD;
 import BD.UsuarioBD;
-import Tienda.Tienda;
-import Tienda.Usuario;
+import Tiendapck.Tienda;
+import Tiendapck.Usuario;
 
 
 public class VentanaInicioSesion extends JDialog {

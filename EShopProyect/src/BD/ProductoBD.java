@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 import Producto.Producto;
-import Tienda.Usuario;
+import Tiendapck.Usuario;
 
 public class ProductoBD {
 

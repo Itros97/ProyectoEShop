@@ -1,4 +1,4 @@
-package Tienda;
+package Tiendapck;
 
 import java.sql.Connection;
 import java.util.Date;

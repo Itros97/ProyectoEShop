@@ -10,6 +10,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -26,6 +29,7 @@ import Producto.Carrito;
 import net.proteanit.sql.DbUtils;
 
 public class CarritoUI {
+	private final static Logger log = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	 protected JFrame frame;
 	 public static ArrayList<Producto.Carrito> cr1 = new ArrayList<Producto.Carrito>();
@@ -80,6 +84,19 @@ public class CarritoUI {
 			
 	
 				JOptionPane.showMessageDialog(frame, "COMPRA REALIZADA.");
+				try {
+					//Generar el txt del log
+					FileHandler fh = new FileHandler("Loggers\\loggercompra.txt");//Tambien se puede usar .log en vez de .txt
+					fh.setLevel(Level.FINE);
+					log.addHandler(fh);
+				} catch (SecurityException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+					log.log(Level.INFO, "Compra realizada: "+VMain.carro.toString());
 				//deletecarro(nick);
 				
 				lblNewLabel_1.setText(Double.toString(0.0));

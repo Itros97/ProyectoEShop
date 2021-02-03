@@ -70,7 +70,7 @@ public class VentanaInicioSesion extends JDialog {
 				dispose();
 				try {
 					//Generar el txt del log
-					FileHandler fh = new FileHandler("logger.txt");//Tambien se puede usar .log en vez de .txt
+					FileHandler fh = new FileHandler("Loggers\\loggeriniciosesion.txt");//Tambien se puede usar .log en vez de .txt
 					fh.setLevel(Level.FINE);
 					log.addHandler(fh);
 				} catch (SecurityException e1) {

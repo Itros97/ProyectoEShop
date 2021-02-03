@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import com.jgoodies.forms.layout.FormLayout;
@@ -17,6 +19,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -114,14 +117,30 @@ public class VentanaAnyadirProducto {
 		frame.getContentPane().add(tfdescripcion);
 		tfdescripcion.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Imagen(Ruta)");
+		JLabel lblNewLabel_4 = new JLabel("Imagen");
 		lblNewLabel_4.setBounds(295, 66, 84, 14);
 		frame.getContentPane().add(lblNewLabel_4);
 		
 		tfimagen = new JTextField();
-		tfimagen.setBounds(293, 91, 86, 20);
+		tfimagen.setBounds(295, 110, 86, 20);
 		frame.getContentPane().add(tfimagen);
 		tfimagen.setColumns(10);
+		
+		JButton btnNewButton1 = new JButton("...");
+		btnNewButton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fc = new JFileChooser();
+				int sel = fc.showOpenDialog(frame);
+				if(sel == JFileChooser.APPROVE_OPTION)
+				{
+					File fich = fc.getSelectedFile();
+					tfimagen.setText(fich.getAbsolutePath());
+				}
+			}
+		});
+		btnNewButton1.setBounds(293, 91, 86, 20);
+		frame.getContentPane().add(btnNewButton1);
+		
 		
 		JLabel lblNewLabel_5 = new JLabel("Marca");
 		lblNewLabel_5.setBounds(295, 122, 46, 14);

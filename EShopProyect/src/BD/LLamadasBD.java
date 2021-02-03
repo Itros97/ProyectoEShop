@@ -45,8 +45,8 @@ public class LLamadasBD
 	    }
 	 //CREACION DE LA BASE DE DATOS
 	 private void CrearBasesDeDatos(Connection con) {
-		// UsuarioBD.CrearTablaUsuario(con);
-		// ProductoBD.CrearTablaProducto(con);
+		 UsuarioBD.CrearTablaUsuario(con);
+		 ProductoBD.CrearTablaProducto(con);
 		 CarritoBD.CrearTablaCarrito(con);
 		
 		}

@@ -32,12 +32,13 @@ public class VentanaCompra {
 	private final static Logger log = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	 protected JFrame frame;
-	 public static ArrayList<Producto.Carrito> cr1 = new ArrayList<Producto.Carrito>();
+	 public ArrayList<Producto.Carrito> cr1 = VMain.carro;
 	 JLabel lblNewLabel_1 = new JLabel("null");
 	 static LLamadasBD cct= new LLamadasBD();
 	 static Connection conn = cct.Conexion();
 	 String nick = UsuarioBD.nickg;
 	 String codigoac = UsuarioBD.cods;
+	 double valoraco=0;
 	
 	 /**
 	 * Launch the application.
@@ -97,7 +98,7 @@ public class VentanaCompra {
 					e1.printStackTrace();
 				}
 					log.log(Level.INFO, "Compra realizada: "+VMain.carro.toString());
-				//deletecarro(nick);
+				//	deletecarro(nick, codigoac);
 				
 				lblNewLabel_1.setText(Double.toString(0.0));
 				UsuarioBD.generarcodigoacceso();//Genero un codigo nuevo de acceso para que cuando se acceda al carrito sin haber cerrado la sesion, no se borre la ultima compra efectuada
@@ -105,11 +106,9 @@ public class VentanaCompra {
 
 			private void printticket(ArrayList<Carrito> carro) {
 				try {
-					double vt= 0;
+				
 					FileWriter writter = new FileWriter("tickets/Ticket.txt");
 					for (int i = 0; i < carro.size(); i++) {
-						vt += carro.get(i).getPrecio();
-						System.out.println(vt);
 						writter.write("Datos prod: \n");
 						writter.write(carro.get(i).toString());
 						writter.write("\n");
@@ -120,8 +119,8 @@ public class VentanaCompra {
 					}
 					writter.write("--------------- \n");
 					writter.write("Precio Total: \n");
-					Double.toString(vt);
-					writter.write((int) vt);
+			
+					writter.write((int) (VMain.precioaco));
 					writter.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -146,6 +145,7 @@ public class VentanaCompra {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(nick);
+				cr1.clear();
 				deletecarro(nick, codigoac);
 				displaycarro(nick, codigoac);
 				lblNewLabel_1.setText(Double.toString(0.0));
@@ -165,6 +165,7 @@ public class VentanaCompra {
 		JButton btnNewButton_3 = new JButton("Abrir Cesta");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				valoraco=0;
 				getCarro(cr1);
 				displaycarro(nick, codigoac);
 			}
@@ -175,19 +176,19 @@ public class VentanaCompra {
 	
 	}
 
-	double valoraco=0;
+	
 	private JTable table;
 	public void getCarro(ArrayList<Producto.Carrito> cr1) 
 	{
 		
-		cr1 = VMain.carro;
+	//	cr1 = VMain.carro;
 		valoraco=VMain.precioaco;
 		lblNewLabel_1.setText(Double.toString(valoraco));
 		System.out.println(cr1.toString());
 		System.out.println(valoraco);
 		
 	}
-	public void displaycarro(String nickname,String codigoac) 
+	public void displaycarro(String nickname,String codigoac) //Se muestra todo el carrito ya que no esta configurado aun lo del codigo de acceso
 	{
 		try {
 			String query = "SELECT NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME = '" +nickname+ "'";
@@ -197,6 +198,11 @@ public class VentanaCompra {
 			
 			table.setModel(DbUtils.resultSetToTableModel(rs));
 			table.setDefaultEditor(Object.class, null);
+			System.out.println(cr1.isEmpty());
+			if(cr1.size()==0) 
+			{
+				System.out.println("HOLA");
+			}
 
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -205,10 +211,11 @@ public class VentanaCompra {
 	public void deletecarro(String nickname,String codigoac) 
 	{
 		try {
-			String query = "DELETE FROM CARRITO WHERE NICKNAME = '" +nickname+ "'AND CODIGOACCESO= "+codigoac+"'";
+			String query = "DELETE FROM CARRITO WHERE NICKNAME = '" +nickname+"'"; //"'AND CODIGOACCESO= "+codigoac+"'";
 			PreparedStatement pst = conn.prepareStatement(query);
 			pst.execute();
 			pst.close();
+			displaycarro(nickname, codigoac);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

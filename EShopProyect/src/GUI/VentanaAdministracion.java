@@ -83,6 +83,8 @@ public class VentanaAdministracion {
 		JButton btnNewButton_1 = new JButton("Visualizar compras");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				VentanaCarritoAdministracion window = new VentanaCarritoAdministracion();
+				window.frame.setVisible(true);
 			}
 		});
 		springLayout.putConstraint(SpringLayout.SOUTH, btnNewButton, -6, SpringLayout.NORTH, btnNewButton_1);

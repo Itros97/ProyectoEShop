@@ -123,7 +123,7 @@ public class VentanaAnyadirProducto {
 		
 		tfimagen = new JTextField();
 		tfimagen.setBounds(295, 110, 86, 20);
-		frame.getContentPane().add(tfimagen);
+		//frame.getContentPane().add(tfimagen);
 		tfimagen.setColumns(10);
 		
 		JButton btnNewButton1 = new JButton("...");

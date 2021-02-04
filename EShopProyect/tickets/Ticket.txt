@@ -1,7 +1,12 @@
 Datos prod: 
 
-Nombre=Grafica
+Nombre=nins
 Precio=299.25
+-----
+Datos prod: 
+
+Nombre=grafica
+Precio=147.88
 --------------- 
 Precio Total: 
-?
+ 

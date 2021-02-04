@@ -276,7 +276,7 @@ public class VMain {
 			putValue(SHORT_DESCRIPTION, "Accede a la ventana carrito");
 		}
 		public void actionPerformed(ActionEvent e) {
-			CarritoUI crui1 = new CarritoUI();
+			VentanaCompra crui1 = new VentanaCompra();
 			crui1.frame.setVisible(true);
 			getCarro(carro);
 		}

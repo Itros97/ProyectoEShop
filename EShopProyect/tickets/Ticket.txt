@@ -1,22 +1,7 @@
 Datos prod: 
 
-Nombre=KeyBoard
-Precio=39.99
------
-Datos prod: 
-
-Nombre=LG Q6+
-Precio=250.99
------
-Datos prod: 
-
-Nombre=GeForce GTX 3060Ti
-Precio=599.99
------
-Datos prod: 
-
-Nombre=LG Q6+
-Precio=250.99
+Nombre=Grafica
+Precio=299.25
 --------------- 
 Precio Total: 
 ?

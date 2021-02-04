@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-02-03T23:20:45.639739300Z</date>
+  <millis>1612394445639</millis>
+  <nanos>739300</nanos>
+  <sequence>0</sequence>
+  <logger>global</logger>
+  <level>INFO</level>
+  <class>GUI.VentanaInicioSesion$1</class>
+  <method>actionPerformed</method>
+  <thread>18</thread>
+  <message>Usuario logeado: admin</message>
+</record>
+<record>
+  <date>2021-02-03T23:21:22.359355800Z</date>
+  <millis>1612394482359</millis>
+  <nanos>355800</nanos>
+  <sequence>1</sequence>
+  <logger>global</logger>
+  <level>INFO</level>
+  <class>GUI.CarritoUI$2</class>
+  <method>actionPerformed</method>
+  <thread>18</thread>
+  <message>Compra realizada: [
+Nombre=Grafica
+Precio=299.25]</message>
+</record>
+</log>

@@ -28,7 +28,7 @@ import BD.UsuarioBD;
 import Producto.Carrito;
 import net.proteanit.sql.DbUtils;
 
-public class CarritoUI {
+public class VentanaCompra {
 	private final static Logger log = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	 protected JFrame frame;
@@ -46,7 +46,7 @@ public class CarritoUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-				CarritoUI window = new CarritoUI();
+				VentanaCompra window = new VentanaCompra();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +58,7 @@ public class CarritoUI {
 	/**
 	 * Create the application.
 	 */
-	public CarritoUI() {
+	public VentanaCompra() {
 		initialize();
 	}
 

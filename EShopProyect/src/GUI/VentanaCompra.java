@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,7 +33,7 @@ public class VentanaCompra {
 	private final static Logger log = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	 protected JFrame frame;
-	 public ArrayList<Producto.Carrito> cr1 = VMain.carro;
+	 public ArrayList<Producto.Carrito> cr1 = VentanaTienda.carro;
 	 JLabel lblNewLabel_1 = new JLabel("null");
 	 static LLamadasBD cct= new LLamadasBD();
 	 static Connection conn = cct.Conexion();
@@ -81,7 +82,7 @@ public class VentanaCompra {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				printticket(VMain.carro);
+				printticket(VentanaTienda.carro);
 			
 	
 				JOptionPane.showMessageDialog(frame, "COMPRA REALIZADA.");
@@ -97,7 +98,7 @@ public class VentanaCompra {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-					log.log(Level.INFO, "Compra realizada: "+VMain.carro.toString());
+					log.log(Level.INFO, "Compra realizada: "+VentanaTienda.carro.toString());
 				//	deletecarro(nick, codigoac);
 				
 				lblNewLabel_1.setText(Double.toString(0.0));
@@ -120,7 +121,7 @@ public class VentanaCompra {
 					writter.write("--------------- \n");
 					writter.write("Precio Total: \n");
 			
-					writter.write((int) (VMain.precioaco));
+					writter.write((int) (VentanaTienda.precioaco));
 					writter.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -182,7 +183,10 @@ public class VentanaCompra {
 	{
 		
 	//	cr1 = VMain.carro;
-		valoraco=VMain.precioaco;
+		for (int i = 0; i < cr1.size(); i++) {
+			System.out.println(i);
+			valoraco += cr1.get(i).getPrecio();
+		}
 		lblNewLabel_1.setText(Double.toString(valoraco));
 		System.out.println(cr1.toString());
 		System.out.println(valoraco);
@@ -191,7 +195,7 @@ public class VentanaCompra {
 	public void displaycarro(String nickname,String codigoac) //Se muestra todo el carrito ya que no esta configurado aun lo del codigo de acceso
 	{
 		try {
-			String query = "SELECT NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME = '" +nickname+ "'";
+			String query = "SELECT NOMBRE, PRECIO FROM CARRITO WHERE NICKNAME = '" +nickname+ "'"+"AND CODIGOACCESO = '" +codigoac+"'";
 			PreparedStatement pst = conn.prepareStatement(query);
 			ResultSet rs = pst.executeQuery();
 			
@@ -211,7 +215,7 @@ public class VentanaCompra {
 	public void deletecarro(String nickname,String codigoac) 
 	{
 		try {
-			String query = "DELETE FROM CARRITO WHERE NICKNAME = '" +nickname+"'"; //"'AND CODIGOACCESO= "+codigoac+"'";
+			String query = "DELETE FROM CARRITO WHERE NICKNAME = '" +nickname+"'"+"AND CODIGOACCESO = '" +codigoac+"'";
 			PreparedStatement pst = conn.prepareStatement(query);
 			pst.execute();
 			pst.close();

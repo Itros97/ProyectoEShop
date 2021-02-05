@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JLabel;
 
-public class VMain {
+public class VentanaTienda {
 
 	public JFrame ventanaMain;
 	private final Action actionHome = new SwingActionHome();
@@ -56,7 +56,7 @@ public class VMain {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VMain window = new VMain(usuario);
+					VentanaTienda window = new VentanaTienda(usuario);
 					window.ventanaMain.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -72,7 +72,7 @@ public class VMain {
 	/**
 	 * Create the application.
 	 */
-	public VMain(Usuario us) {
+	public VentanaTienda(Usuario us) {
 		this.usuario = us;
 		initialize();
 		conn = cct.Conexion();

@@ -10,7 +10,7 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
-import GUI.VMain;
+import GUI.VentanaTienda;
 import Tiendapck.Codigo;
 import Tiendapck.Tienda;
 import Tiendapck.Usuario;
@@ -180,7 +180,7 @@ public class UsuarioBD {
 	        }
 	        if (comprobar == true) {
 	            System.out.println("Existe y la contraseña concuerda,permitir el logeo");
-	            VMain window = new VMain(usuario);
+	            VentanaTienda window = new VentanaTienda(usuario);
 	            window.ventanaMain.setVisible(true);
 	            
 			

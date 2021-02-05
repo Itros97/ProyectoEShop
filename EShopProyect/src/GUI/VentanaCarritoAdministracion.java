@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import BD.LLamadasBD;
 import net.proteanit.sql.DbUtils;
@@ -22,6 +23,7 @@ public class VentanaCarritoAdministracion {
 	private JTextField textField;
 	static LLamadasBD cct= new LLamadasBD();
 	static Connection conn = cct.Conexion();
+	DefaultTableModel model;
 	/**
 	 * Launch the application.
 	 */
@@ -97,7 +99,35 @@ public class VentanaCarritoAdministracion {
 		textField.setColumns(10);
 		
 		JButton btnNewButton_2 = new JButton("Buscar");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String buscar =textField.getText();
+				busqueda(buscar);
+			}
+		});
 		btnNewButton_2.setBounds(284, 9, 89, 23);
 		frame.getContentPane().add(btnNewButton_2);
+	}
+	public void busqueda(String texto) 
+	{
+		try {
+			String [] headers = {"Nombre","Producto","Precio"};
+			String filter = ""+texto+"";
+			String query ="SELECT * FROM CARRITO WHERE NICKNAME LIKE"+'"'+filter+'"';
+			
+			System.out.println(query);
+			
+			model = new DefaultTableModel(null,headers);
+			PreparedStatement pst = conn.prepareStatement(query);
+			ResultSet re = pst.executeQuery(query);
+			
+			tablee.setModel(DbUtils.resultSetToTableModel(re));
+			tablee.setDefaultEditor(Object.class, null);
+			
+		}
+		  
+		catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 }

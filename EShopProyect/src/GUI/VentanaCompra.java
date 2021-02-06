@@ -118,11 +118,13 @@ public class VentanaCompra {
 
 			private void printticket(ArrayList<Carrito> carro) {
 				try {
-				
+					double precio =0;
 					FileWriter writter = new FileWriter("tickets/Ticket.txt");
 					for (int i = 0; i < carro.size(); i++) {
 						writter.write("Datos prod: \n");
 						writter.write(carro.get(i).toString());
+						precio =+carro.get(i).getPrecio();
+						System.out.println(precio);
 						writter.write("\n");
 						if(carro.size()-i > 1 ) {
 						writter.write("-----");
@@ -131,8 +133,8 @@ public class VentanaCompra {
 					}
 					writter.write("--------------- \n");
 					writter.write("Precio Total: \n");
-			
-					writter.write((int) (VentanaTienda.precioaco));
+		
+					writter.write((int) precio);
 					writter.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -213,11 +215,6 @@ public class VentanaCompra {
 			
 			table.setModel(DbUtils.resultSetToTableModel(rs));
 			table.setDefaultEditor(Object.class, null);
-			System.out.println(cr1.isEmpty());
-			if(cr1.size()==0) 
-			{
-				System.out.println("HOLA");
-			}
 
 		} catch (Exception e1) {
 			e1.printStackTrace();

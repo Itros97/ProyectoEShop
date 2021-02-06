@@ -22,7 +22,7 @@ public class VentanaVisualizarCompras {
 	protected JTextField jTextFieldNombre = new JTextField();
 	protected JTextField jTextFieldCarro = new JTextField();
 	protected JTextField jTextFieldCod = new JTextField();
-	private JFrame frame;
+	JFrame frame;
 	private JTable table;
 	private JTable table_1;
 	static LLamadasBD cct= new LLamadasBD();

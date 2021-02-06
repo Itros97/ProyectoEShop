@@ -45,10 +45,10 @@ public class LLamadasBD
 	    }
 	 //CREACION DE LA BASE DE DATOS
 	 private void CrearBasesDeDatos(Connection con) {
-		 UsuarioBD.CrearTablaUsuario(con);
-		 ProductoBD.CrearTablaProducto(con);
-		 CarritoBD.CrearTablaCarrito(con);
-		 UsuarioconcodBD.CrearTablaUcod(con);
+//		 UsuarioBD.CrearTablaUsuario(con);
+	//	 ProductoBD.CrearTablaProducto(con);
+		 	 CarritoBD.CrearTablaCarrito(con);
+			 UsuarioconcodBD.CrearTablaUcod(con);
 		
 		}
 
@@ -56,8 +56,8 @@ public class LLamadasBD
 	 private void BorrarBasesDeDatos(Connection con) {
 		 //UsuarioBD.EliminarTablaUsuario(con);
 		 //ProductoBD.EliminarTablaProducto(con);
-//		 CarritoBD.EliminarTablaCarrito(con);
-		
+		 CarritoBD.EliminarTablaCarrito(con);
+		 UsuarioconcodBD.EliminarTablaCarrito(con);
 	 	}
 	 
 	 //INSERT USUARIOS

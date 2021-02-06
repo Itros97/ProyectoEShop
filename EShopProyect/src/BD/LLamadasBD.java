@@ -48,7 +48,7 @@ public class LLamadasBD
 		 UsuarioBD.CrearTablaUsuario(con);
 		 ProductoBD.CrearTablaProducto(con);
 		 CarritoBD.CrearTablaCarrito(con);
-		 CompraBD.CrearTablaCarrito(con);
+
 		
 		}
 

@@ -10,7 +10,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +29,7 @@ import javax.swing.table.DefaultTableModel;
 import BD.LLamadasBD;
 import BD.UsuarioBD;
 import Producto.Carrito;
+import Tiendapck.Usuarioconcod;
 import net.proteanit.sql.DbUtils;
 
 public class VentanaCompra {
@@ -40,6 +43,8 @@ public class VentanaCompra {
 	 String nick = UsuarioBD.nickg;
 	 String codigoac = UsuarioBD.cods;
 	 double valoraco=0;
+	 HashMap<Usuarioconcod,ArrayList<Producto.Carrito>> histo = new HashMap<Usuarioconcod,ArrayList<Producto.Carrito>>();
+	 //Hashmap que guarda la compra del momento
 	
 	 /**
 	 * Launch the application.
@@ -78,6 +83,8 @@ public class VentanaCompra {
 		frame.getContentPane().add(table);
 		
 		JButton btnNewButton = new JButton("Comprar");
+		Usuarioconcod n1 = new Usuarioconcod(nick, codigoac);
+		histo.put(n1, cr1);
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -102,6 +109,7 @@ public class VentanaCompra {
 				//	deletecarro(nick, codigoac);
 				
 				lblNewLabel_1.setText(Double.toString(0.0));
+				System.out.println(histo.toString());
 				UsuarioBD.generarcodigoacceso();//Genero un codigo nuevo de acceso para que cuando se acceda al carrito sin haber cerrado la sesion, no se borre la ultima compra efectuada
 			}
 

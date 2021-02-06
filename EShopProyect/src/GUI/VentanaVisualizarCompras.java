@@ -29,6 +29,7 @@ public class VentanaVisualizarCompras {
 	static Connection conn = cct.Conexion();
 	private JTextField textField;
 	private JTable table_2;
+	DefaultTableModel model;
 	/**
 	 * Launch the application.
 	 */
@@ -154,14 +155,8 @@ public class VentanaVisualizarCompras {
 		JButton btnNewButton_2 = new JButton("BUSCAR");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				try {
-					System.out.println(jTextFieldNombre.getText());
-
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				
+				String buscar =textField.getText();
+				busqueda(buscar);
 			}
 		});
 		btnNewButton_2.setBounds(322, 14, 89, 23);
@@ -203,5 +198,27 @@ public class VentanaVisualizarCompras {
 	       jTextFieldCod.setText(model.getValueAt(selectedRowIndex, 1).toString());
 	       System.out.println(jTextFieldCod.getText());
 	        
-	    }                
+	    }   
+		public void busqueda(String texto) 
+		{
+			try {
+				String [] headers = {"Nombre","Producto","Precio"};
+				String filter = ""+texto+"";
+				String query ="SELECT * FROM CARRITO WHERE NICKNAME LIKE"+'"'+filter+'"';
+				
+				System.out.println(query);
+				
+				model = new DefaultTableModel(null,headers);
+				PreparedStatement pst = conn.prepareStatement(query);
+				ResultSet re = pst.executeQuery(query);
+				
+				table_2.setModel(DbUtils.resultSetToTableModel(re));
+				table_2.setDefaultEditor(Object.class, null);
+				
+			}
+			  
+			catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 }

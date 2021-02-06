@@ -26,8 +26,10 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import BD.CarritoBD;
 import BD.LLamadasBD;
 import BD.UsuarioBD;
+import BD.UsuarioconcodBD;
 import Producto.Carrito;
 import Tiendapck.Usuarioconcod;
 import net.proteanit.sql.DbUtils;
@@ -82,13 +84,13 @@ public class VentanaCompra {
 		table.setBounds(10, 11, 414, 173);
 		frame.getContentPane().add(table);
 		
-		JButton btnNewButton = new JButton("Comprar");
-		Usuarioconcod n1 = new Usuarioconcod(nick, codigoac);
-		histo.put(n1, cr1);
+		JButton btnNewButton = new JButton("Comprar");		
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Usuarioconcod u1 = new Usuarioconcod(nick, codigoac);
+				UsuarioconcodBD.InsertarUsuarioconcod(u1);
+				histo.put(u1, cr1);
 				printticket(VentanaTienda.carro);
 			
 	

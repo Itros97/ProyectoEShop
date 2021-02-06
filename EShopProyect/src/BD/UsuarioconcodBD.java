@@ -43,13 +43,13 @@ public class UsuarioconcodBD {
 			}
 		 }
 		 
-		 public static void InsertarCarrito(Usuarioconcod nuc) 
+		 public static void InsertarUsuarioconcod(Usuarioconcod nuc) 
 		 {
 			 PreparedStatement preparedStatement = null;
 			 Connection con = LLamadasBD.Conexion();
 		        try {
 		            String query = " INSERT INTO USUARIOCOD (NICKNAME,CODIGOACCESO)"
-		                    + " VALUES (?, ?, ?, ?)";
+		                    + " VALUES (?, ?)";
 
 		            preparedStatement = con.prepareStatement(query);
 

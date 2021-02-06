@@ -281,10 +281,7 @@ public class VentanaTienda {
 			getCarro(carro);
 		}
 	}
-	public void getdata() 
-	{
-		
-	}
+
 	public ArrayList<Carrito> insertCarro(ArrayList<Carrito> carro)
 	{
 		Carrito c1 = new Carrito();
@@ -312,6 +309,10 @@ public class VentanaTienda {
 		System.out.println(precioaco);
 		return carro;
 
+	}
+	public void  insertintodb(ArrayList<Carrito> carro)
+	{
+		
 	}
 	
 	private class SwingActionPreferences extends AbstractAction {

@@ -26,6 +26,7 @@ public class VentanaVisualizarCompras {
 	static LLamadasBD cct= new LLamadasBD();
 	static Connection conn = cct.Conexion();
 	private JTextField textField;
+	private JTable table_2;
 	/**
 	 * Launch the application.
 	 */
@@ -65,7 +66,7 @@ public class VentanaVisualizarCompras {
 	                jTable1MouseClicked(evt);
 	            }
 	        });
-		table.setBounds(10, 71, 115, 154);
+		table.setBounds(10, 71, 89, 154);
 		frame.getContentPane().add(table);
 		
 		JButton btnNewButton = new JButton("Cargar");
@@ -87,12 +88,12 @@ public class VentanaVisualizarCompras {
 				
 			}
 		});
-		btnNewButton.setBounds(20, 227, 89, 23);
+		btnNewButton.setBounds(10, 227, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		
 		table_1 = new JTable();
-		table_1.setBounds(135, 71, 289, 154);
+		table_1.setBounds(109, 71, 89, 154);
 		frame.getContentPane().add(table_1);
 		
 		JButton btnNewButton_1 = new JButton("Cerrar");
@@ -118,11 +119,11 @@ public class VentanaVisualizarCompras {
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("USUARIOS");
-		lblNewLabel.setBounds(39, 46, 70, 14);
+		lblNewLabel.setBounds(20, 46, 70, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("COMPRAS");
-		lblNewLabel_1.setBounds(263, 46, 49, 14);
+		lblNewLabel_1.setBounds(128, 46, 49, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		textField = new JTextField();
@@ -145,6 +146,14 @@ public class VentanaVisualizarCompras {
 		});
 		btnNewButton_2.setBounds(322, 14, 89, 23);
 		frame.getContentPane().add(btnNewButton_2);
+		
+		table_2 = new JTable();
+		table_2.setBounds(208, 71, 216, 154);
+		frame.getContentPane().add(table_2);
+		
+		JLabel lblNewLabel_2 = new JLabel("CARRITO");
+		lblNewLabel_2.setBounds(290, 46, 46, 14);
+		frame.getContentPane().add(lblNewLabel_2);
 	}
 	 public void jTable1MouseClicked(java.awt.event.MouseEvent evt) {                                     
 	        

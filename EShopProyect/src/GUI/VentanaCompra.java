@@ -112,6 +112,7 @@ public class VentanaCompra {
 				
 				lblNewLabel_1.setText(Double.toString(0.0));
 				System.out.println(histo.toString());
+				VentanaTienda.carro.clear();
 				UsuarioBD.generarcodigoacceso();//Genero un codigo nuevo de acceso para que cuando se acceda al carrito sin haber cerrado la sesion, no se borre la ultima compra efectuada
 			}
 

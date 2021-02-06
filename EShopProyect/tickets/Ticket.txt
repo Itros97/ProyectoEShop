@@ -1,12 +1,12 @@
 Datos prod: 
 
-Nombre=Lg
-Precio=299.87
+Nombre=grafica
+Precio=147.88
 -----
 Datos prod: 
 
-Nombre=nins
-Precio=299.25
+Nombre=Lg
+Precio=299.87
 --------------- 
 Precio Total: 
 ?

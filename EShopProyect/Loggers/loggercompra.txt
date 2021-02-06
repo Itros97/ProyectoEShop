@@ -2,19 +2,19 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-02-06T20:47:22.329681900Z</date>
-  <millis>1612644442329</millis>
-  <nanos>681900</nanos>
-  <sequence>1</sequence>
+  <date>2021-02-06T20:56:13.354436300Z</date>
+  <millis>1612644973354</millis>
+  <nanos>436300</nanos>
+  <sequence>0</sequence>
   <logger>global</logger>
   <level>INFO</level>
   <class>GUI.VentanaCompra$2</class>
   <method>actionPerformed</method>
   <thread>18</thread>
   <message>Compra realizada: [
+Nombre=grafica
+Precio=147.88, 
 Nombre=Lg
-Precio=299.87, 
-Nombre=nins
-Precio=299.25]</message>
+Precio=299.87]</message>
 </record>
 </log>

@@ -20,6 +20,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class VentanaVisualizarCompras {
 	protected JTextField jTextFieldNombre = new JTextField();
+	protected JTextField jTextFieldCarro = new JTextField();
+	protected JTextField jTextFieldCod = new JTextField();
 	private JFrame frame;
 	private JTable table;
 	private JTable table_1;
@@ -64,6 +66,19 @@ public class VentanaVisualizarCompras {
 		 table.addMouseListener(new java.awt.event.MouseAdapter() {
 	            public void mouseClicked(java.awt.event.MouseEvent evt) {
 	                jTable1MouseClicked(evt);
+	            	try {
+						String query = "SELECT NICKNAME,CODIGOACCESO FROM USUARIOCOD WHERE NICKNAME = '" +jTextFieldNombre.getText()+ "'";
+						PreparedStatement pst = conn.prepareStatement(query);
+						ResultSet rs = pst.executeQuery();
+						
+						
+						table_1.setModel(DbUtils.resultSetToTableModel(rs));
+						table_1.setDefaultEditor(Object.class, null);
+
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+	                
 	            }
 	        });
 		table.setBounds(10, 71, 89, 154);
@@ -93,28 +108,33 @@ public class VentanaVisualizarCompras {
 		
 		
 		table_1 = new JTable();
+		table_1.addMouseListener(new java.awt.event.MouseAdapter() {
+	            public void mouseClicked(java.awt.event.MouseEvent evt) {
+	            	jTable1MouseClicked1(evt);
+	            	try {
+						String query = "SELECT NOMBRE,PRECIO FROM CARRITO WHERE NICKNAME = '" +jTextFieldCarro.getText()+ "'"+"AND CODIGOACCESO = '" +jTextFieldCod.getText()+"'";;
+						PreparedStatement pst = conn.prepareStatement(query);
+						ResultSet rs = pst.executeQuery();
+						
+						
+						table_2.setModel(DbUtils.resultSetToTableModel(rs));
+						table_2.setDefaultEditor(Object.class, null);
+
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+	                
+	            }
+	        });
 		table_1.setBounds(109, 71, 89, 154);
 		frame.getContentPane().add(table_1);
 		
 		JButton btnNewButton_1 = new JButton("Cerrar");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				try {
-					String query = "SELECT NICKNAME FROM USUARIO";
-					PreparedStatement pst = conn.prepareStatement(query);
-					ResultSet rs = pst.executeQuery();
-					
-					
-					table.setModel(DbUtils.resultSetToTableModel(rs));
-					table.setDefaultEditor(Object.class, null);
-
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				
+				frame.dispose();
 			}
-		});
+			});
 		btnNewButton_1.setBounds(335, 227, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
@@ -166,6 +186,22 @@ public class VentanaVisualizarCompras {
 	       
 		// set the selected row data into jtextfields
 	       jTextFieldNombre.setText(model.getValueAt(selectedRowIndex, 0).toString());
+	     
+	        
+	    }    
+	 public void jTable1MouseClicked1(java.awt.event.MouseEvent evt) {                                     
+	        
+	        // get the model from the jtable
+	       DefaultTableModel model = (DefaultTableModel)table_1.getModel();
+
+	        // get the selected row index
+	       int selectedRowIndex = table_1.getSelectedRow();
+	       
+	       
+		// set the selected row data into jtextfields
+	       jTextFieldCarro.setText(model.getValueAt(selectedRowIndex, 0).toString());
+	       jTextFieldCod.setText(model.getValueAt(selectedRowIndex, 1).toString());
+	       System.out.println(jTextFieldCod.getText());
 	        
 	    }                
 }

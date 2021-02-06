@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-02-05T10:46:10.482864400Z</date>
-  <millis>1612521970482</millis>
-  <nanos>864400</nanos>
+  <date>2021-02-05T11:25:53.270524100Z</date>
+  <millis>1612524353270</millis>
+  <nanos>524100</nanos>
   <sequence>0</sequence>
   <logger>global</logger>
   <level>INFO</level>
@@ -12,21 +12,5 @@
   <method>actionPerformed</method>
   <thread>18</thread>
   <message>Usuario logeado: admin</message>
-</record>
-<record>
-  <date>2021-02-05T10:46:42.596731100Z</date>
-  <millis>1612522002596</millis>
-  <nanos>731100</nanos>
-  <sequence>1</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>GUI.VentanaCompra$2</class>
-  <method>actionPerformed</method>
-  <thread>18</thread>
-  <message>Compra realizada: [
-Nombre=Lg
-Precio=299.87, 
-Nombre=grafica
-Precio=147.88]</message>
 </record>
 </log>

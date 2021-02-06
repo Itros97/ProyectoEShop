@@ -48,6 +48,7 @@ public class LLamadasBD
 		 UsuarioBD.CrearTablaUsuario(con);
 		 ProductoBD.CrearTablaProducto(con);
 		 CarritoBD.CrearTablaCarrito(con);
+		 CompraBD.CrearTablaCarrito(con);
 		
 		}
 
@@ -55,7 +56,7 @@ public class LLamadasBD
 	 private void BorrarBasesDeDatos(Connection con) {
 		 //UsuarioBD.EliminarTablaUsuario(con);
 		 //ProductoBD.EliminarTablaProducto(con);
-		 CarritoBD.EliminarTablaCarrito(con);
+//		 CarritoBD.EliminarTablaCarrito(con);
 		
 	 	}
 	 

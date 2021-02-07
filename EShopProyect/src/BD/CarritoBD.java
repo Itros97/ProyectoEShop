@@ -2,6 +2,7 @@ package BD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
 
 import Producto.Carrito;
 import Tiendapck.Usuario;
@@ -23,10 +24,11 @@ public class CarritoBD {
 		    preparedStatement = con.prepareStatement(createcarrito);
 	        preparedStatement.executeUpdate();
 
-	        System.out.println("Tabla Carrito creada correctamente.");
-				
+	        LLamadasBD.loggerBD.log(Level.FINE, "Tabla CARRITO creada correctamente");
+		
 			} catch (Exception e) {
 				System.err.println("Error al crear la tabla" +e+ "");
+				LLamadasBD.loggerBD.log(Level.WARNING, "Tabla CARRITO no ha podido crearse");
 			}
 }
 	//ELIMINAR TABLA

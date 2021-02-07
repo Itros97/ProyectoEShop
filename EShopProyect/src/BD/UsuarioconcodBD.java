@@ -2,6 +2,7 @@ package BD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
 
 import Producto.Carrito;
 import Tiendapck.Usuarioconcod;
@@ -20,10 +21,12 @@ public class UsuarioconcodBD {
 		    preparedStatement = con.prepareStatement(createcarrito);
 	        preparedStatement.executeUpdate();
 
-	        System.out.println("Tabla USUARIOCOD creada correctamente.");
+	        LLamadasBD.loggerBD.log(Level.FINE, "Tabla USUARIOCOD creada correctamente");       
 				
 			} catch (Exception e) {
 				System.err.println("Error al crear la tabla" +e+ "");
+			LLamadasBD.loggerBD.log(Level.WARNING, "Tabla USUARIOCOD no ha podido ser creada");       
+					
 			}
 }
 	//ELIMINAR TABLA

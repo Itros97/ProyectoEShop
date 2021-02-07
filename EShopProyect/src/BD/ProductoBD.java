@@ -3,6 +3,7 @@ package BD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
 
 import javax.swing.JOptionPane;
 
@@ -29,10 +30,12 @@ public class ProductoBD {
 		    preparedStatement = con.prepareStatement(createProducto);
 	        preparedStatement.executeUpdate();
 
-	        System.out.println("Tabla PRODUCTO creada correctamente.");
+	        LLamadasBD.loggerBD.log(Level.FINE, "Tabla PRODUCTO creada correctamente");       
+			
 				
 			} catch (Exception e) {
 				System.err.println("Error al crear la tabla" +e+ "");
+			     LLamadasBD.loggerBD.log(Level.WARNING, "Tabla PRODUCTO no pudo ser creada");   
 			}
 }
 	 //ELIMINAR TABLA

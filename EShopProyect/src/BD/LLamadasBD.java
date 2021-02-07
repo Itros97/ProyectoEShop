@@ -3,12 +3,15 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import Producto.Producto;
 import Tiendapck.Usuario;
 
 public class LLamadasBD
 {
+	public final static Logger loggerBD = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	//Llamadas de la base de datos y todos sus metodos
 	//REINICIO DE LA BD PARA EVITAR PROBLEMAS 
 	public void ReiniciarBasesDeDatos(String codSeguridad) {
@@ -38,6 +41,7 @@ public class LLamadasBD
 	            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tiendaonline", "root", "");
 
 	        } catch (Exception e) {
+	        	LLamadasBD.loggerBD.log(Level.SEVERE, "NO SE HA PODIDO CONECTAR CON LA BD");
 	            System.err.println("No se ha podido conectar a la base de datos de la tienda\n" + e.getMessage());
 	        }
 
@@ -45,8 +49,8 @@ public class LLamadasBD
 	    }
 	 //CREACION DE LA BASE DE DATOS
 	 private void CrearBasesDeDatos(Connection con) {
-//		 UsuarioBD.CrearTablaUsuario(con);
-	//	 ProductoBD.CrearTablaProducto(con);
+		     UsuarioBD.CrearTablaUsuario(con);
+	    	 ProductoBD.CrearTablaProducto(con);
 		 	 CarritoBD.CrearTablaCarrito(con);
 			 UsuarioconcodBD.CrearTablaUcod(con);
 		

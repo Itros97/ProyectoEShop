@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
+import java.util.logging.Level;
 
 import javax.swing.JOptionPane;
 
@@ -46,11 +47,12 @@ public class UsuarioBD {
 		    	
 		    preparedStatement = con.prepareStatement(createUsuario);
 	        preparedStatement.executeUpdate();
-
+	        LLamadasBD.loggerBD.log(Level.FINE, "Tabla Usuario creada correctamente");
 	        System.out.println("Tabla USUARIO creada correctamente.");
 				
 			} catch (Exception e) {
 				System.err.println("Error al crear la tabla" +e+ "");
+				LLamadasBD.loggerBD.log(Level.WARNING, "Tabla Usuario no ha podido crearse");
 			}
 }
 	 //ELIMINAR TABLA
@@ -91,6 +93,7 @@ public class UsuarioBD {
 	            preparedStatement.execute();
 
 	            System.out.println("Operación existosa");
+	            LLamadasBD.loggerBD.log(Level.INFO, "Usuario creado con el nick: "+nuevoUsuario.getNickname());
 
 	        } catch (Exception e) {
 	            System.out.println("A ocurrido un ERROR");

@@ -2,33 +2,14 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-02-06T23:22:45.702907300Z</date>
-  <millis>1612653765702</millis>
-  <nanos>907300</nanos>
+  <date>2021-02-07T22:14:26.885887600Z</date>
+  <millis>1612736066885</millis>
+  <nanos>887600</nanos>
   <sequence>0</sequence>
   <logger>global</logger>
   <level>INFO</level>
   <class>GUI.VentanaInicioSesion$1</class>
   <method>actionPerformed</method>
   <thread>18</thread>
-  <message>Usuario logeado: tod</message>
+  <message>Usuario logeado: admin</message>
 </record>
-<record>
-  <date>2021-02-06T23:22:58.506223800Z</date>
-  <millis>1612653778506</millis>
-  <nanos>223800</nanos>
-  <sequence>1</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>GUI.VentanaCompra$2</class>
-  <method>actionPerformed</method>
-  <thread>18</thread>
-  <message>Compra realizada: [
-Nombre=nins
-Precio=299.25, 
-Nombre=nins
-Precio=299.25, 
-Nombre=nins
-Precio=299.25]</message>
-</record>
-</log>
